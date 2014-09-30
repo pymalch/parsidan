@@ -1,0 +1,4 @@
+recursive-include parsidan/public *
+include parsidan/public/favicon.ico
+recursive-include parsidan/i18n *
+recursive-include parsidan/templates *
