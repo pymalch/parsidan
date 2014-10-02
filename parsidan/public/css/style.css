@@ -10,7 +10,7 @@ a:hover{  color:#004a70  }
  
 .clearfix:after,form:after { content: ".";	display: block;	height: 0;	clear: both;	visibility: hidden;}
 
-
+.loading{display:none}
 
 
 .mainPersianInput{display: inline-block;line-height: 52px;height: 52px;padding: 0;text-align: center;width: 300px;font-size: 18px;}

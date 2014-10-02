@@ -15,6 +15,7 @@
 
                 return;
             } else {
+                $('.messages .loading').slideDown();
                 $.ajax({
                     url: '/dictionary/getPersian',
                     type: 'post',
@@ -47,7 +48,10 @@
 
                     },
                     error: function (xhr, status, error) {
-                        alert('error');
+                        alert('${_('Internal server error!')}');
+                    },complete:function(){
+
+                        $('.messages .loading').slideUp();
                     }
                 });
             }
@@ -68,6 +72,8 @@
          <input type="text" class="form-control mainPersianInput" placeholder="${ _('Please enter non persian word') }" >
 
          <div class="messages">
+
+             <div class="loading"><img src="img/preloader.gif"> </div>
             <span class="noResult item">${ _('Persian translate for this word did not find!') }</span>
             <span class="wordAdded s1 item"> ${ _('Word stores is database to translate later.') }</span>
             <span class="addedWordBefore s2 item">${ _('Word is already added and is waiting for translation.') }</span>

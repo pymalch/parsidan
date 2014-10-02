@@ -57,7 +57,7 @@
 
     <div class="words listStyle1" id="words">
         % for word in words:
-            <div class="item" data-rel="{{ word.id }}"><span class="word">{{ word.name }}</span></div>
+            <div class="item" data-rel="${ word.id }"><span class="word">${ word.name }</span></div>
         %endfor
     </div>
 % endif

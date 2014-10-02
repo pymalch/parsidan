@@ -34,15 +34,19 @@ class DictionaryController(RestController):
                 status=3
             else:
                 # if not find any word we add the word in database to translate later
-                word = Ar(name=kwargs['word'])
+
+                checkAr = DBSession.query(Ar).filter(Ar.name == kwargs['word']).count()
+
+                if checkAr:
+                    status=2
+                else:
+                    word = Ar(name=kwargs['word'])
 
                 try:
-                    v=DBSession.add(word)
+                    DBSession.add(word)
+
                 except:
-                    #word added before (duplicate entry)
-                    print('eeeee-------------------ee')
-                    print(v)
-                    status=2
+                    pass
 
                 else:
                     #word successfully added

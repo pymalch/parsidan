@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1411889161.808178
+_modified_time = 1412228242.692949
 _enable_loop = True
 _template_filename = '/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak'
 _template_uri = '/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak'
@@ -38,7 +38,11 @@ def render_body(context,**pageargs):
         if words:
             __M_writer(u'\n    <div class="words listStyle1" id="words">\n')
             for word in words:
-                __M_writer(u'            <div class="item" data-rel="{{ word.id }}"><span class="word">{{ word.name }}</span></div>\n')
+                __M_writer(u'            <div class="item" data-rel="')
+                __M_writer(escape( word.id ))
+                __M_writer(u'"><span class="word">')
+                __M_writer(escape( word.name ))
+                __M_writer(u'</span></div>\n')
             __M_writer(u'    </div>\n')
         return ''
     finally:
@@ -47,6 +51,6 @@ def render_body(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"34": 1, "35": 5, "36": 6, "37": 55, "38": 56, "39": 57, "40": 59, "41": 60, "42": 62, "48": 42, "27": 0}, "uri": "/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak", "filename": "/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak"}
+{"source_encoding": "utf-8", "line_map": {"34": 1, "35": 5, "36": 6, "37": 55, "38": 56, "39": 57, "40": 59, "41": 60, "42": 60, "43": 60, "44": 60, "45": 60, "46": 62, "52": 46, "27": 0}, "uri": "/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak", "filename": "/home/masoud/Desktop/parsidan/parsidan/templates/dictionary/alienList.mak"}
 __M_END_METADATA
 """
