@@ -6,9 +6,11 @@ from parsidan.model.dictionary import *
 from parsidan.model import DBSession
 from tg.controllers import RestController
 from parsidan.controllers.error import ErrorController
+from parsidan.controllers.secure import SecureController
 
 __all__ = ['DictionaryController']
 
+secc = SecureController()
 
 
 class DictionaryController(RestController):
@@ -78,110 +80,103 @@ class DictionaryController(RestController):
 
 
     @expose('json')
-    def persianAdd(self,**kwargs):
+    def assignPersian(self,**kwargs):
         success=0
         checkAr = DBSession.query(Ar).filter(Ar.id==kwargs['item']).first()
 
         if checkAr:
             checkPe = DBSession.query(Pe).filter(Pe.name==kwargs['word']).first()
+            print 'arrrrrrrrrrrrrrr'
 
-            if checkPe:
-                checkAr.pe.append(checkPe)
 
-            else:
-                PeAdded=Pe(name=kwargs['word'])
-                checkAr.pe.append(PeAdded)
 
             try:
-                DBSession.commit()
-                success=1
+                if checkPe:
+                    checkAr.pe.append(checkPe)
+
+                else:
+                    PeAdded=Pe(name=kwargs['word'])
+                    checkAr.pe.append(PeAdded)
+
             except:
                 success=0
+
+            else:
+                success = 1
 
         return dict( success = success)
 
 
-    @expose('parsidan.templates.dictionary.myWordsList')
-    def dictionaryMyList(self):
-        words = DBSession.query(Pe).join(Log).filter(Log.user==current_user.id,Log.action=='add').all()
+    @expose('parsidan.templates.dictionary.myWords')
+    def myWords(self):
+        #todo: should be like bottom line which fetch user`s words not other`s
+        #words = DBSession.query(Pe).join(Log).filter(Log.user==current_user.id,Log.action=='add').all()
+        words = DBSession.query(Pe).all()
         return dict(words = words)
 
 
 
 
-'''
+    @expose('json')
+    def removeAlien(self,**kwargs):
 
-
-
-
-
-
-# Flask views
-
-
-
-
-
-# Flask views
-@expose('/nonPersian/delete',methods=['POST','GET'])
-def nonPersianRemove():
-
-    success=0
-    pes = Pe.query.filter( Pe.id == request.form['parentId']).one()
-    ar =DBSession.query(Ar).filter(Ar.id == request.form['id']).one()
-    pes.ar.remove(ar);
-
-    try:
-        DBSession.commit()
-        success=1
-    except:
         success=0
+        pes = Pe.query.filter( Pe.id == kwargs['parentId']).one()
+        ar =DBSession.query(Ar).filter(Ar.id == kwargs['id']).one()
 
-    return jsonify( success = success)
-
-
-
-
-# Flask views
-@expose('/nonPersian/add',methods=['POST','GET'])
-def nonPersianAdd():
-
-    success=0
-    checkPe = DBSession.query(Pe).filter(Pe.id==request.form['item']).first()
-
-    if checkPe:
-        checkAr = DBSession.query(Ar).filter(Ar.name==request.form['word']).first()
-
-        if checkAr:
-            checkPe.ar.append(checkAr)
-            success=checkAr.id
-        else:
-            ArAdded=Ar(name=request.form['word'])
-            checkPe.ar.append(ArAdded)
 
         try:
-            DBSession.commit()
-            success=ArAdded.id
+            pes.ar.remove(ar);
         except:
             success=0
 
-    return jsonify( success = success)
+        return dict( success = success)
+
+
+    @expose('json')
+    def assignAlien(self,**kwargs):
+
+        success=0
+        checkPe = DBSession.query(Pe).filter(Pe.id==kwargs['item']).first()
+
+        if checkPe:
+            checkAr = DBSession.query(Ar).filter(Ar.name==kwargs['word']).first()
+
+
+            try:
+                if checkAr:
+                    checkPe.ar.append(checkAr)
+                    success=checkAr.id
+                else:
+                    ArAdded=Ar(name=kwargs['word'])
+                    checkPe.ar.append(ArAdded)
+                    success=ArAdded.id
+                    #todo: get added id
+                    success = 1
+
+            except:
+                success=0
 
 
 
-@expose('/persian/add',methods=['POST'])
-def persianAdd():
-    words = Pe(name=request.form['word'])
-    DBSession.add(words)
-    success=0
-    try:
-        DBSession.commit()
-        success=words.id
-    except:
-        success = 2
+        return dict( success = success)
 
-    return str(success)
 
+
+    @expose('json')
+    def addPersian(self,**kwargs):
+        words = Pe(name=kwargs['word'])
+        DBSession.add(words)
+        success=0
+        try:
+            DBSession.commit()
+            success=words.id
+        except:
+            success = 2
+
+        return dict( success = success)
+
+'''
 
 
 def after_insert_listener(mapper, connection, target):

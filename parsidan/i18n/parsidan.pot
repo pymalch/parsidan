@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-23 10:06+0330\n"
+"POT-Creation-Date: 2014-10-03 20:59+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,24 +54,61 @@ msgstr ""
 msgid "Parsidan"
 msgstr ""
 
-#: parsidan/templates/dictionary/main.mak:8
-msgid "Persian translate for this word did not find!"
+#: parsidan/templates/master.mak:69
+msgid "home"
 msgstr ""
 
-#: parsidan/templates/dictionary/main.mak:9
-msgid "Word stores is database to translate later."
+#: parsidan/templates/master.mak:70
+msgid "Make persian"
 msgstr ""
 
-#: parsidan/templates/dictionary/main.mak:10
-msgid "Word is already added and is waiting for translation."
+#: parsidan/templates/master.mak:71
+msgid "My words"
 msgstr ""
 
-#: parsidan/templates/dictionary/main.mak:77
+#: parsidan/templates/dictionary/main.mak:51
+msgid "Internal server error!"
+msgstr ""
+
+#: parsidan/templates/dictionary/main.mak:72
 msgid "Please enter non persian word"
 msgstr ""
 
-#: parsidan/templates/dictionary/main.mak:84
+#: parsidan/templates/dictionary/main.mak:77
+msgid "Persian translate for this word did not find!"
+msgstr ""
+
+#: parsidan/templates/dictionary/main.mak:78
+msgid "Word stores is database to translate later."
+msgstr ""
+
+#: parsidan/templates/dictionary/main.mak:79
+msgid "Word is already added and is waiting for translation."
+msgstr ""
+
+#: parsidan/templates/dictionary/main.mak:80
+msgid "The word you entered is already a persian word!"
+msgstr ""
+
+#: parsidan/templates/dictionary/main.mak:89
 #, python-format
 msgid "You can %(join)s and help us to improve this dictionary."
+msgstr ""
+
+#: parsidan/templates/dictionary/myWords.mak:26
+#: parsidan/templates/dictionary/myWords.mak:41
+msgid "Unexpected error"
+msgstr ""
+
+#: parsidan/templates/dictionary/myWords.mak:29
+msgid "Persian word added before"
+msgstr ""
+
+#: parsidan/templates/dictionary/myWords.mak:54
+msgid "Insert alien equivalent"
+msgstr ""
+
+#: parsidan/templates/dictionary/myWords.mak:171
+msgid "Insert persian word"
 msgstr ""
 

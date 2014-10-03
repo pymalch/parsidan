@@ -12,7 +12,7 @@ a:hover{  color:#004a70  }
 
 .loading{display:none}
 
-
+.container{ font-family: yekan;}
 .mainPersianInput{display: inline-block;line-height: 52px;height: 52px;padding: 0;text-align: center;width: 300px;font-size: 18px;}
 #dictWrapper{ text-align: center;  margin: auto;}
 #dictWrapper  #result span.item{position:relative;display:inline-block; border-radius:5px; background: #eee; padding: 10px; font-size: 18px;margin: 5px; }
@@ -40,7 +40,7 @@ a:hover{  color:#004a70  }
 #words .item input{margin: 1px 0 0 3px;width: 138px;}
 #words .item .input{ display: none;position: relative; height: 28px; display: block; background: #fff; margin: 10px 0; border-radius: 5px;}
 
-#words .item .word{display:block;cursor: pointer;}
+#words .item .word{display:block;font-size: 17px;cursor: pointer;}
 #words .item .fa{ color: #ccc; cursor: pointer; margin: 1px; background: #fff; font-size: 18px; top: 3px; position: relative; float: left;}
 #words .item .fa-plus:hover{color: #6c3;}
 #words .item .pendingWord{display:block; margin:10px 0;}

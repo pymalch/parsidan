@@ -5,7 +5,8 @@
     <title>${_('Parsidan')}</title>
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
- <script src="http://code.jquery.com/jquery.js"></script>    ${self.head_content()}
+    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/font-awesome.css')}" />
+ <script src="${'/javascript/jquery.min.js'}"></script>    ${self.head_content()}
 </head>
 <body class="${self.body_class()}">
     ${self.main_menu()}
@@ -59,7 +60,7 @@
       </button>
       <a class="navbar-brand" href="${tg.url('/')}">
         <img src="${tg.url('/img/turbogears_logo.png')}" height="20" alt="TurboGears 2"/>
-        ${getattr(tmpl_context, 'project_name', 'turbogears2')}
+        ${getattr(tmpl_context, 'project_name', 'Parsidan')}
       </a>
     </div>
 
@@ -67,6 +68,7 @@
       <ul class="nav navbar-nav">
         <li class="${('', 'active')[page=='index']}"><a href="${tg.url('/')}">${_('home')}</a></li>
         <li class="${('', 'active')[page=='about']}"><a href="${tg.url('/dictionary/alienList')}">${_('Make persian')}</a></li>
+        <li class="${('', 'active')[page=='about']}"><a href="${tg.url('/dictionary/myWords')}">${_('My words')}</a></li>
 
       </ul>
 

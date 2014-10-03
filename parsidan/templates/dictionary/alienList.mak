@@ -2,7 +2,7 @@
 
 
 
-% if not tg.auth_stack_enabled:
+% if tg.request.identity:
     <script language="JavaScript">
         $(function(){
            $('#words .item').click(function(){
@@ -20,7 +20,7 @@
                     alert(item);
 
                         $.ajax({
-                            url: '/translate/addPersian',
+                            url: '${tg.url('/dictionary/assignPersian')}',
                             type: 'post',
                             data: { 'word': title, 'item': item
                             },
@@ -48,6 +48,8 @@
                     return;
                 }
             });
+
+
 
         });
     </script>

@@ -12,7 +12,7 @@
         if (e.which == 13) {
 
                 $.ajax({
-                    url: '/persian/add',
+                    url: '${tg.url('/dictionary/addPersian')}',
                     type: 'post',
                     data: {
                         'word': title
@@ -51,10 +51,10 @@
        var item =$(this).parent()
        if(!item.find('input').length){
 
-            $('<span class="input"><input type="text"><span class="fa fa-plus"></span><span>').appendTo(item);
+            $('<span class="input"><input type="text" placeholder="${_('Insert alien equivalent')}"><span class="fa fa-plus"></span><span>').appendTo(item);
             var id=item.attr('data-rel');
                 $.ajax({
-                    url: '/nonPersian/fetch',
+                    url: '/dictionary/getAlien',
                     type: 'post',
                     data: { 'id': id
                     },
@@ -105,7 +105,7 @@
         if (e.which == 13) {
 
                 $.ajax({
-                    url: '/nonPersian/add',
+                    url: '${tg.url('/dictionary/assignAlien')}',
                     type: 'post',
                     data: { 'word': title, 'item': item
                     },
@@ -141,7 +141,7 @@
             var parentId=item.parent().parent().attr('data-rel');
 
                 $.ajax({
-                    url: '/nonPersian/delete',
+                    url: '${tg.url('/dictionary/removeAlien')}',
                     type: 'post',
                     data: { 'id': id , 'parentId':parentId
                     },
@@ -168,13 +168,13 @@
 </script>
 <div id="dictWrapper">
        <div class="fs1">
-         <input id="persianInput" type="text" placeholder="واژه  پارسی را وارد نمایید">
+         <input id="persianInput"  class="form-control mainPersianInput" type="text" placeholder="${ _('Insert persian word') }">
      </div>
 </div>
     % if words:
         <div class="words listStyle1" id="words">
             % for word in words:
-                 <div class="item" data-rel="{{ word.id }}"><span class="word">{{ word.name }}</span></div>
+                 <div class="item" data-rel="${ word.id }"><span class="word">${ word.name }</span></div>
             % endfor
         </div>
   % endif
