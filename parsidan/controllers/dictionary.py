@@ -79,7 +79,6 @@ class DictionaryController(RestController):
     def alienList(self):
 
         words = DBSession.query(Ar).filter(Ar.pe==None).all()
-        print len(words)
         return dict(words = words)
 
 
@@ -90,7 +89,6 @@ class DictionaryController(RestController):
 
         if checkAr:
             checkPe = DBSession.query(Pe).filter(Pe.name==kwargs['word']).first()
-            print 'arrrrrrrrrrrrrrr'
 
 
 
@@ -177,7 +175,7 @@ class DictionaryController(RestController):
 
 def after_insert_listener(mapper, connection, target):
     # 'target' is the inserted object
-    logAdd=Log(pe=target.id, action='add', user=request.identity.get('repoze.who.userid'))
+    logAdd=Log(pe=target.id, action='add', user=request.identity['user'].user_id)
     DBSession.add(logAdd)
     #DBSession.commit()
 
