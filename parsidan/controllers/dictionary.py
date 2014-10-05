@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """Parsidan Controller"""
 
-from tg import expose, flash
+from tg import expose, flash, request
 from parsidan.model.dictionary import *
 from parsidan.model import DBSession
 from tg.controllers import RestController
 from parsidan.controllers.error import ErrorController
 from parsidan.controllers.secure import SecureController
+from sqlalchemy import event
 
 __all__ = ['DictionaryController']
 
@@ -73,7 +74,10 @@ class DictionaryController(RestController):
 
     #list of alien words which users search for its persian equivalent and no result was founded
     @expose('parsidan.templates.dictionary.alienList')
+
+
     def alienList(self):
+
         words = DBSession.query(Ar).filter(Ar.pe==None).all()
         print len(words)
         return dict(words = words)
@@ -142,22 +146,16 @@ class DictionaryController(RestController):
         if checkPe:
             checkAr = DBSession.query(Ar).filter(Ar.name==kwargs['word']).first()
 
+            print('++++++')
 
-            try:
-                if checkAr:
-                    checkPe.ar.append(checkAr)
-                    success=checkAr.id
-                else:
-                    ArAdded=Ar(name=kwargs['word'])
-                    checkPe.ar.append(ArAdded)
-                    success=ArAdded.id
-                    #todo: get added id
-                    success = 1
-
-            except:
-                success=0
+            if checkAr:
+                checkPe.ar.append(checkAr)
 
 
+            else:
+                ArAdded=Ar(name=kwargs['word'])
+                ArAdded=DBSession.add(ArAdded)
+                checkPe.ar.append(ArAdded)
 
         return dict( success = success)
 
@@ -176,18 +174,13 @@ class DictionaryController(RestController):
 
         return dict( success = success)
 
-'''
-
 
 def after_insert_listener(mapper, connection, target):
     # 'target' is the inserted object
-    from project.models.dictionary import Log
-    from flask.ext.login import current_user
-    logAdd=Log(pe=target.id, action='add', user=current_user.id)
+    logAdd=Log(pe=target.id, action='add', user=request.identity.get('repoze.who.userid'))
     DBSession.add(logAdd)
     #DBSession.commit()
 
 
 event.listen(Pe, 'after_insert', after_insert_listener)
 
-'''
