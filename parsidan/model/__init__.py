@@ -60,5 +60,4 @@ def init_model(engine):
 
 # Import your model modules here.
 from parsidan.model.auth import User, Group, Permission
-from parsidan.model.dictionary import *
-#todo: import when is called
+from parsidan.model.dictionary import Dictionary, PersianWord, ForeignWord
