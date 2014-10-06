@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/font-awesome.css')}" />
- <script src="${'/javascript/jquery.min.js'}"></script>    ${self.head_content()}
+    <script src="/js/jquery.min.js"></script>
+    ${self.head_content()}
 </head>
 <body class="${self.body_class()}">
     ${self.main_menu()}
@@ -15,7 +16,7 @@
   </div>
     ${self.footer()}
 
-  <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
+  <script src="${tg.url('/js/bootstrap.min.js')}"></script>
 </body>
 
 <%def name="content_wrapper()">
