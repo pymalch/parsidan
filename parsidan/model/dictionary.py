@@ -32,7 +32,7 @@ class Pe(DeclarativeBase):
 
 
     id = Column("id", Integer,  primary_key=True)
-    name = Column("name", Unicode(50 , collation='utf8_persian_ci'), nullable=False )
+    name = Column("name", Unicode(50), nullable=False )
     like = Column("like" , Integer, default=None )
     dislike = Column("dislike" , Integer, default=None )
     status = Column("status" , SMALLINT, default=None, index=True)
@@ -50,7 +50,7 @@ class Ar(DeclarativeBase):
     __tablename__ = "dic_ar"
 
     id = Column("id", Integer,  primary_key=True)
-    name = Column("name", Unicode(50 , collation='utf8_persian_ci'), nullable=False , unique=True,  )
+    name = Column("name", Unicode(50), nullable=False , unique=True,  )
     status = Column("status" , SMALLINT, default=None , index=True)
     pe = relationship('Pe', secondary=ar_pe,
         backref=backref('dic_ar', lazy='dynamic'),cascade="all, delete")
