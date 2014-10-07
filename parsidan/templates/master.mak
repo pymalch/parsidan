@@ -59,8 +59,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="${tg.url('/')}">
-        <img src="${tg.url('/img/turbogears_logo.png')}" height="20" alt="TurboGears 2"/>
-        ${getattr(tmpl_context, 'project_name', 'Parsidan')}
+        <img src="${tg.url('/img/parsidan_logo.png')}"   alt="${_('Parsidan')}}"/>
+
       </a>
     </div>
 
@@ -74,10 +74,10 @@
     % if tg.auth_stack_enabled:
       <ul class="nav navbar-nav navbar-right">
       % if not request.identity:
-        <li><a href="${tg.url('/login')}">Login</a></li>
+        <li><a href="${tg.url('/login')}">${_('Login')}</a></li>
       % else:
-        <li><a href="${tg.url('/logout_handler')}">Logout</a></li>
-        <li><a href="${tg.url('/admin')}">Admin</a></li>
+        <li><a href="${tg.url('/logout_handler')}">${_('Logout')}</a></li>
+        <li><a href="${tg.url('/admin')}">${_('Admin')}</a></li>
       % endif
       </ul>
     % endif

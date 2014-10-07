@@ -74,10 +74,10 @@
          <div class="messages">
 
              <div class="loading"><img src="img/preloader.gif"> </div>
-            <span class="noResult item">${ _('Persian translate for this word did not find!') }</span>
-            <span class="wordAdded s1 item"> ${ _('Word stores is database to translate later.') }</span>
-            <span class="addedWordBefore s2 item">${ _('Word is already added and is waiting for translation.') }</span>
-            <span class="aPersianWord s3 item">${ _('The word you entered is already a persian word!') }</span>
+            <div class="noResult item">${ _('Persian translate for this word did not find!') }</div>
+            <div class="wordAdded s1 item"> ${ _('Word stores is database to translate later.') }</div>
+            <div class="addedWordBefore s2 item">${ _('Word is already added and is waiting for translation.') }</div>
+            <div class="aPersianWord s3 item">${ _('The word you entered is already a persian word!') }</div>
          </div>
 
      </div>

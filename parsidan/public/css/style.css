@@ -22,12 +22,12 @@ a:hover{  color:#004a70  }
 #dictWrapper  #result span.item i.fa-thumbs-up {opacity:.5;color:#6c3;position:absolute;  right:2px; cursor:pointer;}
 #dictWrapper  #result span.item i.fa-thumbs-down {opacity:.5;position:absolute; color:#f63; left:2px;cursor:pointer;}
 #dictWrapper  #result span.item i.fa:hover{opacity:1}
-#dictWrapper .messages span.item{display:block; padding:5px;width: 100%;display: none;}
-#dictWrapper .messages span.noResult{color:#f90; font-size: 19px;margin:10px;}
-#dictWrapper .messages span.wordAdded{color:#9c3; font-size: 17px;margin: 0 0 20px;}
-#dictWrapper .messages span.addedWordBefore{color:#999; font: 12px yekan;margin:0;}
+#dictWrapper .messages div.item{ padding:5px;width: 100%;display: none;}
+#dictWrapper .messages div.noResult{color:#f90; font-size: 19px;margin: 10px;}
+#dictWrapper .messages div.wordAdded{color:#9c3; font-size: 17px;margin: 0 0 20px;}
+#dictWrapper .messages div.addedWordBefore{color:#999; font: 12px yekan;margin:0;}
 
-.join{text-align:center}
+.join{text-align:center;margin-top: 50px;}
 
 
 /* translate list */
