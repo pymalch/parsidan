@@ -5,7 +5,8 @@
 </div>
 <div id="dictWrapper" class="fs1">
     <div id="fromLangWrapper">
-        <input type="text" class="form-control mainPersianInput" placeholder="${ _('Please enter non persian word') }">
+        <input id="queryInput" type="text" class="form-control main-persian-input"
+               placeholder="${ _('Please enter non persian word') }">
 
         <div class="messages">
 
@@ -22,65 +23,94 @@
 </div>
 <div class="join">${ _("You can %(join)s and help us to improve this dictionary.") % {'join': "JOIN US" } } </div>
 
-
+<%def name="scripts()">
 
 <script type="text/javascript">
 
-    var word = Array();
-    $(function () {
-        $('#fromLangWrapper input').keypress(function (e) {
-            var word = $(this).val();
-            if (e.which == 13) {
-                if (false || 0) {
 
-                    return;
-                } else {
-                    $('.messages .loading').slideDown();
-                    $.ajax({
-                        url: '/dictionary/getPersian',
-                        type: 'post',
-                        data: { 'word': word
-                        },
-                        success: function (data) {
-                            console.log(data);
-                            $('.messages .item').slideUp();
+    // Vahid:  My very own scope
+    (function () {
 
-                            if (data.words.length) {
-                                $('<div id="result" class="section"> </div>').appendTo('#dictWrapper');
-                                $.each(data.words, function (k, v) {
-                                    $('<span class="item">' + v + '<span class="like"><i class="fa fa-thumbs-up"></i><i class="fa fa-thumbs-down"></i></span></span>').appendTo('#result');
-                                });
-                            } else {
-
-                                $('.messages .noResult').slideDown();
-                                $('.messages .s' + data.status).slideDown();
-
-
+        var statuses = {
+                    ready: 0,
+                    scheduled: 1,
+                    querying: 2
+                },
+                searchEngine = {
+                    expression: '',
+                    selector: null,
+                    action: '/query',
+                    status: statuses.ready,
+                    xhr: null,
+                    timerId: null,
+                    scheduleTimeout: 700,
+                    $: function () {
+                        return $(this.selector);
+                    },
+                    query: function () {
+                        var self = this;
+                        $.ajax({
+                            url: '/query',
+                            data: {
+                                word: this.expression
+                            },
+                            success: function(resp, status, xhr){
+                                console.log(status);
+                            },
+                            error: function(xhr, status, err){
+                                console.log(status);
                             }
 
-                            if (data.relatedWords.length) {
-                                $('<div id="relatedResult" class="section"> </div>').appendTo('#dictWrapper');
-                                $.each(data.relatedWords, function (k, v) {
-                                    $('<span class="item">' + v + '</span>').appendTo('#relatedResult');
-                                });
+                        });
+
+                    },
+                    result: function(){},
+                    schedule: function () {
+                        var self = this;
+                        this.status = statuses.scheduled;
+                        this.timerId = setTimeout(function () {
+                            self.query();
+                        }, this.scheduleTimeout);
+                    },
+                    keyPressed: function () {
+                        var newExpression = this.$().val();
+                        if (newExpression != this.expression) {
+                            this.expression = newExpression;
+
+                            switch (this.status) {
+                                case statuses.ready:
+                                    break;
+                                case statuses.scheduled:
+                                    if (this.timerId != null) {
+                                        clearTimeout(this.timerId);
+                                    }
+                                    break;
+                                case statuses.querying:
+                                    if (this.xhr != null) {
+                                        this.xhr.abort();
+                                    }
+                                    break;
                             }
 
+                            this.schedule();
 
-                        },
-                        error: function (xhr, status, error) {
-                            alert('${_('Internal server error!')}');
-                        }, complete: function () {
-
-                            $('.messages .loading').slideUp();
                         }
-                    });
-                }
-                e.preventDefault();
-                return;
-            }
-        });
+                    },
+                    setUp: function (selector) {
+                        var self = this;
+                        this.selector = selector;
+                        this.$().keyup(function () {
+                            self.keyPressed();
+                        }).change(function () {
+                            self.keyPressed();
+                        });
+                    }
+                };
 
-    });
+        searchEngine.setUp('#queryInput');
+
+    })();
 
 
 </script>
+</%def>

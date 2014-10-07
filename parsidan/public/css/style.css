@@ -14,7 +14,7 @@ a:hover{  color:#004a70  }
 
 .container{ font-family: yekan;}
 #mainParsidan{text-align: center}
-.mainPersianInput{display: inline-block;line-height: 52px;height: 52px;padding: 0;text-align: center;width: 300px;font-size: 18px;}
+.main-persian-input {display: inline-block;line-height: 52px;height: 52px;padding: 0;text-align: center;width: 300px;font-size: 18px;}
 #dictWrapper{ text-align: center;  margin: auto;}
 #dictWrapper  #result span.item{position:relative;display:inline-block; border-radius:5px; background: #eee; padding: 10px; font-size: 18px;margin: 5px; }
 #dictWrapper  #result span.item .like{transition:all .2s;opacity:0;position:absolute; width:100%; right:0; bottom:-20px;display:block; height:20px; font-size:15px}

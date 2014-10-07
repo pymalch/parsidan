@@ -168,7 +168,7 @@
 </script>
 <div id="dictWrapper">
        <div class="fs1">
-         <input id="persianInput"  class="form-control mainPersianInput" type="text" placeholder="${ _('Insert persian word') }">
+         <input id="persianInput"  class="form-control main-persian-input" type="text" placeholder="${ _('Insert persian word') }">
      </div>
 </div>
     % if words:
