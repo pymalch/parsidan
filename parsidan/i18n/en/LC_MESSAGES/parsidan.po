@@ -1,4 +1,4 @@
-# Persian translations for parsidan.
+# English translations for parsidan.
 # Copyright (C) 2014 ORGANIZATION
 # This file is distributed under the same license as the parsidan project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
@@ -8,19 +8,18 @@ msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-10-07 22:21+0330\n"
-"PO-Revision-Date: 2014-09-23 10:07+0330\n"
+"PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: fa <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
 #: parsidan/controllers/root.py:26
-#, fuzzy
 msgid "parsidan"
-msgstr "پارسیدان"
+msgstr ""
 
 #: parsidan/controllers/root.py:44
 msgid "Wrong credentials"
@@ -45,85 +44,71 @@ msgstr ""
 
 #: parsidan/templates/index.mak:8
 msgid "Please enter non persian word"
-msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+msgstr ""
 
 #: parsidan/templates/index.mak:13
 msgid "Persian translate for this word did not find!"
-msgstr "واژه همسان پارسی یافت نشد."
+msgstr ""
 
 #: parsidan/templates/index.mak:14
 msgid "Word stores is database to translate later."
-msgstr "واژه جهت پارسی سازی در سامانه وارد گردید."
+msgstr ""
 
 #: parsidan/templates/index.mak:15
 msgid "Word is already added and is waiting for translation."
-msgstr "این واژه پیش از این جهت پارسی سازی در سامانه وارد گردیده است."
+msgstr ""
 
 #: parsidan/templates/index.mak:16
 msgid "The word you entered is already a persian word!"
-msgstr "واژه وارد شده یک وازه پارس میباشد."
+msgstr ""
 
 #: parsidan/templates/index.mak:23
 #, python-format
 msgid "You can %(join)s and help us to improve this dictionary."
 msgstr ""
-"شما نیز میتوانید با پیوستن به ما و یاری رساندن در پارسی سازی واژگان "
-"بیگانه قدمی در راستای پویا سازی فرهنگ پارسی بردارید."
 
 #: parsidan/templates/index.mak:71
 msgid "Internal server error!"
-msgstr "یک خطای مربوط به بستر رخ داده است."
+msgstr ""
 
 #: parsidan/templates/master.mak:43 parsidan/templates/master.mak:63
 msgid "Parsidan"
-msgstr "پارسیدان"
+msgstr ""
 
 #: parsidan/templates/master.mak:70
 msgid "Make persian"
-msgstr "پارسی سازی"
+msgstr ""
 
 #: parsidan/templates/master.mak:71
 msgid "My words"
-msgstr "واژکان من"
+msgstr ""
 
 #: parsidan/templates/master.mak:78
 msgid "Login"
-msgstr "ورود"
+msgstr ""
 
 #: parsidan/templates/master.mak:80
 msgid "Logout"
-msgstr "برون رفت"
+msgstr ""
 
 #: parsidan/templates/master.mak:81
 msgid "Admin"
-msgstr "بخش مدیریتی"
+msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
 #: parsidan/templates/dictionary/myWords.mak:41
 msgid "Unexpected error"
-msgstr "یک خطای پیش بینی نشده رخ داده است."
+msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:29
 msgid "Persian word added before"
-msgstr "واژه وارد شده پیش از این در بستر نوشته شده است."
+msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:54
 msgid "Insert alien equivalent"
-msgstr "واژه همگون نا پارسی را وارد نمایید"
+msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:171
 msgid "Insert persian word"
-msgstr "واژه پارسی را وارد نمایید"
-
-#~ msgid "home"
-#~ msgstr ""
-
-#~ msgid "Only for managers"
-#~ msgstr ""
-
-#~ msgid "Only for the editor"
-#~ msgstr ""
-
-#~ msgid "Learn more"
-#~ msgstr ""
+msgstr ""
 
