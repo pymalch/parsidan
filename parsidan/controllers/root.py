@@ -25,7 +25,7 @@ class RootController(BaseController):
     def _before(self, *args, **kw):
         tmpl_context.project_name = _("parsidan")
 
-    @expose('parsidan.templates.dictionary.main')
+    @expose('parsidan.templates.index')
     def index(self):
         """Handle the front-page."""
         return dict(page='index')

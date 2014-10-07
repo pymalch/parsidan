@@ -1,50 +1,85 @@
 <%inherit file="local:templates.master"/>
 
-<%def name="title()">
-  Welcome to TurboGears 2.3, standing on the shoulders of giants, since 2007
-</%def>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="jumbotron">
-        <h1>Welcome to TurboGears 2.3</h1>
-        <p>If you see this page it means your installation was successful!</p>
-        <p>TurboGears 2 is rapid web application development toolkit designed to make your life easier.</p>
-        <p>
-          <a class="btn btn-primary btn-lg" href="http://www.turbogears.org" target="_blank">
-            ${h.icon('book')} ${_('Learn more')}
-          </a>
-        </p>
-      </div>
-    </div>
-    <div class="col-md-4 hidden-xs hidden-sm">
-      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest">${h.icon('book')} TG2 Documentation</a> <span class="label label-success">new</span><em> Get Started</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest/cookbook/cookbook.html">${h.icon('book')} TG2 CookBook</a><em> Read the Cookbook</em> <br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://groups.google.com/group/turbogears">${h.icon('comment')} Join the Mail List</a> <em>for help/discussion</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://runnable.com/TurboGears">${h.icon('play')} Play on Runnable</a> <em>for basic examples</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://stackoverflow.com/questions/tagged/turbogears2">${h.icon('search')} Search Stackoverflow</a> <em>for questions</em>
-    </div>
-  </div>
+<div id="mainParsidan">
+    <img src="${tg.url('/img/parsidan.jpg')}">
+</div>
+<div id="dictWrapper" class="fs1">
+    <div id="fromLangWrapper">
+        <input type="text" class="form-control mainPersianInput" placeholder="${ _('Please enter non persian word') }">
 
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Code your data model</h3>
-      <p> Design your data <code>model</code>, Create the database, and Add some bootstrap data.</p>
+        <div class="messages">
+
+            <div class="loading"><img src="img/preloader.gif"></div>
+            <div class="noResult item">${ _('Persian translate for this word did not find!') }</div>
+            <div class="wordAdded s1 item"> ${ _('Word stores is database to translate later.') }</div>
+            <div class="addedWordBefore s2 item">${ _('Word is already added and is waiting for translation.') }</div>
+            <div class="aPersianWord s3 item">${ _('The word you entered is already a persian word!') }</div>
+        </div>
+
     </div>
 
-    <div class="col-md-4">
-      <h3>Design your URL architecture</h3>
-      <p> Decide your URLs, Program your <code>controller</code> methods, Design your
-        <code>templates</code>, and place some static files (CSS and/or Javascript). </p>
-    </div>
 
-    <div class="col-md-4">
-      <h3>Distribute your app</h3>
-      <p> Test your source, Generate project documents, Build a distribution.</p>
-    </div>
-  </div>
+</div>
+<div class="join">${ _("You can %(join)s and help us to improve this dictionary.") % {'join': "JOIN US" } } </div>
 
-  <em class="pull-right small"> Thank you for choosing TurboGears.</em>
+
+
+<script type=text/javascript>
+    var word = Array();
+    $(function () {
+        $('#fromLangWrapper input').keypress(function (e) {
+            var word = $(this).val();
+            if (e.which == 13) {
+                if (false || 0) {
+
+                    return;
+                } else {
+                    $('.messages .loading').slideDown();
+                    $.ajax({
+                        url: '/dictionary/getPersian',
+                        type: 'post',
+                        data: { 'word': word
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            $('.messages .item').slideUp();
+
+                            if (data.words.length) {
+                                $('<div id="result" class="section"> </div>').appendTo('#dictWrapper');
+                                $.each(data.words, function (k, v) {
+                                    $('<span class="item">' + v + '<span class="like"><i class="fa fa-thumbs-up"></i><i class="fa fa-thumbs-down"></i></span></span>').appendTo('#result');
+                                });
+                            } else {
+
+                                $('.messages .noResult').slideDown();
+                                $('.messages .s' + data.status).slideDown();
+
+
+                            }
+
+                            if (data.relatedWords.length) {
+                                $('<div id="relatedResult" class="section"> </div>').appendTo('#dictWrapper');
+                                $.each(data.relatedWords, function (k, v) {
+                                    $('<span class="item">' + v + '</span>').appendTo('#relatedResult');
+                                });
+                            }
+
+
+                        },
+                        error: function (xhr, status, error) {
+                            alert('${_('Internal server error!')}');
+                        }, complete: function () {
+
+                            $('.messages .loading').slideUp();
+                        }
+                    });
+                }
+                e.preventDefault();
+                return;
+            }
+        });
+
+    });
+
+
+</script>

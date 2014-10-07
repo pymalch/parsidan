@@ -2,7 +2,7 @@
 <html>
 <head>
     ${self.meta()}
-    <title>${_('Parsidan')}</title>
+    <title>${self.title()}</title>
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
     <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/font-awesome.css')}" />
@@ -40,7 +40,7 @@
 </%def>
 <%def name="head_content()"></%def>
 
-<%def name="title()">  </%def>
+<%def name="title()">${_('Parsidan')}</%def>
 
 <%def name="footer()">
   <footer class="footer hidden-xs hidden-sm">
