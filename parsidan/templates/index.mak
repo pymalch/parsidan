@@ -24,7 +24,8 @@
 
 
 
-<script type=text/javascript>
+<script type="text/javascript">
+
     var word = Array();
     $(function () {
         $('#fromLangWrapper input').keypress(function (e) {
