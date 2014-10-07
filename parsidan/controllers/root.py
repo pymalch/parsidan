@@ -73,7 +73,7 @@ class RootController(BaseController):
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
 
-    @expose('local:templates.query')
+    @expose('parsidan.templates.query')
     @expose('json')
     def query(self, word=None):
         result = Dictionary.query(word)

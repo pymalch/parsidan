@@ -1,7 +1,9 @@
 <%inherit file="local:templates.master"/>
 
+<h2>${_('Showing persian equivalent of the word: %s') % word}</h2>
+
 <ul>
 %for r in result:
-    <li>${r}</li>
+    <li>${r['offer']}</li>
 %endfor
 </ul>
