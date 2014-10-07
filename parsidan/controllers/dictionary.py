@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """Parsidan Controller"""
 
-from tg import expose, flash, request
+from tg import expose, flash, request, require
 from parsidan.model.dictionary import *
 from parsidan.model import DBSession
 from tg.controllers import RestController
 from parsidan.controllers.error import ErrorController
 from parsidan.controllers.secure import SecureController
 from sqlalchemy import event
+#from repoze.what.predicates import not_anonymous
 
 __all__ = ['DictionaryController']
 
@@ -75,7 +76,6 @@ class DictionaryController(RestController):
     #list of alien words which users search for its persian equivalent and no result was founded
     @expose('parsidan.templates.dictionary.alienList')
 
-
     def alienList(self):
 
         words = DBSession.query(Ar).filter(Ar.pe==None).all()
@@ -112,8 +112,7 @@ class DictionaryController(RestController):
     @expose('parsidan.templates.dictionary.myWords')
     def myWords(self):
         #todo: should be like bottom line which fetch user`s words not other`s
-        #words = DBSession.query(Pe).join(Log).filter(Log.user==current_user.id,Log.action=='add').all()
-        words = DBSession.query(Pe).all()
+        words = DBSession.query(Pe).join(Log).filter(Log.user==request.identity['user'].user_id,Log.action=='add').all()
         return dict(words = words)
 
 
@@ -144,11 +143,8 @@ class DictionaryController(RestController):
         if checkPe:
             checkAr = DBSession.query(Ar).filter(Ar.name==kwargs['word']).first()
 
-            print('++++++')
-
             if checkAr:
                 checkPe.ar.append(checkAr)
-
 
             else:
                 ArAdded=Ar(name=kwargs['word'])

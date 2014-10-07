@@ -60,55 +60,55 @@ msgstr ""
 
 #: parsidan/templates/master.mak:70
 msgid "Make persian"
-msgstr ""
+msgstr "پارسی سازی"
 
 #: parsidan/templates/master.mak:71
 msgid "My words"
-msgstr ""
+msgstr "واژکان من"
 
 #: parsidan/templates/dictionary/main.mak:51
 msgid "Internal server error!"
-msgstr ""
+msgstr "یک خطای مربوط به بستر رخ داده است."
 
 #: parsidan/templates/dictionary/main.mak:72
 msgid "Please enter non persian word"
-msgstr ""
+msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 
 #: parsidan/templates/dictionary/main.mak:77
 msgid "Persian translate for this word did not find!"
-msgstr ""
+msgstr "واژه همسان پارسی یافت نشد."
 
 #: parsidan/templates/dictionary/main.mak:78
 msgid "Word stores is database to translate later."
-msgstr ""
+msgstr "واژه جهت پارسی سازی در سامانه وارد گردید."
 
 #: parsidan/templates/dictionary/main.mak:79
 msgid "Word is already added and is waiting for translation."
-msgstr ""
+msgstr "این واژه پیش از این جهت پارسی سازی در سامانه وارد گردیده است."
 
 #: parsidan/templates/dictionary/main.mak:80
 msgid "The word you entered is already a persian word!"
-msgstr ""
+msgstr "واژه وارد شده یک وازه پارس میباشد."
 
 #: parsidan/templates/dictionary/main.mak:89
 #, python-format
 msgid "You can %(join)s and help us to improve this dictionary."
-msgstr "you can %(join)s fff"
+msgstr "شما نیز میتوانید با پیوستن به ما و یاری رساندن در پارسی سازی واژگان بیگانه قدمی در راستای پویا سازی فرهنگ پارسی بردارید."
 
 #: parsidan/templates/dictionary/myWords.mak:26
 #: parsidan/templates/dictionary/myWords.mak:41
 msgid "Unexpected error"
-msgstr ""
+msgstr "یک خطای پیش بینی نشده رخ داده است."
 
 #: parsidan/templates/dictionary/myWords.mak:29
 msgid "Persian word added before"
-msgstr ""
+msgstr "واژه وارد شده پیش از این در بستر نوشته شده است."
 
 #: parsidan/templates/dictionary/myWords.mak:54
 msgid "Insert alien equivalent"
-msgstr ""
+msgstr "واژه همگون نا پارسی را وارد نمایید"
 
 #: parsidan/templates/dictionary/myWords.mak:171
 msgid "Insert persian word"
-msgstr ""
+msgstr "واژه پارسی را وارد نمایید"
 

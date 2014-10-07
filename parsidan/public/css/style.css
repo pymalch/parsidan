@@ -1,5 +1,5 @@
 @font-face{font-family:"yekan";src:url("../fonts/BYekan.eot");src:local("?"),url("../fonts/BYekan.woff") format("woff"),url("../fonts/BYekan.ttf") format("truetype");font-weight:normal;font-style:normal;word-spacing:-1px}
-
+body,html,div,p{direction:rtl}
 
 small{ font-size:10px;}
 b, strong{ font-weight:bold;}
@@ -13,6 +13,7 @@ a:hover{  color:#004a70  }
 .loading{display:none}
 
 .container{ font-family: yekan;}
+#mainParsidan{text-align: center}
 .mainPersianInput{display: inline-block;line-height: 52px;height: 52px;padding: 0;text-align: center;width: 300px;font-size: 18px;}
 #dictWrapper{ text-align: center;  margin: auto;}
 #dictWrapper  #result span.item{position:relative;display:inline-block; border-radius:5px; background: #eee; padding: 10px; font-size: 18px;margin: 5px; }

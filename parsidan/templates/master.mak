@@ -66,8 +66,7 @@
 
     <div class="collapse navbar-collapse" id="navbar-content">
       <ul class="nav navbar-nav">
-        <li class="${('', 'active')[page=='index']}"><a href="${tg.url('/')}">${_('home')}</a></li>
-        <li class="${('', 'active')[page=='about']}"><a href="${tg.url('/dictionary/alienList')}">${_('Make persian')}</a></li>
+         <li class="${('', 'active')[page=='about']}"><a href="${tg.url('/dictionary/alienList')}">${_('Make persian')}</a></li>
         <li class="${('', 'active')[page=='about']}"><a href="${tg.url('/dictionary/myWords')}">${_('My words')}</a></li>
 
       </ul>

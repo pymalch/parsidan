@@ -66,7 +66,7 @@
 
 
 </script>
-
+<div id="mainParsidan"><img src="${tg.url('/img/parsidan.jpg')}"></div>
  <div id="dictWrapper" class="fs1">
      <div id="fromLangWrapper">
          <input type="text" class="form-control mainPersianInput" placeholder="${ _('Please enter non persian word') }" >
