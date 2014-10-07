@@ -1,9 +1,10 @@
 __author__ = 'masoud'
 
-from parsidan.model import DeclarativeBase, metadata
+from parsidan.model import DeclarativeBase, DBSession
 from sqlalchemy import ForeignKey, Column, PrimaryKeyConstraint
 from sqlalchemy.types import Unicode, Integer, Enum, DateTime
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import literal_column
 from datetime import datetime
 
 class TimestampMixin(object):
@@ -22,7 +23,7 @@ class PersianWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     __tablename__ = "persian_word"
 
     id = Column(Integer,  primary_key=True)
-    word = Column(Unicode(60), nullable=False, unique=True, index=True)
+    title = Column(Unicode(60), nullable=False, unique=True, index=True)
 
 
 class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
@@ -30,11 +31,14 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     __tablename__ = "foreign_word"
 
     id = Column(Integer,  primary_key=True)
-    word = Column(Unicode(50), nullable=False , unique=True, index=True )
+    title = Column(Unicode(50), nullable=False , unique=True, index=True )
 
 
 class Dictionary(TimestampMixin, DeclarativeBase):
     __tablename__ = "dictionary"
+    __table_args__ = (
+        PrimaryKeyConstraint("foreign_word_id", "persian_word_id", name="dictionary_pk"),
+    )
 
     foreign_word_id = Column(Integer, ForeignKey('foreign_word.id'), nullable=False, primary_key=True)
     foreign_word = relationship("ForeignWord")
@@ -45,9 +49,17 @@ class Dictionary(TimestampMixin, DeclarativeBase):
     likes = Column(Integer, nullable=False, default=0)
     dislikes = Column(Integer, nullable=False, default=0)
 
-    __table_args__ = (
-        PrimaryKeyConstraint("foreign_word_id", "persian_word_id", name="dictionary_pk"),
-    )
+    @classmethod
+    def query(cls, expression):
+        rate = cls.likes - cls.dislikes
+        for r in DBSession.query(rate.label('rate'), PersianWord.title.label('offer'))\
+            .join(ForeignWord)\
+            .join(PersianWord)\
+            .filter(ForeignWord.title == expression)\
+            .order_by(rate.desc()):
+
+            yield r._asdict()
+
 
 # class ActivityLog(DeclarativeBase):
 #     __tablename__ = "activity_log"

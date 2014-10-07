@@ -6,7 +6,7 @@ from tg.i18n import ugettext as _, lazy_ugettext as l_, set_lang
 from tg.exceptions import HTTPFound
 from parsidan import model
 from parsidan.controllers.dictionary import DictionaryController
-from parsidan.model import DBSession, metadata
+from parsidan.model import Dictionary, DBSession
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 
@@ -73,6 +73,8 @@ class RootController(BaseController):
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
 
-    @expose('.json')
+    @expose('local:templates.query')
+    @expose('json')
     def query(self, word=None):
-        pass
+        result = Dictionary.query(word)
+        return dict(word=word, result=result)

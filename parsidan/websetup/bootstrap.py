@@ -59,11 +59,15 @@ def bootstrap(command, conf, vars):
     from sqlalchemy.exc import IntegrityError
     try:
 
-        salam = model.ForeignWord(word=u'سلام')
-        hi = model.ForeignWord(word=u'hi')
-        dorood = model.PersianWord(word=u'درود')
-        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood))
-        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood))
+        salam = model.ForeignWord(title=u'سلام', status='confirmed')
+        hi = model.ForeignWord(title=u'hi', status='confirmed')
+        dorood = model.PersianWord(title=u'درود')
+        dorood_bar_shoma = model.PersianWord(title=u'درود بر شما')
+
+        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood, likes=10, dislikes=3))
+        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood_bar_shoma, likes=5, dislikes=3))
+        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood, likes=12, dislikes=4))
+        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood_bar_shoma, likes=5, dislikes=3))
 
 
         model.DBSession.flush()
