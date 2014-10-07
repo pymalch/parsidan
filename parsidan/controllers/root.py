@@ -31,7 +31,7 @@ class RootController(BaseController):
         return dict(page='index')
 
     @expose()
-    def setlang(self,lang,camefrom='/'):
+    def setlang(self, lang, camefrom=lurl('/')):
         if lang:
             set_lang(lang)
         redirect(camefrom)
@@ -72,3 +72,7 @@ class RootController(BaseController):
         """
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
+
+    @expose('.json')
+    def query(self, word=None):
+        pass

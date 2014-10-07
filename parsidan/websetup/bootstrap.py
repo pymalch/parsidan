@@ -10,7 +10,7 @@ import transaction
 def bootstrap(command, conf, vars):
     """Place any commands to setup parsidan here"""
 
-    # <websetup.bootstrap.before.auth
+    # <websetup.bootstrap.before.auth>
     from sqlalchemy.exc import IntegrityError
     try:
         u = model.User()
@@ -53,3 +53,26 @@ def bootstrap(command, conf, vars):
         print('Continuing with bootstrapping...')
 
     # <websetup.bootstrap.after.auth>
+
+
+    # <websetup.bootstrap.before.dictionary>
+    from sqlalchemy.exc import IntegrityError
+    try:
+
+        salam = model.ForeignWord(word=u'سلام')
+        hi = model.ForeignWord(word=u'hi')
+        dorood = model.PersianWord(word=u'درود')
+        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood))
+        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood))
+
+
+        model.DBSession.flush()
+        transaction.commit()
+    except IntegrityError:
+        print('Warning, there was a problem adding your auth data, it may have already been added:')
+        import traceback
+        print(traceback.format_exc())
+        transaction.abort()
+        print('Continuing with bootstrapping...')
+
+    # <websetup.bootstrap.after.dictionary>
