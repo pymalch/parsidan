@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ${package} 0.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-03 20:59+0330\n"
+"POT-Creation-Date: 2014-10-07 09:36+0330\n"
 "PO-Revision-Date: 2008-01-13 14:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -51,20 +51,28 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: parsidan/templates/master.mak:5
+#: parsidan/templates/master.mak:5 parsidan/templates/master.mak:63
 msgid "Parsidan"
 msgstr ""
 
 #: parsidan/templates/master.mak:69
-msgid "home"
-msgstr ""
-
-#: parsidan/templates/master.mak:70
 msgid "Make persian"
 msgstr ""
 
-#: parsidan/templates/master.mak:71
+#: parsidan/templates/master.mak:70
 msgid "My words"
+msgstr ""
+
+#: parsidan/templates/master.mak:77
+msgid "Login"
+msgstr ""
+
+#: parsidan/templates/master.mak:79
+msgid "Logout"
+msgstr ""
+
+#: parsidan/templates/master.mak:80
+msgid "Admin"
 msgstr ""
 
 #: parsidan/templates/dictionary/main.mak:51
@@ -117,5 +125,8 @@ msgstr ""
 #~ msgstr "Ваши приложение успешно запущено"
 
 #~ msgid "You can %s and help us to improve this dictionary."
+#~ msgstr ""
+
+#~ msgid "home"
 #~ msgstr ""
 
