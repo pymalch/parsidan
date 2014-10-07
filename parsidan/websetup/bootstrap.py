@@ -69,7 +69,7 @@ def bootstrap(command, conf, vars):
         model.DBSession.flush()
         transaction.commit()
     except IntegrityError:
-        print('Warning, there was a problem adding your auth data, it may have already been added:')
+        print('Warning, there was a problem adding your dictionary data, it may have already been added:')
         import traceback
         print(traceback.format_exc())
         transaction.abort()
