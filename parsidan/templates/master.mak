@@ -21,8 +21,10 @@
 </div>
 
 <footer class="footer hidden-xs hidden-sm navbar-fixed-bottom">
-    <div class="center-block text-center copyright">
-        ${_('&copy; %s Parsidan') % h.current_year() | n}
+    <div class="container">
+        <div class="center-block text-center copyright">
+            ${_('&copy; %s Parsidan') % h.current_year() | n}
+        </div>
     </div>
 </footer>
 
