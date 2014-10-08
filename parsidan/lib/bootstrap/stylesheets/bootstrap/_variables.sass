@@ -7,6 +7,25 @@ $bootstrap-sass-asset-helper: twbs-font-path("") != unquote('twbs-font-path("")'
 // Variables
 // --------------------------------------------------
 
+//== Internationalization
+//
+// By Vahid Mardani
+$direction: ltr !default
+$float: left !default
+$float-inverse: right !default
+$text-align: left
+$text-align-inverse: right
+
+@if $direction == rtl
+  $float: right !global
+  $float-inverse: left !global
+  $text-align: right !global
+  $text-align-inverse: left !global
+
+
+
+
+
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.

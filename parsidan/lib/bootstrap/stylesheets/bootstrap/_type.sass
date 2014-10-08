@@ -206,10 +206,10 @@ dd
     // Clear the floated `dt` if an empty `dd` is present
   @media (min-width: $grid-float-breakpoint)
     dt
-      float: left
+      float: $float
       width: $dl-horizontal-offset - 20
       clear: left
-      text-align: right
+      text-align: $text-align-inverse
       +text-overflow
     dd
       margin-left: $dl-horizontal-offset

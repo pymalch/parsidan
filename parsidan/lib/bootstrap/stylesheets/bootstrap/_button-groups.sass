@@ -11,7 +11,7 @@
   // match .btn alignment given font-size hack above
   > .btn
     position: relative
-    float: left
+    float: $float
     // Bring the "active" button to the front
     &:hover,
     &:focus,
@@ -37,7 +37,7 @@
   +clearfix
   .btn-group,
   .input-group
-    float: left
+    float: $float
   > .btn,
   > .btn-group,
   > .input-group
@@ -59,7 +59,7 @@
 
 // Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
 .btn-group > .btn-group
-  float: left
+  float: $float
 
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn
   border-radius: 0

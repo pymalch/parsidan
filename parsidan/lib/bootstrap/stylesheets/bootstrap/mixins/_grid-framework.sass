@@ -20,7 +20,7 @@
   @for $i from 1 + 1 through $grid-columns
     $list: "#{$list}, .col-#{$class}-#{$i}"
   #{$list}
-    float: left
+    float: $float
 
 =calc-grid-column($index, $class, $type)
   @if $type == width and $index > 0

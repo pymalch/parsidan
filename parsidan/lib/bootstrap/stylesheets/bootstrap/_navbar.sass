@@ -26,7 +26,7 @@
 .navbar-header
   +clearfix
   @media (min-width: $grid-float-breakpoint)
-    float: left
+    float: $float
 
 // Navbar collapse (body)
 //
@@ -127,7 +127,7 @@
 // Brand/project name
 
 .navbar-brand
-  float: left
+  float: $float
   padding: $navbar-padding-vertical $navbar-padding-horizontal
   font-size: $font-size-large
   line-height: $line-height-computed
@@ -147,7 +147,7 @@
 
 .navbar-toggle
   position: relative
-  float: right
+  float: $float-inverse
   margin-right: $navbar-padding-horizontal
   padding: 9px 10px
   +navbar-vertical-align(34px)
@@ -202,10 +202,10 @@
           background-image: none
   // Uncollapse the nav
   @media (min-width: $grid-float-breakpoint)
-    float: left
+    float: $float
     margin: 0
     > li
-      float: left
+      float: $float
       > a
         padding-top: $navbar-padding-vertical
         padding-bottom: $navbar-padding-vertical
@@ -286,7 +286,7 @@
 .navbar-text
   +navbar-vertical-align($line-height-computed)
   @media (min-width: $grid-float-breakpoint)
-    float: left
+    float: $float
     margin-left: $navbar-padding-horizontal
     margin-right: $navbar-padding-horizontal
     // Outdent the form if last child to line up with content down the page
