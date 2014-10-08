@@ -112,6 +112,10 @@ public_js: !watch
 #    - !template ${bootstrap_js}/tooltip.js
 #    - !template ${bootstrap_js}/popover.js
 
+    - !template ${javascript}/head.js
+    - !template ${javascript}/common.js
+    - !template ${javascript}/search-engine.js
+    - !template ${javascript}/tail.js
 
 
   output: !template ${js}/public.js
