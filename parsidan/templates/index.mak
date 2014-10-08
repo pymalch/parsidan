@@ -3,10 +3,15 @@
 <div class="container">
     <img src="/img/parsidan.jpg" class="center-block">
 </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3" >
+            <input id="queryInput" type="text" class="form-control" placeholder="${ _('Please enter non persian word') }">
+        </div>
+    </div>
+</div>
 <div id="dictWrapper" class="fs1">
     <div id="fromLangWrapper">
-        <input id="queryInput" type="text" class="form-control" placeholder="${ _('Please enter non persian word') }">
 
         <div class="messages">
             <div class="loading"><img src="img/preloader.gif"></div>
