@@ -24,14 +24,15 @@
                 <li class="${('', 'active')[page=='about']}">
                     <a href="/dictionary/myWords">${_('My words')}</a>
                 </li>
-                <li>
-                    <a href="/setlang/${('fa', 'en')[lang == 'fa']}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
-                </li>
+
 
             </ul>
 
             % if tg.auth_stack_enabled:
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/setlang/${('fa', 'en')[lang == 'fa']}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
+                    </li>
                     % if not request.identity:
                         <li><a href="${tg.url('/login')}">${_('Login')}</a></li>
                     % else:
