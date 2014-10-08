@@ -19,7 +19,13 @@
 <div class="container">
     ${self.content_wrapper()}
 </div>
-    ${self.footer()}
+
+<footer class="footer hidden-xs hidden-sm navbar-fixed-bottom">
+    <div class="center-block text-center copyright">
+        ${_('&copy; %s Parsidan') % h.current_year() | n}
+    </div>
+</footer>
+
 <script type="text/javascript" src="/js/public${min}.js"></script>
     ${self.scripts()}
 </body>
@@ -44,16 +50,6 @@
 <%def name="title()">${_('Parsidan')}</%def>
 
 <%def name="scripts()"></%def>
-
-<%def name="footer()">
-    <footer class="footer hidden-xs hidden-sm">
-        <a class="pull-right" href="http://www.turbogears.org"><img style="vertical-align:middle;"
-                                                                    src="${tg.url('/img/under_the_hood_blue.png')}"
-                                                                    alt="TurboGears 2"/></a>
-
-        <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} ${h.current_year()}</p>
-    </footer>
-</%def>
 
 
 

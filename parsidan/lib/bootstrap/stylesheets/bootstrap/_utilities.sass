@@ -17,6 +17,24 @@
 .pull-left
   float: left !important
 
+.pull-right-auto
+  @if $direction == ltr
+    float: right !important
+  @else
+    float: left !important
+
+.pull-left-auto
+  @if $direction == ltr
+    float: left !important
+  @else
+    float: right !important
+
+.text-align-auto
+  @if $direction == ltr
+    text-align: left !important
+  @else
+    text-align: right !important
+
 // Toggling content
 // -------------------------
 
