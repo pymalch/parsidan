@@ -5,8 +5,9 @@
 #from webhelpers import date, feedgenerator, html, number, misc, text
 from markupsafe import Markup
 from datetime import datetime
-import tg.i18n
+import tg
 
+debug = lambda: tg.config.get('debug')
 
 def current_year():
   now = datetime.now()
@@ -18,7 +19,7 @@ def icon(icon_name):
 def lang():
     langs =tg.i18n.get_lang(all=False)
     if langs:
-        return langs[0]
+        return langs[0][:2]
     else:
         return None    
 

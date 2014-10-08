@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+<%
+    min = '.min' if h.debug() else ''
+    direction = '.rtl' if h.lang() == 'fa' else '.ltr'
+%>
 <html>
 <head>
     ${self.meta()}
     <title>${self.title()}</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/font-awesome.css')}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/public${direction}${min}.css"/>
     ${self.head_content()}
 </head>
 <body class="${self.body_class()}">
@@ -15,9 +17,7 @@
 </div>
     ${self.footer()}
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/sprintf.js"></script>
+<script type="text/javascript" src="/js/public${min}.js"></script>
 
 ${self.scripts()}
 

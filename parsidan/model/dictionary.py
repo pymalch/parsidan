@@ -4,7 +4,6 @@ from parsidan.model import DeclarativeBase, DBSession
 from sqlalchemy import ForeignKey, Column, PrimaryKeyConstraint
 from sqlalchemy.types import Unicode, Integer, Enum, DateTime, BigInteger
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import literal_column
 from datetime import datetime
 
 class TimestampMixin(object):

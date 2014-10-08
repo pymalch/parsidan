@@ -60,3 +60,6 @@ data
 .sass-cache
 
 pytz-*.egg
+
+parsidan/public/css/*
+parsidan/public/js/*

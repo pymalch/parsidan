@@ -1,0 +1,222 @@
+
+
+context_sources: !context
+  public: !template ${manifest_dir}/parsidan/public
+  javascript: !template ${manifest_dir}/parsidan/javascript
+  sass: !template ${manifest_dir}/parsidan/sass
+  path: !import os.path
+  bootstrap: !template ${manifest_dir}/parsidan/lib/bootstrap
+
+
+context_public: !context
+  css: !template ${public}/css
+  js: !template ${public}/js
+  lib: !template ${public}/lib
+
+context_bootstrap: !context
+  bootstrap_js: !template ${bootstrap}/javascripts/bootstrap
+  bootstrap_sass: !template ${bootstrap}/stylesheets
+
+public_css: !watch
+  banner: "\nBuilding public css:"
+
+  sass: !options
+    inputs: !options
+      rtl: !template ${sass}/parsidan-rtl.sass
+      ltr: !template ${sass}/parsidan-ltr.sass
+    outputs: !options
+      rtl: !template ${public}/css/parsidan.rtl.css
+      ltr: !template ${public}/css/parsidan.ltr.css
+
+  inputs: !options
+    rtl:
+      - !eval public_css.sass.outputs.rtl
+    ltr:
+      - !eval public_css.sass.outputs.ltr
+
+  outputs: !options
+    rtl: !template ${public}/css/public.rtl.css
+    ltr: !template ${public}/css/public.ltr.css
+
+  minified_outputs: !options
+    rtl: !template ${public}/css/public.rtl.min.css
+    ltr: !template ${public}/css/public.ltr.min.css
+
+
+  actions:
+
+    - !subprocess
+      banner: !template " * ${path.split(public_css.sass.inputs.rtl)[1]} > ${path.split(public_css.sass.outputs.rtl)[1]}"
+      cwd: !eval manifest_dir
+      arguments: !template sass ${public_css.sass.inputs.rtl} > ${public_css.sass.outputs.rtl}
+      shell: true
+
+    - !subprocess
+      banner: !template " * [${', '.join([path.split(i)[1] for i in public_css.inputs.rtl])}] > ${path.split(public_css.outputs.rtl)[1]}"
+      cwd: !eval manifest_dir
+      shell: true
+      arguments: !template cat ${' '.join(public_css.inputs.rtl)} > ${public_css.outputs.rtl}
+
+    - !subprocess
+      banner: !template " * ${path.split(public_css.outputs.rtl)[1]} > ${path.split(public_css.minified_outputs.rtl)[1]}"
+      shell: true
+      arguments: !template yui-compressor --type css ${public_css.outputs.rtl} > ${public_css.minified_outputs.rtl}
+
+
+    - !subprocess
+      banner: !template " * ${path.split(public_css.sass.inputs.ltr)[1]} > ${path.split(public_css.sass.outputs.ltr)[1]}"
+      cwd: !eval manifest_dir
+      arguments: !template sass ${public_css.sass.inputs.ltr} > ${public_css.sass.outputs.ltr}
+      shell: true
+
+    - !subprocess
+      banner: !template " * [${', '.join([path.split(i)[1] for i in public_css.inputs.ltr])}] > ${path.split(public_css.outputs.ltr)[1]}"
+      shell: true
+      arguments: !template cat ${' '.join(public_css.inputs.ltr)} > ${public_css.outputs.ltr}
+
+    - !subprocess
+      banner: !template " * ${path.split(public_css.outputs.ltr)[1]} > ${path.split(public_css.minified_outputs.ltr)[1]}"
+      shell: true
+      arguments: !template yui-compressor --type css ${public_css.outputs.ltr} > ${public_css.minified_outputs.ltr}
+
+    - !banner
+      text: "done. \n"
+
+  watcher: !watcher
+    recursive: true
+    predicate: !eval "lambda fn: fn.endswith('.sass')"
+    sources:
+      - !eval bootstrap_sass
+      - !eval sass
+
+
+
+public_js: !watch
+  priority: 20
+  banner: "\nBuilding public javascripts:"
+  inputs:
+
+    - !template ${lib}/jquery-2.1.1.min.js
+    - !template ${lib}/sprintf.js
+
+    - !template ${bootstrap_js}/affix.js
+    - !template ${bootstrap_js}/alert.js
+    - !template ${bootstrap_js}/button.js
+    - !template ${bootstrap_js}/carousel.js
+    - !template ${bootstrap_js}/collapse.js
+    - !template ${bootstrap_js}/dropdown.js
+    - !template ${bootstrap_js}/tab.js
+    - !template ${bootstrap_js}/transition.js
+    - !template ${bootstrap_js}/scrollspy.js
+    - !template ${bootstrap_js}/modal.js
+    - !template ${bootstrap_js}/tooltip.js
+    - !template ${bootstrap_js}/popover.js
+
+
+
+  output: !template ${js}/public.js
+  minified_output: !template ${js}/public.min.js
+
+  actions:
+    - !banner
+      text: !template " * ${path.split(public_js.output)[1]}"
+    - !subprocess
+      arguments: !template cat ${' '.join(public_js.inputs)} > ${public_js.output}
+      shell: true
+
+    - !banner
+      text: !template " * ${path.split(public_js.output)[1]} > ${path.split(public_js.minified_output)[1]}"
+    - !subprocess
+      shell: true
+      arguments: !template yui-compressor --type js ${public_js.output} > ${public_js.minified_output}
+
+    - !banner
+      text: "done. \n"
+
+  watcher: !watcher
+    recursive: true
+    predicate: !eval "lambda fn: fn.endswith('.js')"
+    sources:
+      - !template ${bootstrap_js}
+      - !template ${javascript}
+
+#admin_css: !watch
+#  banner: "\nBuilding admin css:"
+#  actions:
+#
+#    - !subprocess
+#      banner: !template " * ${path.split(admin_css.sass.input)[1]} > ${path.split(admin_css.sass.output)[1]}"
+#      cwd: !eval manifest_dir
+#      arguments: !template sass ${admin_css.sass.input} > ${admin_css.sass.output}
+#      shell: true
+#
+#    - !subprocess
+#      banner: !template " * [${', '.join([path.split(i)[1] for i in admin_css.inputs])}] > ${path.split(admin_css.output)[1]}"
+#      shell: true
+#      arguments: !template cat ${' '.join(admin_css.inputs)} > ${admin_css.output}
+#
+##    - !subprocess
+##      banner: !template " * ${path.split(admin_css.output)[1]} > ${path.split(admin_css.minified_output)[1]}"
+##      shell: true
+##      arguments: !template yui-compressor --type css ${admin_css.output} > ${admin_css.minified_output}
+#
+#    - !subprocess
+#      banner: !template " * delete ${path.split(admin_css.sass.output)[1]}"
+#      shell: true
+#      arguments: !template rm ${admin_css.sass.output}
+#
+#    - !banner
+#      text: "done. \n"
+#
+#  sass: !options
+#    input: !template ${sass}/admin.sass
+#    output: !template ${public}/css/admin.temp.css
+#
+#  inputs:
+#    - !eval admin_css.sass.output
+#
+#  output: !template ${public}/css/admin.css
+#  minified_output: !template ${public}/css/admin.min.css
+#
+#  observed_files:
+#    - !eval admin_css.sass.input
+#
+#  watcher: !watcher
+#    recursive: true
+#    predicate: !eval "lambda fn: has_file_overlap(fn, admin_css.observed_files)"
+#    sources: admin_css.observed_files
+#
+#
+#master_js: !watch
+#  banner: "\nBuilding master js:"
+#  actions:
+#
+#    - !banner
+#      text: !template " * ${get_filename(master_js.output)}"
+#
+#    - !subprocess
+#      arguments: !template cat ${' '.join(master_js.inputs)} > ${master_js.output}
+#      shell: true
+#
+#    - !subprocess
+#      shell: true
+#      arguments: !template yui-compressor --type js ${master_js.output} > ${master_js.minified_output}
+#
+#    - !banner
+#      text: "done. \n"
+#
+#  output: !template ${public}/js/parsidan.js
+#  minified_output: !template ${public}/js/parsidan.min.js
+#  inputs:
+#    - !template ${public}/lib/jquery-1.11.0.min.js
+#    - !template ${js}/bootstrap.js
+#    - !template ${lib}/modernizr-2.7.1.js
+#    - !template ${lib}/joop-1.3.js
+#    - !template ${javascript}/head.js
+#    - !template ${javascript}/common.js
+#    - !template ${javascript}/banners.js
+#    - !template ${javascript}/tail.js
+#  watcher: !watcher
+#    predicate: !eval "lambda fn: has_file_overlap(fn, master_js.inputs)"
+#    sources: !eval master_js.inputs
+#
