@@ -28,19 +28,34 @@
       width: percentage($index / $grid-columns)
   @if $type == push and $index > 0
     .col-#{$class}-push-#{$index}
-      left: percentage($index / $grid-columns)
+      @if $direction == ltr
+        left: percentage($index / $grid-columns)
+      @else
+        right: percentage($index / $grid-columns)
   @if $type == push and $index == 0
     .col-#{$class}-push-0
-      left: auto
+      @if $direction == ltr
+        left: auto
+      @else
+        right: auto
   @if $type == pull and $index > 0
     .col-#{$class}-pull-#{$index}
-      right: percentage($index / $grid-columns)
+      @if $direction == ltr
+        right: percentage($index / $grid-columns)
+      @else
+        left: percentage($index / $grid-columns)
   @if $type == pull and $index == 0
     .col-#{$class}-pull-0
-      right: auto
+      @if $direction == ltr
+        right: auto
+      @else
+        left: auto
   @if $type == offset
     .col-#{$class}-offset-#{$index}
-      margin-left: percentage($index / $grid-columns)
+      @if $direction == ltr
+        margin-left: percentage($index / $grid-columns)
+      @else
+        margin-right: percentage($index / $grid-columns)
 
 // [converter] This is defined recursively in LESS, but Sass supports real loops
 =loop-grid-columns($columns, $class, $type)
