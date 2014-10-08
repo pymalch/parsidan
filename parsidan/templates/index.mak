@@ -39,7 +39,7 @@
                 searchEngine = {
                     expression: '',
                     selector: null,
-                    action: '/query',
+                    action: '/query.json',
                     status: statuses.ready,
                     xhr: null,
                     timerId: null,
@@ -50,21 +50,26 @@
                     query: function () {
                         var self = this;
                         $.ajax({
-                            url: '/query',
+                            url: this.action,
                             data: {
                                 word: this.expression
                             },
                             success: function(resp, status, xhr){
-                                console.log(status);
+                                self.result(resp);
                             },
                             error: function(xhr, status, err){
-                                console.log(status);
+                                self.error(err);
                             }
 
                         });
 
                     },
-                    result: function(){},
+                    result: function(resp){
+                        console.log(resp);
+                    },
+                    error: function(err){
+                        console.log(err);
+                    },
                     schedule: function () {
                         var self = this;
                         this.status = statuses.scheduled;
