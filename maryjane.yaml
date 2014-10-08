@@ -99,18 +99,18 @@ public_js: !watch
     - !template ${lib}/jquery-2.1.1.min.js
     - !template ${lib}/sprintf.js
 
-    - !template ${bootstrap_js}/affix.js
-    - !template ${bootstrap_js}/alert.js
-    - !template ${bootstrap_js}/button.js
-    - !template ${bootstrap_js}/carousel.js
+#    - !template ${bootstrap_js}/affix.js
+#    - !template ${bootstrap_js}/alert.js
+#    - !template ${bootstrap_js}/button.js
+#    - !template ${bootstrap_js}/carousel.js
     - !template ${bootstrap_js}/collapse.js
-    - !template ${bootstrap_js}/dropdown.js
-    - !template ${bootstrap_js}/tab.js
+#    - !template ${bootstrap_js}/dropdown.js
+#    - !template ${bootstrap_js}/tab.js
     - !template ${bootstrap_js}/transition.js
-    - !template ${bootstrap_js}/scrollspy.js
-    - !template ${bootstrap_js}/modal.js
-    - !template ${bootstrap_js}/tooltip.js
-    - !template ${bootstrap_js}/popover.js
+#    - !template ${bootstrap_js}/scrollspy.js
+#    - !template ${bootstrap_js}/modal.js
+#    - !template ${bootstrap_js}/tooltip.js
+#    - !template ${bootstrap_js}/popover.js
 
 
 
