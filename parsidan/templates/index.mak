@@ -67,6 +67,9 @@
                     result: function(resp){
                         console.log(resp);
                     },
+                    noResult: function(){
+                        console.log('No result');
+                    },
                     error: function(err){
                         console.log(err);
                     },

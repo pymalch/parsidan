@@ -2,7 +2,7 @@ __author__ = 'masoud'
 
 from parsidan.model import DeclarativeBase, DBSession
 from sqlalchemy import ForeignKey, Column, PrimaryKeyConstraint
-from sqlalchemy.types import Unicode, Integer, Enum, DateTime
+from sqlalchemy.types import Unicode, Integer, Enum, DateTime, BigInteger
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import literal_column
 from datetime import datetime
@@ -32,6 +32,7 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
 
     id = Column(Integer,  primary_key=True)
     title = Column(Unicode(50), nullable=False , unique=True, index=True )
+    hits = Column(BigInteger, default=0, nullable=False)
 
 
 class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
