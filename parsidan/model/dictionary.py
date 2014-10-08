@@ -34,7 +34,7 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     title = Column(Unicode(50), nullable=False , unique=True, index=True )
 
 
-class Dictionary(TimestampMixin, DeclarativeBase):
+class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     __tablename__ = "dictionary"
     __table_args__ = (
         PrimaryKeyConstraint("foreign_word_id", "persian_word_id", name="dictionary_pk"),
@@ -55,6 +55,7 @@ class Dictionary(TimestampMixin, DeclarativeBase):
         for r in DBSession.query(rate.label('rate'), PersianWord.title.label('offer'))\
             .join(ForeignWord)\
             .join(PersianWord)\
+            .filter(Dictionary.status == 'confirmed')\
             .filter(ForeignWord.title == expression)\
             .order_by(rate.desc()):
 
