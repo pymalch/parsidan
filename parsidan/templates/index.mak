@@ -38,7 +38,7 @@
                 },
                 searchEngine = {
                     expression: '',
-                    selector: null,
+                    selector: '#queryInput',
                     action: '/query.json',
                     status: statuses.ready,
                     xhr: null,
@@ -101,9 +101,8 @@
 
                         }
                     },
-                    setUp: function (selector) {
+                    setUp: function () {
                         var self = this;
-                        this.selector = selector;
                         this.$().keyup(function () {
                             self.keyPressed();
                         }).change(function () {
@@ -112,7 +111,7 @@
                     }
                 };
 
-        searchEngine.setUp('#queryInput');
+        searchEngine.setUp();
 
     })();
 
