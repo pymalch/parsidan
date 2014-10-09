@@ -11,12 +11,10 @@ Class('parsidan.search.Result', parsidan.ElementController, {
     this.data = data.result;
   },
   $content: function(){
-
+    return this.$().find('.result-content');
   },
   render: function(){
 
 
   }
-}).StaticMembers({
-  template: ''
 });
