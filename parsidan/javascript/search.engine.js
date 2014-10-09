@@ -11,7 +11,8 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 
     defaultOptions: {
         action: '/query.json',
-        scheduleTimeout: 700
+        scheduleTimeout: 700,
+        templatesSelector: '#templates'
     },
 
     __init__: function(selector, options){
@@ -22,6 +23,9 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
         this.expression= '';
         this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
         this.setUp();
+    },
+    $templates: function(){
+      return $(this.options.templatesSelector);
     },
     setUp: function () {
         var self = this;
@@ -50,7 +54,7 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 
     },
     result: function (resp) {
-        console.log(resp);
+        new parsidan.search.Result(resp);
     },
     noResult: function () {
         console.log('No result');
@@ -90,10 +94,10 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 });
 
 jQuery.fn.searchEngine = function(options){
-  if (this.length < 1){
-    return this;
+  if (this.length >= 1 && !parsidan.hasOwnProperty('searchEngine')){
+    parsidan.searchEngine = new parsidan.search.Engine(this.selector, options);
   }
-  new parsidan.search.Engine(this.selector, options);
+  return this;
 };
 
 
