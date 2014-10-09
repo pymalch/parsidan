@@ -12,20 +12,17 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
     defaultOptions: {
         action: '/query.json',
         scheduleTimeout: 700,
-        templatesSelector: '#templates'
+        resultAreaSelector: '.result-area'
     },
 
     __init__: function(selector, options){
         this.selector = selector;
         this.status = Status.ready;
-        this.xhr= null;
+        this.currentQuery= null;
         this.timerId= null;
         this.expression= '';
         this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
         this.setUp();
-    },
-    $templates: function(){
-      return $(this.options.templatesSelector);
     },
     setUp: function () {
         var self = this;
@@ -35,32 +32,11 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
             self.keyPressed();
         });
     },
-
+    $resultArea: function(){
+      return $(this.options.resultAreaSelector);
+    },
     query: function () {
-        var self = this;
-        $.ajax({
-            url: this.options.action,
-            data: {
-                word: this.expression
-            },
-            success: function (resp, status, xhr) {
-                self.result(resp);
-            },
-            error: function (xhr, status, err) {
-                self.error(err);
-            }
-
-        });
-
-    },
-    result: function (resp) {
-        new parsidan.search.Result(resp);
-    },
-    noResult: function () {
-        console.log('No result');
-    },
-    error: function (err) {
-        console.log(err);
+      this.currentQuery = parsidan.search.Query.create(this.expression);
     },
     schedule: function () {
         var self = this;
@@ -81,8 +57,8 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
                     }
                     break;
                 case Status.querying:
-                    if (this.xhr != null) {
-                        this.xhr.abort();
+                    if (this.currentQuery != null) {
+                        this.currentQuery.abort();
                     }
                     break;
             }

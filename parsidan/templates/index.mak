@@ -32,10 +32,10 @@
 </div>
 <div id="searchEngineTemplates" class="hidden">
 
-    <div class="row result">
+    <div id="queryTemplate" class="row">
         <div class="${col_classes}">
-            <div class="result-title"></div>
-            <div class="result-content"></div>
+            <div class="query-title"></div>
+            <div class="query-content"></div>
         </div>
     </div>
 
