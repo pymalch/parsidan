@@ -14,8 +14,8 @@ context_public: !context
   lib: !template ${public}/lib
 
 context_bootstrap: !context
-  bootstrap_js: !template ${bootstrap}/javascripts/bootstrap
-  bootstrap_sass: !template ${bootstrap}/stylesheets
+  bootstrap_js: !template ${bootstrap}/javascripts
+  bootstrap_sass: !template ${bootstrap}/sass
 
 public_css: !watch
   banner: "\nBuilding public css:"
