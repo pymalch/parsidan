@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-09 15:33+0330\n"
+"POT-Creation-Date: 2014-10-07 22:21+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "واژه همسان پارسی یافت نشد."
 msgid "Word stores is database to translate later."
 msgstr "واژه جهت پارسی سازی در سامانه وارد گردید."
 
-#: parsidan/templates/index.mak:19
+#: parsidan/templates/index.mak:15
 msgid "Word is already added and is waiting for translation."
 msgstr "این واژه پیش از این جهت پارسی سازی در سامانه وارد گردیده است."
 
@@ -143,7 +143,4 @@ msgstr "واژه پارسی را وارد نمایید"
 
 #~ msgid "Learn more"
 #~ msgstr ""
-
-#~ msgid "Internal server error!"
-#~ msgstr "یک خطای مربوط به بستر رخ داده است."
 
