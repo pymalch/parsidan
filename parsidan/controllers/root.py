@@ -78,8 +78,5 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
-
-        raise "sdfsdf"
-
         result = Dictionary.query(word)
         return dict(word=word, result=result)
