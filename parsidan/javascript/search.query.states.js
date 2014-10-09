@@ -5,6 +5,7 @@
 Class('parsidan.search.QueryState', {
   __init__: function(query){
     this.query = query;
+
     this.setUp();
   },
   setUp: function(){
@@ -19,7 +20,7 @@ Class('parsidan.search.QueryState', {
 Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
   setUp: function(){
 
-    this.query.$title().text(parsidan.messages.querying.format(this.query.word));
+    this.query.$title().text(parsidan.messages.query.loading.format(this.query.word));
 
     $('<img />').attr({
       src: "/img/preloader.gif"
@@ -35,11 +36,10 @@ Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
 
 Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
   setUp: function(){
-//    $('<img />').attr({
-//      src: "/img/preloader.gif"
-//    }).appendTo(this.query.$content());
+    this.query.$title().text(parsidan.messages.query.success.format(this.query.word));
   },
   dispose: function(){
+    this.query.$title().empty();
     //this.query.$content().empty();
   }
 });

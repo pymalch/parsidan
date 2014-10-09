@@ -1,5 +1,5 @@
 
 
 parsidan.messages = {
-  querying: "Querying for: %s"
+// see: /parsidan/templates/client_messages.mak
 };

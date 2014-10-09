@@ -1,5 +1,10 @@
 <script type="text/javascript">
     $.extend(parsidan.messages, {
-        querying: "${_('Querying for: %s')}"
+        query:{
+            loading: "${_('Querying for: %s')}",
+            success: "${_('The Persian equivalent of the word %s is:')}",
+        }
+
+
     });
 </script>
