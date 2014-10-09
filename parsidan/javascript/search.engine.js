@@ -36,6 +36,9 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
       return $(this.options.resultAreaSelector);
     },
     query: function () {
+      if (this.expression.length < 2){
+        return;
+      }
       this.currentQuery = parsidan.search.Query.create(this.expression);
     },
     schedule: function () {

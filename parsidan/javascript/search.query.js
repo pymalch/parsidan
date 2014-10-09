@@ -26,7 +26,8 @@ Class('parsidan.search.Query', parsidan.ElementController, {
       .clone()
       .attr({
         id: this.getElementId(word)})
-      .appendTo(parsidan.searchEngine.$resultArea());
+      .find('.query-title').text("Querying: %s".format(word))
+      .prependTo(parsidan.searchEngine.$resultArea());
     return new this(word);
   }
 });

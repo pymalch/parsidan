@@ -34,7 +34,7 @@
 
     <div id="queryTemplate" class="row">
         <div class="${col_classes}">
-            <div class="query-title"></div>
+            <div class="query-title">query</div>
             <div class="query-content"></div>
         </div>
     </div>
