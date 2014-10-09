@@ -1,0 +1,9 @@
+
+$font-path: "/fonts/" !default
+$font-family-ltr: "Helvetica Neue", Helvetica, Arial, sans-serif !default
+$font-family-rtl: BYekan, Tahoma, Verdana, Arial, sans-serif !default
+
+@if $direction == rtl
+  $font-family-base: $font-family-rtl !global
+@else
+  $font-family-base: $font-family-ltr !global

@@ -72,6 +72,8 @@ $link-hover-color: darken($link-color, 15%) !default
 //
 //## Font, line-height, and color for body text, headings, and more.
 
+$font-path: "/fonts/" !default
+
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $font-family-serif: Georgia, "Times New Roman", Times, serif !default
 
@@ -126,7 +128,9 @@ $headings-color: inherit !default
 //** Load fonts from this directory.
 
 // [converter] Asset helpers such as Sprockets and Node.js Mincer do not resolve relative paths
-$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default
+//$icon-font-path: if($bootstrap-sass-asset-helper, "/bootstrap/", "../fonts/bootstrap/") !default
+// Replaced By vahid
+$icon-font-path: $font-path
 
 //** File name for all font files.
 $icon-font-name: "glyphicons-halflings-regular" !default
