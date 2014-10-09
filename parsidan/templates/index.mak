@@ -47,8 +47,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#queryInput').searchEngine({
-                scheduleTimeout: 1000,
-                templatesSelector: '#searchEngineTemplates'
+                scheduleTimeout: 1000
             });
         });
     </script>

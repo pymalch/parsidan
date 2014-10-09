@@ -9,7 +9,9 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 
 
   defaultOptions: {
-    action: '/query.json',
+    query:{
+      action: '/query.json',
+    },
     scheduleTimeout: 700,
     resultAreaSelector: '.result-area',
 

@@ -1,0 +1,45 @@
+/**
+ * Created by vahid on 10/9/14.
+ */
+
+Class('parsidan.search.QueryState', {
+  __init__: function(query){
+    this.query = query;
+    this.setUp();
+  },
+  setUp: function(){
+    throw "Not Implemented";
+  },
+  dispose: function(){
+    throw "Not Implemented";
+  }
+
+});
+
+Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
+  setUp: function(){
+
+    this.query.$title().text(parsidan.messages.querying.format(this.query.word));
+
+    $('<img />').attr({
+      src: "/img/preloader.gif"
+    }).appendTo(this.query.$content());
+
+  },
+  dispose: function(){
+    this.query.$title().empty();
+    this.query.$content().empty();
+  }
+});
+
+
+Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
+  setUp: function(){
+//    $('<img />').attr({
+//      src: "/img/preloader.gif"
+//    }).appendTo(this.query.$content());
+  },
+  dispose: function(){
+    //this.query.$content().empty();
+  }
+});
