@@ -31,7 +31,8 @@
 </footer>
 
 <script type="text/javascript" src="/js/public${min}.js"></script>
-    ${self.scripts()}
+<%include file="local:templates.client_messages" />
+${self.scripts()}
 </body>
 </html>
 

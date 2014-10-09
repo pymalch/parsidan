@@ -3,6 +3,7 @@
  */
 
 
+
 Class('parsidan.search.Query', parsidan.ElementController, {
   __init__: function(word){
     this.word = word;
@@ -26,7 +27,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
       .clone()
       .attr({
         id: this.getElementId(word)})
-      .find('.query-title').text("Querying: %s".format(word))
+      .find('.query-title').text(parsidan.messages.querying.format(word))
       .prependTo(parsidan.searchEngine.$resultArea());
     return new this(word);
   }

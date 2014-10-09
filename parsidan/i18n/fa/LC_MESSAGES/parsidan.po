@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-07 22:21+0330\n"
+"POT-Creation-Date: 2014-10-09 21:59+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -43,36 +43,17 @@ msgstr ""
 msgid "Secure Controller here"
 msgstr ""
 
-#: parsidan/templates/index.mak:10
+#: parsidan/templates/index.mak:13
 msgid "Please enter non persian word"
 msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 
-#: parsidan/templates/index.mak:17
-msgid "Persian translate for this word did not find!"
-msgstr "واژه همسان پارسی یافت نشد."
-
-#: parsidan/templates/index.mak:18
-msgid "Word stores is database to translate later."
-msgstr "واژه جهت پارسی سازی در سامانه وارد گردید."
-
-#: parsidan/templates/index.mak:15
-msgid "Word is already added and is waiting for translation."
-msgstr "این واژه پیش از این جهت پارسی سازی در سامانه وارد گردیده است."
-
-#: parsidan/templates/index.mak:20
-msgid "The word you entered is already a persian word!"
-msgstr "واژه وارد شده یک وازه پارس میباشد."
-
-#: parsidan/templates/index.mak:21
+#: parsidan/templates/index.mak:50
 #, python-format
-msgid "You can %(join)s and help us to improve this dictionary."
-msgstr ""
-"شما نیز میتوانید با پیوستن به ما و یاری رساندن در پارسی سازی واژگان "
-"بیگانه قدمی در راستای پویا سازی فرهنگ پارسی بردارید."
+msgid "Querying for: %s"
+msgstr "جستجوی واژه: %s"
 
 #: parsidan/templates/master.mak:28
 #, fuzzy, python-format
-#| msgid "parsidan"
 msgid "&copy; %s Parsidan"
 msgstr "پارسیدان"
 
@@ -90,7 +71,6 @@ msgstr "واژکان من"
 
 #: parsidan/templates/navigator.mak:34
 #, fuzzy
-#| msgid "parsidan"
 msgid "Persian"
 msgstr "پارسیدان"
 
@@ -142,5 +122,20 @@ msgstr "واژه پارسی را وارد نمایید"
 #~ msgstr ""
 
 #~ msgid "Learn more"
+#~ msgstr ""
+
+#~ msgid "Persian translate for this word did not find!"
+#~ msgstr "واژه همسان پارسی یافت نشد."
+
+#~ msgid "Word stores is database to translate later."
+#~ msgstr "واژه جهت پارسی سازی در سامانه وارد گردید."
+
+#~ msgid "Word is already added and is waiting for translation."
+#~ msgstr "این واژه پیش از این جهت پارسی سازی در سامانه وارد گردیده است."
+
+#~ msgid "The word you entered is already a persian word!"
+#~ msgstr "واژه وارد شده یک وازه پارس میباشد."
+
+#~ msgid "You can %(join)s and help us to improve this dictionary."
 #~ msgstr ""
 

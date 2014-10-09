@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-09 15:33+0330\n"
+"POT-Creation-Date: 2014-10-09 21:59+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -42,29 +42,13 @@ msgstr ""
 msgid "Secure Controller here"
 msgstr ""
 
-#: parsidan/templates/index.mak:10
+#: parsidan/templates/index.mak:13
 msgid "Please enter non persian word"
 msgstr ""
 
-#: parsidan/templates/index.mak:17
-msgid "Persian translate for this word did not find!"
-msgstr ""
-
-#: parsidan/templates/index.mak:18
-msgid "Word stores is database to translate later."
-msgstr ""
-
-#: parsidan/templates/index.mak:19
-msgid "Word is already added and is waiting for translation."
-msgstr ""
-
-#: parsidan/templates/index.mak:20
-msgid "The word you entered is already a persian word!"
-msgstr ""
-
-#: parsidan/templates/index.mak:21
+#: parsidan/templates/index.mak:50
 #, python-format
-msgid "You can %(join)s and help us to improve this dictionary."
+msgid "Querying for: %s"
 msgstr ""
 
 #: parsidan/templates/master.mak:28
@@ -127,5 +111,20 @@ msgid "Insert persian word"
 msgstr ""
 
 #~ msgid "Internal server error!"
+#~ msgstr ""
+
+#~ msgid "Persian translate for this word did not find!"
+#~ msgstr ""
+
+#~ msgid "Word stores is database to translate later."
+#~ msgstr ""
+
+#~ msgid "Word is already added and is waiting for translation."
+#~ msgstr ""
+
+#~ msgid "The word you entered is already a persian word!"
+#~ msgstr ""
+
+#~ msgid "You can %(join)s and help us to improve this dictionary."
 #~ msgstr ""
 

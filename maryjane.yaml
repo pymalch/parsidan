@@ -114,6 +114,7 @@ public_js: !watch
 
     - !template ${javascript}/head.js
     - !template ${javascript}/helpers.js
+    - !template ${javascript}/messages.js
     - !template ${javascript}/common.js
     - !template ${javascript}/search.engine.js
     - !template ${javascript}/search.query.js
