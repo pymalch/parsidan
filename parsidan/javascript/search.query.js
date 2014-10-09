@@ -11,6 +11,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     this.state = null;
     this.selector = '#%s'.format(this.id);
     this.result = null;
+    this.error = null;
     this.request();
   },
   request: function () {
@@ -34,8 +35,9 @@ Class('parsidan.search.Query', parsidan.ElementController, {
 
         }
       },
-      error: function () {
-
+      error: function (xhr, status, error) {
+        self.error = error;
+        self.transition(parsidan.search.FatalState);
       },
       complete: function (xhr, textStatus) {
 
@@ -51,7 +53,6 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     }
   },
   abort: function () {
-    console.log('aborting');
     this.xhr.abort();
     this.transition(null);
     this.$().remove();

@@ -60,3 +60,17 @@ Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
   }
 });
 
+Class('parsidan.search.FatalState', parsidan.search.QueryState, {
+  setUp: function(){
+    this.query.$title().text(parsidan.messages.query.fatal.format(this.query.word));
+    $('<p />')
+      .addClass('error')
+      .html(this.query.error)
+      .appendTo(this.query.$content());
+  },
+  dispose: function(){
+    this.query.$title().empty();
+    this.query.$content().empty();
+  }
+});
+
