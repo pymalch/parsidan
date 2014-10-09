@@ -78,5 +78,7 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
+        import time
+        time.sleep(4)
         result = Dictionary.query(word)
         return dict(word=word, result=result)

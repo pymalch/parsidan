@@ -41,6 +41,7 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
     if (this.expression.length < 2) {
       return;
     }
+    this.status = Status.querying;
     this.currentQuery = parsidan.search.Query.create(this.expression);
   },
   schedule: function () {

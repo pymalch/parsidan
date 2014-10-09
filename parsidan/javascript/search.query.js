@@ -46,11 +46,15 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     if (this.state) {
       this.state.dispose();
     }
-    this.state = new stateClass(this);
+    if (stateClass){
+      this.state = new stateClass(this);
+    }
   },
   abort: function () {
     console.log('aborting');
     this.xhr.abort();
+    this.transition(null);
+    this.$().remove();
   },
   $content: function () {
     return this.$().find('.query-content');
