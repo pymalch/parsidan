@@ -28,7 +28,9 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(page='index')
+        return dict(page='index',
+                    word='',
+                    result=None)
 
     @expose()
     def setlang(self, lang, camefrom=lurl('/')):
@@ -73,7 +75,7 @@ class RootController(BaseController):
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
 
-    @expose('parsidan.templates.query')
+    @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
         result = Dictionary.query(word)

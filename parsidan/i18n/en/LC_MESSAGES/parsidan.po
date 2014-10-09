@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-07 22:21+0330\n"
+"POT-Creation-Date: 2014-10-09 15:33+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -21,16 +21,16 @@ msgstr ""
 msgid "parsidan"
 msgstr ""
 
-#: parsidan/controllers/root.py:44
+#: parsidan/controllers/root.py:46
 msgid "Wrong credentials"
 msgstr ""
 
-#: parsidan/controllers/root.py:60
+#: parsidan/controllers/root.py:62
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: parsidan/controllers/root.py:73
+#: parsidan/controllers/root.py:75
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -42,57 +42,71 @@ msgstr ""
 msgid "Secure Controller here"
 msgstr ""
 
-#: parsidan/templates/index.mak:8
+#: parsidan/templates/index.mak:10
 msgid "Please enter non persian word"
 msgstr ""
 
-#: parsidan/templates/index.mak:13
+#: parsidan/templates/index.mak:17
 msgid "Persian translate for this word did not find!"
 msgstr ""
 
-#: parsidan/templates/index.mak:14
+#: parsidan/templates/index.mak:18
 msgid "Word stores is database to translate later."
 msgstr ""
 
-#: parsidan/templates/index.mak:15
+#: parsidan/templates/index.mak:19
 msgid "Word is already added and is waiting for translation."
 msgstr ""
 
-#: parsidan/templates/index.mak:16
+#: parsidan/templates/index.mak:20
 msgid "The word you entered is already a persian word!"
 msgstr ""
 
-#: parsidan/templates/index.mak:23
+#: parsidan/templates/index.mak:21
 #, python-format
 msgid "You can %(join)s and help us to improve this dictionary."
 msgstr ""
 
-#: parsidan/templates/index.mak:71
-msgid "Internal server error!"
+#: parsidan/templates/master.mak:28
+#, python-format
+msgid "&copy; %s Parsidan"
 msgstr ""
 
-#: parsidan/templates/master.mak:43 parsidan/templates/master.mak:63
+#: parsidan/templates/master.mak:54 parsidan/templates/navigator.mak:15
 msgid "Parsidan"
 msgstr ""
 
-#: parsidan/templates/master.mak:70
+#: parsidan/templates/navigator.mak:22
 msgid "Make persian"
 msgstr ""
 
-#: parsidan/templates/master.mak:71
+#: parsidan/templates/navigator.mak:25
 msgid "My words"
 msgstr ""
 
-#: parsidan/templates/master.mak:78
+#: parsidan/templates/navigator.mak:34
+msgid "Persian"
+msgstr "پارسی"
+
+#: parsidan/templates/navigator.mak:34
+msgid "English"
+msgstr ""
+
+#: parsidan/templates/navigator.mak:37
 msgid "Login"
 msgstr ""
 
-#: parsidan/templates/master.mak:80
+#: parsidan/templates/navigator.mak:39
 msgid "Logout"
 msgstr ""
 
-#: parsidan/templates/master.mak:81
+#: parsidan/templates/navigator.mak:40
 msgid "Admin"
+msgstr ""
+
+#: parsidan/templates/query_result.mak:3
+#, python-format
+msgid "Showing persian equivalent of the word: %s"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
@@ -111,4 +125,7 @@ msgstr ""
 #: parsidan/templates/dictionary/myWords.mak:171
 msgid "Insert persian word"
 msgstr ""
+
+#~ msgid "Internal server error!"
+#~ msgstr ""
 

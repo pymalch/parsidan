@@ -7,7 +7,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
             <input id="queryInput" type="text" class="form-control"
-                   placeholder="${ _('Please enter non persian word') }">
+                   placeholder="${ _('Please enter non persian word') }"
+                    value="${word}">
         </div>
     </div>
     <div class="row messages">
@@ -19,6 +20,11 @@
             <div class="word-is-persian">${ _('The word you entered is already a persian word!') }</div>
             <div class="join-us">${ _("You can %(join)s and help us to improve this dictionary.") % {'join': "JOIN US" } } </div>
         </div>
+    </div>
+    <div class="row results">
+        %if result:
+            <%include file="local:templates.query_result" args="word=word, result=result" />
+        %endif
     </div>
 
 </div>
