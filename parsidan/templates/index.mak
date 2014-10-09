@@ -1,11 +1,14 @@
 <%inherit file="local:templates.master"/>
 
+<%
+    col_classes = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3"
+%>
 
 <div class="container query-area">
     <img src="/img/parsidan.jpg" class="center-block"/>
 
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+        <div class="${col_classes}">
             <input id="queryInput" type="text" class="form-control"
                    placeholder="${ _('Please enter non persian word') }"
                     value="${word}">
@@ -27,13 +30,32 @@
 ##    </div>
 
 </div>
+<div id="searchEngineTemplates" class="hidden">
+
+    <div class="row result result-unknown">
+        <div class="${col_classes}">
+            <div class="title"></div>
+            <div class="content"></div>
+        </div>
+    </div>
+
+    <div class="row result result-success">
+        <div class="${col_classes}">
+            <div class="title"></div>
+            <div class="content"></div>
+        </div>
+    </div>
+
+
+</div>
 
 <%def name="scripts()">
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('#queryInput').searchEngine({
-                scheduleTimeout: 1000
+                scheduleTimeout: 1000,
+                templatesSelector: '#searchEngineTemplates'
             });
         });
     </script>
