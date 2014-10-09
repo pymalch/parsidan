@@ -10,6 +10,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     this.id = this.__class__.getElementId(word);
     this.state = null;
     this.selector = '#%s'.format(this.id);
+    this.result = null;
     this.request();
   },
   request: function () {
@@ -22,7 +23,16 @@ Class('parsidan.search.Query', parsidan.ElementController, {
       },
       success: function (resp, status, xhr) {
         console.log(resp);
-        self.transition(parsidan.search.SuccessState);
+        if (status == 'success'){
+          self.result = resp.result;
+          if (self.result.length <= 0){
+            self.transition(parsidan.search.NoResultState);
+          }
+          else{
+            self.transition(parsidan.search.SuccessState);
+          }
+
+        }
       },
       error: function () {
 

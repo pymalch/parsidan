@@ -37,9 +37,26 @@ Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
 Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
   setUp: function(){
     this.query.$title().text(parsidan.messages.query.success.format(this.query.word));
+    var $ul = $('<ul />').appendTo(this.query.$content());
+    for(var i in this.query.result){
+      var item = this.query.result[i];
+      $('<li />')
+        .html(item.offer)
+        .appendTo($ul);
+    }
   },
   dispose: function(){
     this.query.$title().empty();
-    //this.query.$content().empty();
   }
 });
+
+
+Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
+  setUp: function(){
+    this.query.$title().text(parsidan.messages.query.noResult.format(this.query.word));
+  },
+  dispose: function(){
+    this.query.$title().empty();
+  }
+});
+
