@@ -1,4 +1,5 @@
-// Vahid:  My very own scope
-(function () {
 
-    window.parsidan = {};
+// head
+
+Namespace('parsidan');
+Namespace('parsidan.search');

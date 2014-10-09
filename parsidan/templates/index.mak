@@ -32,7 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            parsidan.search.Engine.setUp();
+            $('#queryInput').searchEngine({
+                scheduleTimeout: 1000
+            });
         });
     </script>
 </%def>

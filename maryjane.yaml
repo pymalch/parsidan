@@ -97,7 +97,7 @@ public_js: !watch
   inputs:
 
     - !template ${lib}/jquery-2.1.1.min.js
-    - !template ${lib}/sprintf.js
+    - !template ${lib}/joop-1.3.js
 
 #    - !template ${bootstrap_js}/affix.js
 #    - !template ${bootstrap_js}/alert.js
@@ -113,6 +113,7 @@ public_js: !watch
 #    - !template ${bootstrap_js}/popover.js
 
     - !template ${javascript}/head.js
+    - !template ${javascript}/helpers.js
     - !template ${javascript}/common.js
     - !template ${javascript}/search.result.js
     - !template ${javascript}/search.engine.js

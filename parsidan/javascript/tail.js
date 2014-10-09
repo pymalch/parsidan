@@ -1,2 +1,2 @@
-// Vahid:  End of application scope
-})();
+
+// tail

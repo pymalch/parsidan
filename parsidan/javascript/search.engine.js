@@ -1,24 +1,41 @@
-Status = {
+var Status = parsidan.search.Status = {
     ready: 0,
     scheduled: 1,
     querying: 2
 };
 
-Engine = {
-    expression: '',
-    selector: '#queryInput',
-    action: '/query.json',
-    status: Status.ready,
-    xhr: null,
-    timerId: null,
-    scheduleTimeout: 700,
-    $: function () {
-        return $(this.selector);
+
+
+Class('parsidan.search.Engine', parsidan.ElementController, {
+
+
+    defaultOptions: {
+        action: '/query.json',
+        scheduleTimeout: 700
     },
+
+    __init__: function(selector, options){
+        this.selector = selector;
+        this.status = Status.ready;
+        this.xhr= null;
+        this.timerId= null;
+        this.expression= '';
+        this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
+        this.setUp();
+    },
+    setUp: function () {
+        var self = this;
+        this.$().keyup(function () {
+            self.keyPressed();
+        }).change(function () {
+            self.keyPressed();
+        });
+    },
+
     query: function () {
         var self = this;
         $.ajax({
-            url: this.action,
+            url: this.options.action,
             data: {
                 word: this.expression
             },
@@ -46,7 +63,7 @@ Engine = {
         this.status = Status.scheduled;
         this.timerId = setTimeout(function () {
             self.query();
-        }, this.scheduleTimeout);
+        }, this.options.scheduleTimeout);
     },
     keyPressed: function () {
         var newExpression = this.$().val();
@@ -69,21 +86,15 @@ Engine = {
             this.schedule();
 
         }
-    },
-    setUp: function () {
-        var self = this;
-        this.$().keyup(function () {
-            self.keyPressed();
-        }).change(function () {
-            self.keyPressed();
-        });
     }
+});
+
+jQuery.fn.searchEngine = function(options){
+  if (this.length < 1){
+    return this;
+  }
+  new parsidan.search.Engine(this.selector, options);
 };
 
 
 
-
-parsidan.search = {
-    EngineStatus: Status,
-    Engine: Engine
-};
