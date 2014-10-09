@@ -32,17 +32,10 @@
 </div>
 <div id="searchEngineTemplates" class="hidden">
 
-    <div class="row result result-unknown">
+    <div class="row result">
         <div class="${col_classes}">
-            <div class="title"></div>
-            <div class="content"></div>
-        </div>
-    </div>
-
-    <div class="row result result-success">
-        <div class="${col_classes}">
-            <div class="title"></div>
-            <div class="content"></div>
+            <div class="result-title"></div>
+            <div class="result-content"></div>
         </div>
     </div>
 
