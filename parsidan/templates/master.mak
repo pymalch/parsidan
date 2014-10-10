@@ -18,11 +18,11 @@
 
 <%include file="local:templates.navigator" />
 
-<div class="container">
+<div class="container-fluid">
     ${self.content_wrapper()}
 </div>
 
-<footer class="footer hidden-xs hidden-sm main-footer">
+<footer class="footer main-footer">
     <div class="container">
         <div class="center-block text-center copyright">
             ${_('&copy; %s Parsidan') % h.current_year() | n}
