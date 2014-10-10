@@ -5,14 +5,23 @@
 
 
 Class('parsidan.search.Query', parsidan.ElementController, {
-  __init__: function (word) {
+  __init__: function (word, callbacks) {
     this.word = word;
     this.id = this.__class__.getElementId(word);
     this.state = null;
     this.selector = '#%s'.format(this.id);
     this.result = null;
     this.error = null;
+    this.callbacks = callbacks;
+    this.bindEvents();
     this.request();
+  },
+  bindEvents: function(){
+    var self = this;
+    this.$().find('button.close').click(function(){
+      self.callbacks.complete.call(this);
+      self.$().remove();
+    });
   },
   request: function () {
     var self = this;
@@ -40,7 +49,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
         self.transition(parsidan.search.FatalState);
       },
       complete: function (xhr, textStatus) {
-
+        self.callbacks.complete.call(this);
       }
     });
   },
@@ -71,12 +80,12 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     getElementId: function (word) {
       return 'query_%s'.format(word.hashCode());
     },
-    create: function (word) {
+    create: function (word, callbacks) {
       $(this.templateSelector)
         .clone()
         .attr({
           id: this.getElementId(word)})
         .prependTo(parsidan.searchEngine.$resultArea())
-      return new this(word);
+      return new this(word, callbacks);
     }
   });
