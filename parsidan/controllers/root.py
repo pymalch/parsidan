@@ -10,6 +10,7 @@ from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
+from parsidan.forms.auth import LoginForm
 
 
 from parsidan.lib.base import BaseController
@@ -52,8 +53,11 @@ class RootController(BaseController):
         login_counter = request.environ.get('repoze.who.logins', 0)
         if login_counter > 0:
             flash(_('Wrong credentials'), 'warning')
+
+        login_form = LoginForm.req()
+        login_form.action = url('/login_handler', params=dict(came_from=came_from, __logins=login_counter))
         return dict(page='login', login_counter=str(login_counter),
-                    came_from=came_from)
+                    came_from=came_from, form=login_form)
 
     @expose()
     def post_login(self, came_from=lurl('/')):
