@@ -9,7 +9,9 @@
 
     <div class="row">
         <div class="${col_classes}">
-            <input id="queryInput" type="text" class="form-control"
+            <input id="queryInput"
+                   type="text"
+                   class="form-control"
                    placeholder="${ _('Please enter non persian word') }"
                    value="${word}">
         </div>
