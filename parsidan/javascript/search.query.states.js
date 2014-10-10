@@ -82,3 +82,18 @@ Class('parsidan.search.FatalState', parsidan.search.QueryState, {
   }
 });
 
+
+Class('parsidan.search.PersianWordState', parsidan.search.QueryState, {
+  setUp: function(){
+    this.query.$().addClass('panel-info');
+    this.query.$title().text(this.query.word);
+    $('<p />')
+      .html(parsidan.messages.query.persian_word.format(this.query.word))
+      .appendTo(this.query.$content());
+  },
+  dispose: function(){
+    this.query.$title().empty();
+    this.query.$content().empty();
+    this.query.$().removeClass('panel-info');
+  }
+});

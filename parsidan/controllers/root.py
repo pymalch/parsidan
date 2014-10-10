@@ -6,7 +6,7 @@ from tg.i18n import ugettext as _, lazy_ugettext as l_, set_lang
 from tg.exceptions import HTTPFound
 from parsidan import model
 from parsidan.controllers.dictionary import DictionaryController
-from parsidan.model import Dictionary, DBSession
+from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 
@@ -14,6 +14,12 @@ from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
 
 __all__ = ['RootController']
+
+class QueryStatus:
+    success = 0
+    not_found = 1
+    persian_word = 2
+
 
 
 class RootController(BaseController):
@@ -78,5 +84,10 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
-        result = Dictionary.query(word)
-        return dict(word=word, result=result)
+        result = list(Dictionary.query(word))
+        if not len(result):
+            if PersianWord.find(word):
+                return dict(word=word, status=QueryStatus.persian_word)
+            else:
+                return dict(word=word, status=QueryStatus.not_found)
+        return dict(word=word, status=QueryStatus.success, result=result)

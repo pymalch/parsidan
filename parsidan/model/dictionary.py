@@ -24,6 +24,10 @@ class PersianWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     id = Column(Integer,  primary_key=True)
     title = Column(Unicode(60), nullable=False, unique=True, index=True)
 
+    @classmethod
+    def find(cls, title):
+        return DBSession.query(cls).filter(cls.title==title).first()
+
 
 class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     #TODO: Remove unnecessary spaces before inserting
@@ -32,6 +36,13 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     id = Column(Integer,  primary_key=True)
     title = Column(Unicode(50), nullable=False , unique=True, index=True )
     hits = Column(BigInteger, default=0, nullable=False)
+
+    @classmethod
+    def find(cls, title):
+        return DBSession.query(cls).filter(cls.title==title).first()
+
+    def hit(self):
+        self.hits += 1
 
 
 class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):

@@ -2,7 +2,11 @@
  * Created by vahid on 10/9/14.
  */
 
-
+parsidan.search.QueryStatus={
+  success: 0,
+  not_found: 1,
+  persian_word: 2
+};
 
 Class('parsidan.search.Query', parsidan.ElementController, {
   __init__: function (word, callbacks) {
@@ -32,16 +36,26 @@ Class('parsidan.search.Query', parsidan.ElementController, {
         word: this.word
       },
       success: function (resp, status, xhr) {
-        console.log(resp);
-        if (status == 'success'){
-          self.result = resp.result;
-          if (self.result.length <= 0){
-            self.transition(parsidan.search.NoResultState);
-          }
-          else{
-            self.transition(parsidan.search.SuccessState);
-          }
+        var queryStatus = parsidan.search.QueryStatus;
 
+        if (status == 'success' && resp.hasOwnProperty('status')){
+          self.queryStatus = resp.status;
+          switch(resp.status){
+            case queryStatus.success:
+              self.result = resp.result;
+              self.transition(parsidan.search.SuccessState);
+              break;
+            case queryStatus.not_found:
+              self.transition(parsidan.search.NoResultState);
+              break;
+            case queryStatus.persian_word:
+              self.transition(parsidan.search.PersianWordState);
+              break;
+          }
+        }
+        else{
+          self.error = parsidan.messages.query.fatal.format(self.word);
+          self.transition(parsidan.search.FatalState);
         }
       },
       error: function (xhr, status, error) {
