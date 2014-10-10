@@ -1,8 +1,8 @@
-var Status = parsidan.search.Status = {
-  ready: 0,
-  scheduled: 1,
-  querying: 2
-};
+//var Status = parsidan.search.Status = {
+//  ready: 0,
+//  scheduled: 1,
+//  querying: 2
+//};
 
 
 Class('parsidan.search.Engine', parsidan.ElementController, {
@@ -19,7 +19,6 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 
   __init__: function (selector, options) {
     this.selector = selector;
-    this.status = Status.ready;
     this.currentQuery = null;
     this.timerId = null;
     this.expression = '';
@@ -38,16 +37,20 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
     return $(this.options.resultAreaSelector);
   },
   query: function () {
+    var self = this;
     if (this.expression.length < 2) {
       return;
     }
-    this.status = Status.querying;
-    this.currentQuery = parsidan.search.Query.create(this.expression);
+    this.currentQuery = parsidan.search.Query.create(this.expression, {
+      complete: function(){
+        self.currentQuery = null;
+      }
+    });
   },
   schedule: function () {
     var self = this;
-    this.status = Status.scheduled;
     this.timerId = setTimeout(function () {
+      this.timerId = null;
       self.query();
     }, this.options.scheduleTimeout);
   },
@@ -56,17 +59,12 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
     if (newExpression != this.expression) {
       this.expression = newExpression;
 
-      switch (this.status) {
-        case Status.scheduled:
-          if (this.timerId != null) {
-            clearTimeout(this.timerId);
-          }
-          break;
-        case Status.querying:
-          if (this.currentQuery != null) {
-            this.currentQuery.abort();
-          }
-          break;
+      if (this.timerId != null) {
+        clearTimeout(this.timerId);
+      }
+
+      if (this.currentQuery != null) {
+        this.currentQuery.abort();
       }
 
       this.schedule();
