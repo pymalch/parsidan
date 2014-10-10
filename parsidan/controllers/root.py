@@ -9,6 +9,8 @@ from parsidan.controllers.dictionary import DictionaryController
 from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
+import transaction
+
 
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
@@ -89,5 +91,12 @@ class RootController(BaseController):
             if PersianWord.find(word):
                 return dict(word=word, status=QueryStatus.persian_word)
             else:
+                ForeignWord.check_and_hit(word)
+                #DBSession.commit()
+                transaction.commit()
                 return dict(word=word, status=QueryStatus.not_found)
-        return dict(word=word, status=QueryStatus.success, result=result)
+        else:
+            ForeignWord.hit(word)
+            #DBSession.commit()
+            transaction.commit()
+            return dict(word=word, status=QueryStatus.success, result=result)

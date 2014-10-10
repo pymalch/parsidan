@@ -41,9 +41,21 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     def find(cls, title):
         return DBSession.query(cls).filter(cls.title==title).first()
 
-    def hit(self):
-        self.hits += 1
+    @classmethod
+    def hit(cls, title):
+        word = cls.find(title)
+        word.hits += 1
+        return word
 
+    @classmethod
+    def check_and_hit(cls, title):
+        word = cls.find(title)
+        if word:
+            word.hits += 1
+        else:
+            word = cls(title=title)
+            DBSession.add(word)
+        return word
 
 class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     __tablename__ = "dictionary"
