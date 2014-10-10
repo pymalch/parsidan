@@ -19,7 +19,7 @@ Class('parsidan.search.QueryState', {
 
 Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
   setUp: function(){
-
+    this.query.$().addClass('panel-primary');
     this.query.$title().text(parsidan.messages.query.loading.format(this.query.word));
 
     $('<img />').attr({
@@ -30,12 +30,14 @@ Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
   dispose: function(){
     this.query.$title().empty();
     this.query.$content().empty();
+    this.query.$().removeClass('panel-primary');
   }
 });
 
 
 Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
   setUp: function(){
+    this.query.$().addClass('panel-success');
     this.query.$title().text(parsidan.messages.query.success.format(this.query.word));
     var $ul = $('<ul />').appendTo(this.query.$content());
     for(var i in this.query.result){
@@ -47,21 +49,26 @@ Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
   },
   dispose: function(){
     this.query.$title().empty();
+    this.query.$content().empty();
+    this.query.$().removeClass('panel-success');
   }
 });
 
 
 Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
   setUp: function(){
+    this.query.$().addClass('panel-warning');
     this.query.$title().text(parsidan.messages.query.noResult.format(this.query.word));
   },
   dispose: function(){
     this.query.$title().empty();
+    this.query.$().removeClass('panel-warning');
   }
 });
 
 Class('parsidan.search.FatalState', parsidan.search.QueryState, {
   setUp: function(){
+    this.query.$().addClass('panel-danger');
     this.query.$title().text(parsidan.messages.query.fatal.format(this.query.word));
     $('<p />')
       .addClass('error')
@@ -71,6 +78,7 @@ Class('parsidan.search.FatalState', parsidan.search.QueryState, {
   dispose: function(){
     this.query.$title().empty();
     this.query.$content().empty();
+    this.query.$().removeClass('panel-danger');
   }
 });
 
