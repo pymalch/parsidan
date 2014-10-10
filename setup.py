@@ -42,6 +42,7 @@ install_requires=[
     "repoze.who",
     "MaryJane",
     "tw2.forms",
+    "tw2.bootstrap",
     "tgext.admin >= 0.6.1"
     ]
 
