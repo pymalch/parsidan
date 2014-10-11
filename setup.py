@@ -40,15 +40,15 @@ install_requires=[
     "sqlalchemy",
     "alembic",
     "repoze.who",
-    "MaryJane",
-    "tw2.forms",
+    "MaryJane>=2.18",
+#    "tw2.forms",
     "tw2.bootstrap.forms",
     "tgext.admin >= 0.6.1"
     ]
 
 setup(
     name='parsidan',
-    version='0.2',
+    version='0.3',
     description='',
     author='',
     author_email='',

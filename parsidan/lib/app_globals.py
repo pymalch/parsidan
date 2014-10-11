@@ -20,5 +20,5 @@ class Globals(object):
         if enabled.upper() == 'TRUE':
             from maryjane import main
             manifest_file = os.path.join(self.root_dir, tg.config.get('maryjane.manifest', 'maryjane.yaml'))
-            main(manifest_file, enable_watcher=True)
+            main(manifest_file, enable_watcher=True, bootstrap=False)
 
