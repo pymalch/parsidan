@@ -5,6 +5,8 @@
 Class('parsidan.search.QueryState', {
   __init__: function(query){
     this.query = query;
+    this.alertTemplate = $('#searchEngineTemplates .alert')
+    this.panelTemplate = $('#searchEngineTemplates .panel')
 
     this.setUp();
   },
@@ -19,25 +21,25 @@ Class('parsidan.search.QueryState', {
 
 Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
   setUp: function(){
-    this.query.$().addClass('panel-primary');
+    $('<div />').addClass('loading').appendTo(this.query.selector);
     this.query.$title().text(parsidan.messages.query.loading.format(this.query.word));
 
     $('<img />').attr({
       src: "/img/preloader.gif"
-    }).appendTo(this.query.$content());
-
+    }).css('display','none').appendTo(this.query.$().find('.loading'));
+    this.query.$().find('.loading img').slideDown();
   },
   dispose: function(){
-    this.query.$title().empty();
-    this.query.$content().empty();
-    this.query.$().removeClass('panel-primary');
+    this.query.$().find('.loading').slideUp();
   }
 });
 
 
 Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
   setUp: function(){
-    this.query.$().addClass('panel-success');
+
+    this.panelTemplate.clone().appendTo(this.query.selector);
+    this.query.$().find('.panel').addClass('panel-success');
     this.query.$title().text(parsidan.messages.query.success.format(this.query.word));
     var $ul = $('<ul />').appendTo(this.query.$content());
     for(var i in this.query.result){
@@ -46,54 +48,33 @@ Class('parsidan.search.SuccessState', parsidan.search.QueryState, {
         .html(item.offer)
         .appendTo($ul);
     }
-  },
-  dispose: function(){
-    this.query.$title().empty();
-    this.query.$content().empty();
-    this.query.$().removeClass('panel-success');
   }
 });
 
 
 Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
+
+
   setUp: function(){
-    this.query.$().addClass('panel-warning');
-    this.query.$title().text(parsidan.messages.query.noResult.format(this.query.word));
-  },
-  dispose: function(){
-    this.query.$title().empty();
-    this.query.$().removeClass('panel-warning');
+
+    this.alertTemplate.clone().appendTo(this.query.selector);
+    this.query.$().find('.alert').addClass('alert-info').append(parsidan.messages.query.noResult.format(this.query.word));
   }
 });
 
 Class('parsidan.search.FatalState', parsidan.search.QueryState, {
   setUp: function(){
-    this.query.$().addClass('panel-danger');
-    this.query.$title().text(parsidan.messages.query.fatal.format(this.query.word));
-    $('<p />')
-      .addClass('error')
-      .html(this.query.error)
-      .appendTo(this.query.$content());
-  },
-  dispose: function(){
-    this.query.$title().empty();
-    this.query.$content().empty();
-    this.query.$().removeClass('panel-danger');
+
+     this.alertTemplate.clone().appendTo(this.query.selector);
+     this.query.$().find('.alert').addClass('alert-danger').append(parsidan.messages.query.fatal.format(this.query.word));
   }
 });
 
 
 Class('parsidan.search.PersianWordState', parsidan.search.QueryState, {
   setUp: function(){
-    this.query.$().addClass('panel-info');
-    this.query.$title().text(this.query.word);
-    $('<p />')
-      .html(parsidan.messages.query.persian_word.format(this.query.word))
-      .appendTo(this.query.$content());
-  },
-  dispose: function(){
-    this.query.$title().empty();
-    this.query.$content().empty();
-    this.query.$().removeClass('panel-info');
+          this.alertTemplate.clone().appendTo(this.query.selector);
+    this.query.$().find('.alert').addClass('alert-success').append(this.query.word);
+
   }
 });

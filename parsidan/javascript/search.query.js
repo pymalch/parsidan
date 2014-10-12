@@ -90,16 +90,21 @@ Class('parsidan.search.Query', parsidan.ElementController, {
 
 }).
   StaticMembers({
-    templateSelector: '#queryTemplate',
+
     getElementId: function (word) {
       return 'query_%s'.format(word.hashCode());
     },
     create: function (word, callbacks) {
-      $(this.templateSelector)
-        .clone()
-        .attr({
-          id: this.getElementId(word)})
-        .prependTo(parsidan.searchEngine.$resultArea())
-      return new this(word, callbacks);
+
+        if(parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word))).length){
+            parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word)))
+            .prependTo(parsidan.searchEngine.$resultArea());
+
+        }else{
+          $('<div />').addClass('index-result-wrapper').attr({
+              id: this.getElementId(word)})
+            .prependTo(parsidan.searchEngine.$resultArea())
+          return new this(word, callbacks);
+        }
     }
   });
