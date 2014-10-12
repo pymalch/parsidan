@@ -11,7 +11,7 @@ from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
 from parsidan.forms.auth import LoginForm
-
+from tg.decorators import validate
 
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
@@ -48,6 +48,7 @@ class RootController(BaseController):
         redirect(camefrom)
 
     @expose('parsidan.templates.login')
+    # @validate(LoginForm, error_handler=login)
     def login(self, came_from=lurl('/')):
         """Start the user login."""
         login_counter = request.environ.get('repoze.who.logins', 0)

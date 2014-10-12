@@ -42,7 +42,8 @@ install_requires=[
     "repoze.who",
     "MaryJane>=2.18",
     "tw2.bootstrap.forms",
-    "tgext.admin >= 0.6.1"
+    "tgext.admin >= 0.6.1",
+    "tw2.recaptcha"
     ]
 
 setup(
