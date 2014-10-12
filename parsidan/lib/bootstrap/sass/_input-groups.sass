@@ -93,10 +93,13 @@
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn
-  +border-right-radius(0)
+  @if $direction == ltr
+    +border-right-radius(0)
+  @else
+    +border-left-radius(0)
 
 .input-group-addon:first-child
-  border-right: 0
+  border-#{$float-inverse}: 0
 
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
@@ -105,10 +108,13 @@
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn
-  +border-left-radius(0)
+  @if $direction == ltr
+    +border-left-radius(0)
+  @else
+    +border-right-radius(0)
 
 .input-group-addon:last-child
-  border-left: 0
+  border-#{$float}: 0
 
 // Button input groups
 // -------------------------

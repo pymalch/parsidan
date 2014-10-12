@@ -11,16 +11,17 @@
         <div class="${col_classes}">
             <div class="form-group">
                 <div class="input-group">
-                    <div class="input-group-addon">
-                        <a href="#" id="btnQuery">
-                        <span class="glyphicon glyphicon-search"></span>
-                        </a>
-                    </div>
+
                     <input id="queryInput"
                            type="text"
                            class="form-control"
                            placeholder="${ _('Please enter non persian word') }"
                            value="${word}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>
