@@ -41,15 +41,13 @@ install_requires=[
     "alembic",
     "repoze.who",
     "MaryJane>=2.18",
-#    "tw2.forms",
-    "tg-toolbox>=0.9",
     "tw2.bootstrap.forms",
     "tgext.admin >= 0.6.1"
     ]
 
 setup(
     name='parsidan',
-    version='0.3',
+    version='0.4',
     description='',
     author='',
     author_email='',
