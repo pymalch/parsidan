@@ -42,6 +42,7 @@ install_requires=[
     "repoze.who",
     "MaryJane>=2.18",
 #    "tw2.forms",
+    "tg-toolbox>=0.9",
     "tw2.bootstrap.forms",
     "tgext.admin >= 0.6.1"
     ]
