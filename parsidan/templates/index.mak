@@ -9,14 +9,22 @@
 
     <div class="row">
         <div class="${col_classes}">
-            <input id="queryInput"
-                   type="text"
-                   class="form-control"
-                   placeholder="${ _('Please enter non persian word') }"
-                   value="${word}">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <a href="#" id="btnQuery">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </div>
+                    <input id="queryInput"
+                           type="text"
+                           class="form-control"
+                           placeholder="${ _('Please enter non persian word') }"
+                           value="${word}">
+                </div>
+            </div>
         </div>
     </div>
-
 
 </div>
 <div class="container">
@@ -40,7 +48,8 @@
 
     <div id="queryTemplate" class="panel panel-default">
         <div class="panel-heading">
-            <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
             <h3 class="panel-title query-title"></h3>
         </div>
         <div class="panel-body query-content">

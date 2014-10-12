@@ -1,30 +1,31 @@
 
 Class('parsidan.search.Engine', parsidan.ElementController, {
 
-
   defaultOptions: {
     query:{
       action: '/query.json',
     },
-    scheduleTimeout: 700,
     resultAreaSelector: '.result-area',
-
+    queryButtonSelector: '#btnQuery'
   },
 
   __init__: function (selector, options) {
     this.selector = selector;
     this.currentQuery = null;
-    this.timerId = null;
     this.expression = '';
     this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
     this.setUp();
   },
   setUp: function () {
     var self = this;
-    this.$().keyup(function () {
-      self.keyPressed();
-    }).change(function () {
-      self.keyPressed();
+    this.$().keypress(function(e){
+      self.keyPressed(e);
+    });
+    $(this.options.queryButtonSelector).click(function(e){
+      e.charCode = 13;
+      self.keyPressed(e);
+      e.preventDefault();
+      return false;
     });
   },
   $resultArea: function () {
@@ -46,28 +47,14 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
       }
     });
   },
-  schedule: function () {
-    var self = this;
-    this.timerId = setTimeout(function () {
-      this.timerId = null;
-      self.query();
-    }, this.options.scheduleTimeout);
-  },
-  keyPressed: function () {
+
+  keyPressed: function (e) {
     var newExpression = this.$().val();
     if (newExpression != this.expression) {
       this.expression = newExpression;
-
-      if (this.timerId != null) {
-        clearTimeout(this.timerId);
+      if (e.charCode == 13){
+        this.query();
       }
-
-      if (this.currentQuery != null) {
-        this.currentQuery.abort();
-      }
-
-      this.schedule();
-
     }
   }
 });
