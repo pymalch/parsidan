@@ -1,10 +1,3 @@
-//var Status = parsidan.search.Status = {
-//  ready: 0,
-//  scheduled: 1,
-//  querying: 2
-//};
-
-
 Class('parsidan.search.Engine', parsidan.ElementController, {
 
 
@@ -39,6 +32,11 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
   query: function () {
     var self = this;
     if (this.expression.length < 2) {
+      return;
+    }
+    var localQuery = parsidan.search.Query.findLocal(this.expression);
+    if (localQuery){
+      localQuery.moveUp();
       return;
     }
     this.currentQuery = parsidan.search.Query.create(this.expression, {

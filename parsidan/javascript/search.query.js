@@ -17,6 +17,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     this.result = null;
     this.error = null;
     this.callbacks = callbacks;
+    this.$()[0].controller = this;
     this.bindEvents();
     this.request();
   },
@@ -85,26 +86,31 @@ Class('parsidan.search.Query', parsidan.ElementController, {
   },
   $title: function () {
     return this.$().find('.query-title');
+  },
+  moveUp: function(){
+    var parent = this.$().parent();
+    this.$().remove().prependTo(parent);
   }
 
 
-}).
-  StaticMembers({
-
+}).StaticMembers({
+    templateSelector: '#queryTemplate',
     getElementId: function (word) {
       return 'query_%s'.format(word.hashCode());
     },
     create: function (word, callbacks) {
-
-        if(parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word))).length){
-            parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word)))
-            .prependTo(parsidan.searchEngine.$resultArea());
-
-        }else{
-          $('<div />').addClass('index-result-wrapper').attr({
-              id: this.getElementId(word)})
-            .prependTo(parsidan.searchEngine.$resultArea())
-          return new this(word, callbacks);
-        }
+      $(this.templateSelector)
+        .clone()
+        .attr({
+          id: this.getElementId(word)})
+        .prependTo(parsidan.searchEngine.$resultArea())
+      return new this(word, callbacks);
+    },
+    findLocal: function(word){
+      var panel = parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word)));
+      if (panel.length && panel[0].controller){
+        return panel[0].controller;
+      }
+      return null;
     }
   });
