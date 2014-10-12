@@ -38,7 +38,7 @@
 </div>
 <div id="searchEngineTemplates" class="hidden">
 
-    <div  class="result-template panel panel-default">
+    <div id="queryTemplate" class="panel panel-default">
         <div class="panel-heading">
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h3 class="panel-title query-title"></h3>
@@ -46,10 +46,6 @@
         <div class="panel-body query-content">
 
         </div>
-    </div>
-
-    <div class="result-template alert alert-dismissible" role="alert"  >
-         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">$)_('Close')}</span></button>
     </div>
 </div>
 
