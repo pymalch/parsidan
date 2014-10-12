@@ -17,6 +17,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
     this.result = null;
     this.error = null;
     this.callbacks = callbacks;
+    this.$()[0].controller = this;
     this.bindEvents();
     this.request();
   },
@@ -85,11 +86,14 @@ Class('parsidan.search.Query', parsidan.ElementController, {
   },
   $title: function () {
     return this.$().find('.query-title');
+  },
+  moveUp: function(){
+    var parent = this.$().parent();
+    this.$().remove().prependTo(parent);
   }
 
 
-}).
-  StaticMembers({
+}).StaticMembers({
     templateSelector: '#queryTemplate',
     getElementId: function (word) {
       return 'query_%s'.format(word.hashCode());
@@ -101,5 +105,12 @@ Class('parsidan.search.Query', parsidan.ElementController, {
           id: this.getElementId(word)})
         .prependTo(parsidan.searchEngine.$resultArea())
       return new this(word, callbacks);
+    },
+    findLocal: function(word){
+      var panel = parsidan.searchEngine.$resultArea().find('#%s'.format(this.getElementId(word)));
+      if (panel.length && panel[0].controller){
+        return panel[0].controller;
+      }
+      return null;
     }
   });
