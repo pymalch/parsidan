@@ -112,8 +112,6 @@ class RootController(BaseController):
         """Start the user login."""
 
         signup_form = RegistrationForm.req()
-        signup_form.fetch_data(request)
-
         return dict(form=signup_form)
 
 

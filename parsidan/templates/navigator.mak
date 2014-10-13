@@ -34,10 +34,11 @@
                         <a href="/setlang/${('fa', 'en')[lang == 'fa']}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
                     </li>
                     % if not request.identity:
-                        <li><a href="${tg.url('/login')}">${_('Login')}</a></li>
+                        <li><a href="/login">${_('Login')}</a></li>
+                        <li><a href="/signup_form">${_('SignUp')}</a></li>
                     % else:
-                        <li><a href="${tg.url('/logout_handler')}">${_('Logout')}</a></li>
-                        <li><a href="${tg.url('/admin')}">${_('Admin')}</a></li>
+                        <li><a href="/logout_handler">${_('Logout')}</a></li>
+                        <li><a href="/admin">${_('Admin')}</a></li>
                     % endif
                 </ul>
             % endif
