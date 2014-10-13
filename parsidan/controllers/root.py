@@ -10,11 +10,12 @@ from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
-from parsidan.forms.auth import LoginForm
+from parsidan.forms.auth import LoginForm, RegistrationForm
 from tg.decorators import validate
 
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
+
 
 __all__ = ['RootController']
 
@@ -37,8 +38,7 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(page='index',
-                    word='',
+        return dict(word='',
                     result=None)
 
     @expose()
@@ -47,7 +47,7 @@ class RootController(BaseController):
             set_lang(lang)
         redirect(camefrom)
 
-    @expose('parsidan.templates.login')
+    @expose('parsidan.templates.auth.login')
     # @validate(LoginForm, error_handler=login)
     def login(self, came_from=lurl('/')):
         """Start the user login."""
@@ -57,7 +57,7 @@ class RootController(BaseController):
 
         login_form = LoginForm.req()
         login_form.action = url('/login_handler', params=dict(came_from=came_from, __logins=login_counter))
-        return dict(page='login', login_counter=str(login_counter),
+        return dict(login_counter=str(login_counter),
                     came_from=came_from, form=login_form)
 
     @expose()
@@ -105,3 +105,22 @@ class RootController(BaseController):
             #DBSession.commit()
             transaction.commit()
             return dict(word=word, status=QueryStatus.success, result=result)
+
+
+    @expose("parsidan.templates.auth.signup")
+    def signup_form(self, *args, **kwargs):
+        """Start the user login."""
+
+        signup_form = RegistrationForm.req()
+        signup_form.fetch_data(request)
+
+        return dict(form=signup_form)
+
+
+
+
+    @expose("parsidan.templates.auth.signup_success")
+    @validate(RegistrationForm, error_handler=signup_form)
+    def signup(self, email=None, password=None, password_confirm=None, *args, **kw):
+        i = 0
+        return dict()
