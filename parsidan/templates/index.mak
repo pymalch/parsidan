@@ -18,7 +18,7 @@
                            placeholder="${ _('Please enter non persian word') }"
                            value="${word}">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                        <button class="btn btn-default" type="button" id="btnQuery">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
