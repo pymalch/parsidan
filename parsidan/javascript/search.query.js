@@ -90,6 +90,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
   moveUp: function(){
     var parent = this.$().parent();
     this.$().remove().prependTo(parent);
+    this.bindEvents();
   }
 
 
