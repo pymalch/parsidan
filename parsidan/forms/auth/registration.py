@@ -13,7 +13,7 @@ class RegistrationForm(BaseForm):
     # password = twf.PasswordField(label=l_('Password'), validator=StringValidator(min=8, max=20))
     # password_confirm = twf.PasswordField(label=l_('Password Confirm'), validator=twc.Required)
     # recaptcha_challenge_field = twf.HiddenField()
-    recaptcha_response_field = FixedReCaptcha(label=l_("Please Enter these words"),
+    recaptcha_response_field = FixedReCaptcha(label=l_('Please Enter these words'),
                                                   public_key=tg.config.get('recaptcha.public_key'),
                                                   validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
                                                                                tg.config.get('domain.ip_address')))
