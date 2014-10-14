@@ -18,5 +18,5 @@ class RegistrationForm(BaseForm):
                                                                                tg.config.get('domain.ip_address')))
 
     action = '/signup'
-    submit = twf.SubmitButton(id='submit', value=l_('Login'))
+    submit = twf.SubmitButton(id='submit', value=l_('SignUp'))
     validator = FieldsMatch('password', 'password_confirm')
