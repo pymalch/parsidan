@@ -59,10 +59,12 @@ Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
   setUp: function(){
     this.query.$().addClass('panel-warning');
     this.query.$title().text(parsidan.messages.query.noResult.format(this.query.word));
+    this.query.$content().addClass('no-padding');
   },
   dispose: function(){
     this.query.$title().empty();
     this.query.$().removeClass('panel-warning');
+    this.query.$content().removeClass('no-padding');
   }
 });
 
