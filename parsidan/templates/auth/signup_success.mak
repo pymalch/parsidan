@@ -5,7 +5,7 @@
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
         <h2>${_('Registration success!')}</h2>
         <p>
-            Please check your mailbox(${user.email}).
+            ${_('Please check your mailbox: %s') % user.email}
         </p>
     </div>
 </div>
