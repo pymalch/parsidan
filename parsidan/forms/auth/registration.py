@@ -10,6 +10,7 @@ from formencode.validators import FieldsMatch, String as StringValidator
 
 class RegistrationForm(BaseForm):
     email = twf.TextField(label=l_('Email'), validator=twc.EmailValidator(required=True))
+    nickname = twf.TextField(label=l_('Nickname'))
     password = twf.PasswordField(label=l_('Password'), validator=StringValidator(min=8, max=20))
     password_confirm = twf.PasswordField(label=l_('Password Confirm'), validator=twc.Required)
     recaptcha_challenge_field = twf.HiddenField()

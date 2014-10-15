@@ -18,27 +18,28 @@ from sqlalchemy.types import Unicode, Integer, DateTime
 from sqlalchemy.orm import relation, synonym
 
 from parsidan.model import DeclarativeBase, metadata, DBSession
+from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
 
 # This is the association table for the many-to-many relationship between
 # groups and permissions.
-group_permission_table = Table('tg_group_permission', metadata,
-    Column('group_id', Integer, ForeignKey('tg_group.group_id',
+group_permission_table = Table('group_permission', metadata,
+    Column('group_id', Integer, ForeignKey('group.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
-    Column('permission_id', Integer, ForeignKey('tg_permission.permission_id',
+    Column('permission_id', Integer, ForeignKey('permission.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
 )
 
 # This is the association table for the many-to-many relationship between
 # groups and members - this is, the memberships.
-user_group_table = Table('tg_user_group', metadata,
-    Column('user_id', Integer, ForeignKey('tg_user.user_id',
+user_group_table = Table('user_group', metadata,
+    Column('user_id', Integer, ForeignKey('user.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
-    Column('group_id', Integer, ForeignKey('tg_group.group_id',
+    Column('group_id', Integer, ForeignKey('group.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
 )
 
 
-class Group(DeclarativeBase):
+class Group(TimestampMixin, DeclarativeBase):
     """
     Group definition
 
@@ -46,21 +47,20 @@ class Group(DeclarativeBase):
 
     """
 
-    __tablename__ = 'tg_group'
+    __tablename__ = 'group'
 
-    group_id = Column(Integer, autoincrement=True, primary_key=True)
-    group_name = Column(Unicode(16), unique=True, nullable=False)
-    display_name = Column(Unicode(255))
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    title = Column(Unicode(16), unique=True, nullable=False)
     created = Column(DateTime, default=datetime.now)
     users = relation('User', secondary=user_group_table, backref='groups')
 
     def __repr__(self):
-        return '<Group: name=%s>' % repr(self.group_name)
+        return '<Group: name=%s>' % repr(self.title)
 
     def __unicode__(self):
-        return self.group_name
+        return self.title
 
-class User(DeclarativeBase):
+class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     """
     User definition.
 
@@ -68,22 +68,19 @@ class User(DeclarativeBase):
     least the ``user_name`` column.
 
     """
-    __tablename__ = 'tg_user'
+    __tablename__ = 'user'
 
-    user_id = Column(Integer, autoincrement=True, primary_key=True)
-    user_name = Column(Unicode(16), unique=True, nullable=False)
-    email_address = Column(Unicode(255), unique=True, nullable=False)
-    display_name = Column(Unicode(255))
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    email = Column(Unicode(255), unique=True, nullable=False)
+    nickname = Column(Unicode(255))
     _password = Column('password', Unicode(128))
-    created = Column(DateTime, default=datetime.now)
-
 
     def __repr__(self):
-        return '<User: name=%s, email=%s, display=%s>' % (
-                repr(self.user_name), repr(self.email_address), repr(self.display_name))
+        return '<User: email=%s, display=%s>' % (
+                repr(self.email), repr(self.nickname))
 
     def __unicode__(self):
-        return self.display_name or self.user_name
+        return self.nickname or self.email
 
     @property
     def permissions(self):
@@ -94,14 +91,9 @@ class User(DeclarativeBase):
         return perms
 
     @classmethod
-    def by_email_address(cls, email):
+    def by_email(cls, email):
         """Return the user object whose email address is ``email``."""
-        return DBSession.query(cls).filter_by(email_address=email).first()
-
-    @classmethod
-    def by_user_name(cls, username):
-        """Return the user object whose user name is ``username``."""
-        return DBSession.query(cls).filter_by(user_name=username).first()
+        return DBSession.query(cls).filter_by(email=email).first()
 
     @classmethod
     def _hash_password(cls, password):
@@ -157,18 +149,18 @@ class Permission(DeclarativeBase):
 
     """
 
-    __tablename__ = 'tg_permission'
+    __tablename__ = 'permission'
 
 
-    permission_id = Column(Integer, autoincrement=True, primary_key=True)
-    permission_name = Column(Unicode(63), unique=True, nullable=False)
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    title = Column(Unicode(63), unique=True, nullable=False)
     description = Column(Unicode(255))
 
     groups = relation(Group, secondary=group_permission_table,
                       backref='permissions')
 
     def __repr__(self):
-        return '<Permission: name=%s>' % repr(self.permission_name)
+        return '<Permission: name=%s>' % repr(self.title)
 
     def __unicode__(self):
-        return self.permission_name
+        return self.title

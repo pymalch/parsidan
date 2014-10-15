@@ -6,12 +6,13 @@ from tg.i18n import ugettext as _, lazy_ugettext as l_, set_lang
 from tg.exceptions import HTTPFound
 from parsidan import model
 from parsidan.controllers.dictionary import DictionaryController
-from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
+from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord, User
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
 from parsidan.forms.auth import LoginForm, RegistrationForm
 from tg.decorators import validate
+from sqlalchemy.exc import IntegrityError
 
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
@@ -114,11 +115,23 @@ class RootController(BaseController):
         signup_form = RegistrationForm.req()
         return dict(form=signup_form)
 
-
-
-
     @expose("parsidan.templates.auth.signup_success")
     @validate(RegistrationForm, error_handler=signup_form)
-    def signup(self, email=None, password=None, password_confirm=None, *args, **kw):
-        i = 0
-        return dict()
+    def signup(self, email=None, nickname=None, password=None, password_confirm=None, *args, **kw):
+
+        email = email.strip()
+        if User.by_email(email):
+            flash(_('The submitted email address, is alreday precent in our database.'), 'error ')
+            redirect('/signup_form')
+        else:
+            new_user = User(email=email,
+                           nickname=nickname,
+                           status='pending')
+
+            new_user.password = password;
+            DBSession.add(new_user)
+            transaction.commit()
+            return dict(user=new_user)
+
+
+
