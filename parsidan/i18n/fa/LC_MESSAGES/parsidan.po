@@ -33,7 +33,7 @@ msgstr ""
 
 #: parsidan/controllers/root.py:88
 msgid "We hope to see you soon!"
-msgstr ""
+msgstr "به امید دیدار دوباره شما."
 
 #: parsidan/controllers/secure.py:16
 msgid "Only for people with the \"manage\" permission"
@@ -45,11 +45,11 @@ msgstr ""
 
 #: parsidan/forms/auth/login.py:14
 msgid "Username"
-msgstr ""
+msgstr "نام کاربری"
 
 #: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:13
 msgid "Password"
-msgstr ""
+msgstr "گذر واژه"
 
 #: parsidan/forms/auth/login.py:22 parsidan/forms/auth/registration.py:21
 #: parsidan/templates/navigator.mak:37
@@ -58,11 +58,11 @@ msgstr "ورود"
 
 #: parsidan/forms/auth/registration.py:12
 msgid "Email"
-msgstr ""
+msgstr "رایانامه"
 
 #: parsidan/forms/auth/registration.py:14
 msgid "Password Confirm"
-msgstr ""
+msgstr "تکرار گذر واژه"
 
 #: parsidan/forms/auth/registration.py:15
 #, fuzzy
@@ -78,12 +78,12 @@ msgstr "جستجوی واژه: %s"
 #: parsidan/templates/client_messages.mak:5
 #, python-format
 msgid "The Persian equivalent of the word %s is:"
-msgstr ""
+msgstr "هم ترجمان واژه %s: "
 
 #: parsidan/templates/client_messages.mak:6
 #, python-format
 msgid "There are no result for %s!"
-msgstr ""
+msgstr "هم ترجمان پارسی واژه %s یافت نگردید."
 
 #: parsidan/templates/client_messages.mak:7
 #, python-format
@@ -93,7 +93,7 @@ msgstr ""
 #: parsidan/templates/client_messages.mak:8
 #, python-format
 msgid "The requested word is already a persian expression %s:"
-msgstr ""
+msgstr "\"%s\" یک واژه پارسی می‌باشد."
 
 #: parsidan/templates/index.mak:18
 msgid "Please enter non persian word"
@@ -127,7 +127,7 @@ msgstr "English"
 
 #: parsidan/templates/navigator.mak:38
 msgid "SignUp"
-msgstr ""
+msgstr "بپیوندید"
 
 #: parsidan/templates/navigator.mak:40
 msgid "Logout"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: parsidan/templates/auth/signup_success.mak:2
 msgid "Sign Up Success"
-msgstr ""
+msgstr "پیوستن به درستی انجام شد."
 
 #: parsidan/templates/dictionary/myWords.mak:26
 #: parsidan/templates/dictionary/myWords.mak:41
