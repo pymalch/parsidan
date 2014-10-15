@@ -5,16 +5,7 @@ from sqlalchemy import ForeignKey, Column, PrimaryKeyConstraint
 from sqlalchemy.types import Unicode, Integer, Enum, DateTime, BigInteger
 from sqlalchemy.orm import relationship
 from datetime import datetime
-
-class TimestampMixin(object):
-    entry_time = Column(DateTime, default=datetime.now)
-
-
-class ConfirmableMixin(object):
-    status = Column(Enum('pending', 'confirmed', name="foreign_word_status"), default='pending', nullable=True)
-
-    def confirm(self):
-        self.status = 'confirmed'
+from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
 
 
 class PersianWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):

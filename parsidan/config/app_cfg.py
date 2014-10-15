@@ -49,6 +49,7 @@ base_config.auth_backend = 'sqlalchemy'
 # what is the class you want to use to search for users in the database
 base_config.sa_auth.user_class = model.User
 
+
 from tg.configuration.auth import TGAuthMetadata
 
 #This tells to TurboGears how to retrieve the data for your user
@@ -56,15 +57,15 @@ class ApplicationAuthMetadata(TGAuthMetadata):
     def __init__(self, sa_auth):
         self.sa_auth = sa_auth
     def authenticate(self, environ, identity):
-        user = self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(user_name=identity['login']).first()
+        user = self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=identity['login']).first()
         if user and user.validate_password(identity['password']):
             return identity['login']
     def get_user(self, identity, userid):
-        return self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(user_name=userid).first()
+        return self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=userid).first()
     def get_groups(self, identity, userid):
-        return [g.group_name for g in identity['user'].groups]
+        return [g.title for g in identity['user'].groups]
     def get_permissions(self, identity, userid):
-        return [p.permission_name for p in identity['user'].permissions]
+        return [p.title for p in identity['user'].permissions]
 
 base_config.sa_auth.dbsession = model.DBSession
 

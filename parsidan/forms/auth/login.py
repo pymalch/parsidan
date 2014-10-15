@@ -11,7 +11,7 @@ from parsidan.widgets import BaseForm, ReCaptchaValidator, FixedReCaptcha
 
 
 class LoginForm(BaseForm):
-    login = twf.TextField(label=l_('Username'))
+    login = twf.TextField(label=l_('Email'))
     password = twf.PasswordField(label=l_('Password'))
     # recaptcha_response_field = FixedReCaptcha(label=l_("Please Enter these words"),
     #                                               public_key=tg.config.get('recaptcha.public_key'),
