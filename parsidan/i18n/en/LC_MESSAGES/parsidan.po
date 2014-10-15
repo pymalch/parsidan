@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-13 17:27+0330\n"
+"POT-Creation-Date: 2014-10-15 06:53+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -46,12 +46,11 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:13
+#: parsidan/forms/auth/login.py:15
 msgid "Password"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:22 parsidan/forms/auth/registration.py:21
-#: parsidan/templates/navigator.mak:37
+#: parsidan/forms/auth/login.py:22 parsidan/templates/navigator.mak:37
 msgid "Login"
 msgstr ""
 
@@ -59,12 +58,12 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: parsidan/forms/auth/registration.py:14
-msgid "Password Confirm"
+#: parsidan/forms/auth/registration.py:16
+msgid "Please Enter whatever you see in the below"
 msgstr ""
 
-#: parsidan/forms/auth/registration.py:15
-msgid "Please Enter these words"
+#: parsidan/forms/auth/registration.py:22 parsidan/templates/auth/signup.mak:4
+msgid "Sign Up"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:4
@@ -142,10 +141,6 @@ msgstr ""
 msgid "Login Form"
 msgstr ""
 
-#: parsidan/templates/auth/signup.mak:4
-msgid "Sign Up"
-msgstr ""
-
 #: parsidan/templates/auth/signup_success.mak:2
 msgid "Sign Up Success"
 msgstr ""
@@ -183,5 +178,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "You can %(join)s and help us to improve this dictionary."
+#~ msgstr ""
+
+#~ msgid "Password Confirm"
+#~ msgstr ""
+
+#~ msgid "Please Enter these words"
 #~ msgstr ""
 

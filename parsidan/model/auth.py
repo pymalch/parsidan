@@ -77,6 +77,7 @@ class User(DeclarativeBase):
     _password = Column('password', Unicode(128))
     created = Column(DateTime, default=datetime.now)
 
+
     def __repr__(self):
         return '<User: name=%s, email=%s, display=%s>' % (
                 repr(self.user_name), repr(self.email_address), repr(self.display_name))
