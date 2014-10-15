@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-13 17:27+0330\n"
+"POT-Creation-Date: 2014-10-09 21:59+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: parsidan/controllers/root.py:36
+#: parsidan/controllers/root.py:26
 #, fuzzy
 msgid "parsidan"
 msgstr "پارسیدان"
 
-#: parsidan/controllers/root.py:56
+#: parsidan/controllers/root.py:46
 msgid "Wrong credentials"
 msgstr ""
 
-#: parsidan/controllers/root.py:75
+#: parsidan/controllers/root.py:62
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: parsidan/controllers/root.py:88
+#: parsidan/controllers/root.py:75
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -43,68 +43,21 @@ msgstr ""
 msgid "Secure Controller here"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:14
-msgid "Username"
-msgstr ""
-
-#: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:13
-msgid "Password"
-msgstr ""
-
-#: parsidan/forms/auth/login.py:22 parsidan/forms/auth/registration.py:21
-#: parsidan/templates/navigator.mak:37
-msgid "Login"
-msgstr "ورود"
-
-#: parsidan/forms/auth/registration.py:12
-msgid "Email"
-msgstr ""
-
-#: parsidan/forms/auth/registration.py:14
-msgid "Password Confirm"
-msgstr ""
-
-#: parsidan/forms/auth/registration.py:15
-#, fuzzy
-#| msgid "Please enter non persian word"
-msgid "Please Enter these words"
+#: parsidan/templates/index.mak:13
+msgid "Please enter non persian word"
 msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 
-#: parsidan/templates/client_messages.mak:4
+#: parsidan/templates/index.mak:50
 #, python-format
 msgid "Querying for: %s"
 msgstr "جستجوی واژه: %s"
 
-#: parsidan/templates/client_messages.mak:5
-#, python-format
-msgid "The Persian equivalent of the word %s is:"
-msgstr ""
-
-#: parsidan/templates/client_messages.mak:6
-#, python-format
-msgid "There are no result for %s!"
-msgstr ""
-
-#: parsidan/templates/client_messages.mak:7
-#, python-format
-msgid "Unexpected situation while querying for: %s"
-msgstr ""
-
-#: parsidan/templates/client_messages.mak:8
-#, python-format
-msgid "The requested word is already a persian expression %s:"
-msgstr ""
-
-#: parsidan/templates/index.mak:18
-msgid "Please enter non persian word"
-msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
-
 #: parsidan/templates/master.mak:28
 #, fuzzy, python-format
 msgid "&copy; %s Parsidan"
-msgstr "پارسیدان %s"
+msgstr "پارسیدان"
 
-#: parsidan/templates/master.mak:55 parsidan/templates/navigator.mak:15
+#: parsidan/templates/master.mak:54 parsidan/templates/navigator.mak:15
 msgid "Parsidan"
 msgstr "پارسیدان"
 
@@ -125,33 +78,21 @@ msgstr "پارسیدان"
 msgid "English"
 msgstr "English"
 
-#: parsidan/templates/navigator.mak:38
-msgid "SignUp"
-msgstr ""
+#: parsidan/templates/navigator.mak:37
+msgid "Login"
+msgstr "ورود"
 
-#: parsidan/templates/navigator.mak:40
+#: parsidan/templates/navigator.mak:39
 msgid "Logout"
 msgstr "برون رفت"
 
-#: parsidan/templates/navigator.mak:41
+#: parsidan/templates/navigator.mak:40
 msgid "Admin"
 msgstr "بخش مدیریتی"
 
 #: parsidan/templates/query_result.mak:3
 #, python-format
 msgid "Showing persian equivalent of the word: %s"
-msgstr ""
-
-#: parsidan/templates/auth/login.mak:2
-msgid "Login Form"
-msgstr ""
-
-#: parsidan/templates/auth/signup.mak:4
-msgid "Sign Up"
-msgstr ""
-
-#: parsidan/templates/auth/signup_success.mak:2
-msgid "Sign Up Success"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
