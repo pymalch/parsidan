@@ -118,7 +118,6 @@ class RootController(BaseController):
     @expose("parsidan.templates.auth.signup_success")
     @validate(RegistrationForm, error_handler=signup_form)
     def signup(self, email=None, nickname=None, password=None, password_confirm=None, *args, **kw):
-
         email = email.strip()
         if User.by_email(email):
             flash(_('The submitted email address, is alreday precent in our database.'), 'error ')
@@ -131,6 +130,9 @@ class RootController(BaseController):
             new_user.password = password;
             DBSession.add(new_user)
             transaction.commit()
+
+            new_user.request_activation()
+
             return dict(user=new_user)
 
 

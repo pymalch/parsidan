@@ -73,6 +73,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     id = Column(Integer, autoincrement=True, primary_key=True)
     email = Column(Unicode(255), unique=True, nullable=False)
     nickname = Column(Unicode(255))
+    activation_request_time = Column(DateTime, nullable=True)
     _password = Column('password', Unicode(128))
 
     def __repr__(self):
@@ -140,6 +141,12 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         hash = sha256()
         hash.update((password + self.password[:64]).encode('utf-8'))
         return self.password[64:] == hash.hexdigest()
+
+    def request_activation(self, method='email'):
+        pass
+
+    def complete_activation(self, code):
+        pass
 
 class Permission(DeclarativeBase):
     """

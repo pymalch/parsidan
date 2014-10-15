@@ -63,3 +63,4 @@ pytz-*.egg
 
 parsidan/public/css/*
 parsidan/public/js/*
+alembic.ini
