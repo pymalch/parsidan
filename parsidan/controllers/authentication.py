@@ -75,7 +75,7 @@ class AuthenticationController(BaseController):
         else:
             new_user = User(email=email,
                             nickname=nickname,
-                            status='pending')
+                            status='confirmed')
 
             new_user.password = password;
             DBSession.add(new_user)

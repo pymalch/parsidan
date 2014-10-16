@@ -17,6 +17,7 @@ def bootstrap(command, conf, vars):
         u.nickname = u'Web Master'
         u.email = u'webmaster@parsidan.com'
         u.password = u'webmaster'
+        u.status = 'confirmed'
     
         model.DBSession.add(u)
     

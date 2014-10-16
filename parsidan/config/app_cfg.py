@@ -58,7 +58,10 @@ class ApplicationAuthMetadata(TGAuthMetadata):
         self.sa_auth = sa_auth
     def authenticate(self, environ, identity):
         user = self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=identity['login']).first()
-        if user and user.validate_password(identity['password']):
+        if user \
+            and user.status == 'confirmed' \
+            and user.activation_request_time is None \
+            and user.validate_password(identity['password']):
             return identity['login']
     def get_user(self, identity, userid):
         return self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=userid).first()
