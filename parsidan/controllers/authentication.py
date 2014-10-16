@@ -4,7 +4,7 @@ from tg import expose, flash, url, lurl, request, redirect, require
 from tg.i18n import ugettext as _
 from tg.exceptions import HTTPFound
 from parsidan.model import User, DBSession
-from parsidan.forms.authentication import LoginForm, RegistrationForm, ChangePasswordForm
+from parsidan.forms.authentication import LoginForm, RegistrationForm, ChangePasswordForm, RecoverPasswordForm
 from tg.decorators import validate
 from parsidan.lib.base import BaseController
 from parsidan.exceptions.authentication import VerificationError
@@ -133,8 +133,25 @@ class AuthenticationController(BaseController):
         user = User.by_email(email)
         if user.validate_password(current_password):
             user.password = new_password
+            transaction.commit()
         else:
             flash(_('Invalid current password'))
             redirect('change_password_form')
-        transaction.commit()
+        return dict(user=user)
+
+    @expose("parsidan.templates.authentication.password_recovery")
+    def recover_password_form(self, *args, **kwargs):
+        form = RecoverPasswordForm.req()
+        return dict(form=form)
+
+    @expose("parsidan.templates.authentication.password_recovery_success")
+    @validate(RecoverPasswordForm, error_handler=recover_password_form)
+    def recover_password(self, email=None, *args, **kw):
+        user = User.by_email(email)
+        if user:
+            user.reset_password()
+            transaction.commit()
+        else:
+            flash(_('Invalid email address'))
+            redirect('recover_password_form')
         return dict(user=user)

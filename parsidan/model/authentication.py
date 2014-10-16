@@ -10,18 +10,18 @@ though.
 """
 import os
 from datetime import datetime
-from hashlib import sha256
+from hashlib import sha256, sha1
 from parsidan.exceptions.authentication import VerificationError
 from tg.i18n import ugettext as _
-
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
 from sqlalchemy.orm import relation, synonym
-
 from parsidan.model import DeclarativeBase, metadata, DBSession
 from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
 from parsidan.mailing import Mailer
 import tg
+from random import random
+import transaction
 
 __all__ = ['User', 'Group', 'Permission']
 
@@ -193,6 +193,32 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
             DBSession.flush()
         else:
             raise VerificationError(_("invalid activation code"))
+
+    def reset_password(self, inform_method='email'):
+        hash = sha1()
+        hash.update(str(random()))
+        new_password = hash.hexdigest()[:10]
+        self.password = new_password
+        transaction.commit()
+        if inform_method=='email':
+            mailer = Mailer()
+            mailer.send_template(self.email,
+                                 _('Parsidan -- your password has been reset.'),
+                                 template="parsidan.mailing.templates.password_reset",
+                                 user=self,
+                                 new_password=new_password,
+                                 action="/authentication/change_password_form",
+                                 domain=tg.config.get("domain.name"))
+        elif inform_method=='sms':
+            # TODO: sms verification
+            pass
+        elif inform_method=='console':
+            print "#" * 30
+            print new_password
+            print "#" * 30
+        else:
+            raise ValueError(_("Invalid method value: %s") % inform_method)
+
 
 class Permission(DeclarativeBase):
     """
