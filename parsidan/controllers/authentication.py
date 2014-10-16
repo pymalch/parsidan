@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 
-from tg import expose, flash, url, lurl, request, redirect
+from tg import expose, flash, url, lurl, request, redirect, require
 from tg.i18n import ugettext as _
 from tg.exceptions import HTTPFound
 from parsidan.model import User, DBSession
-from parsidan.forms.authentication import LoginForm, RegistrationForm
+from parsidan.forms.authentication import LoginForm, RegistrationForm, ChangePasswordForm
 from tg.decorators import validate
 from parsidan.lib.base import BaseController
 from parsidan.exceptions.authentication import VerificationError
 import transaction
+from tg.predicates import not_anonymous
 __author__ = 'vahid'
 
 __all__ = ['AuthenticationController']
 
 
 class AuthenticationController(BaseController):
+
     @expose('parsidan.templates.authentication.login')
     # @validate(LoginForm, error_handler=login)
     def login(self, came_from=lurl('/')):
@@ -114,5 +116,25 @@ class AuthenticationController(BaseController):
             return HTTPFound(location=url('verification_error', params=dict(user=user.email)))
 
         user.request_activation()
+        transaction.commit()
+        return dict(user=user)
+
+    @expose("parsidan.templates.authentication.change_password")
+    @require(not_anonymous(msg=_('Only logged in users can change their password')))
+    def change_password_form(self, *args, **kwargs):
+        form = ChangePasswordForm.req()
+        return dict(form=form)
+
+    @expose("parsidan.templates.authentication.change_password_success")
+    @require(not_anonymous(msg=_('Only logged in users can change their password')))
+    @validate(ChangePasswordForm, error_handler=change_password_form)
+    def change_password(self, current_password=None, new_password=None, password_confirm=None):
+        email = request.identity['repoze.who.userid']
+        user = User.by_email(email)
+        if user.validate_password(current_password):
+            user.password = new_password
+        else:
+            flash(_('Invalid current password'))
+            redirect('change_password_form')
         transaction.commit()
         return dict(user=user)

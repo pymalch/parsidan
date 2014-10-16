@@ -38,6 +38,7 @@
                         <li><a href="/authentication/signup_form">${_('SignUp')}</a></li>
                     % else:
                         <li><a href="/logout_handler">${_('Logout')}</a></li>
+                        <li><a href="/authentication/change_password_form">${_('Change Password')}</a></li>
                         <li><a href="/admin">${_('Admin')}</a></li>
                     % endif
                 </ul>
