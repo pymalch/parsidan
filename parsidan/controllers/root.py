@@ -120,7 +120,7 @@ class RootController(BaseController):
     def signup(self, email=None, nickname=None, password=None, password_confirm=None, *args, **kw):
         email = email.strip()
         if User.by_email(email):
-            flash(_('The submitted email address, is alreday precent in our database.'), 'error ')
+            flash(_('The submitted email address is already present in our database.'), 'error ')
             redirect('/signup_form')
         else:
             new_user = User(email=email,
