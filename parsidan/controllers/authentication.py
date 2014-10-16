@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-from parsidan.exceptions.authentication import VerificationError
-
-__author__ = 'vahid'
-# -*- coding: utf-8 -*-
-"""Main Controller"""
 
 from tg import expose, flash, url, lurl, request, redirect
 from tg.i18n import ugettext as _
@@ -12,7 +7,9 @@ from parsidan.model import User, DBSession
 from parsidan.forms.authentication import LoginForm, RegistrationForm
 from tg.decorators import validate
 from parsidan.lib.base import BaseController
+from parsidan.exceptions.authentication import VerificationError
 
+__author__ = 'vahid'
 
 __all__ = ['AuthenticationController']
 

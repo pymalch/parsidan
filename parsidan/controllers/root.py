@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, flash, require, url, lurl, request, redirect, tmpl_context
-from tg.i18n import ugettext as _, lazy_ugettext as l_, set_lang
-from tg.exceptions import HTTPFound
+from tg import expose, lurl, redirect, tmpl_context
+from tg.i18n import ugettext as _, set_lang
 from parsidan import model
 from parsidan.controllers.dictionary import DictionaryController
-from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord, User
+from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
@@ -21,7 +20,6 @@ class QueryStatus:
     success = 0
     not_found = 1
     persian_word = 2
-
 
 
 class RootController(BaseController):
