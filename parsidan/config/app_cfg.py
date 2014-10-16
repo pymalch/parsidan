@@ -87,11 +87,11 @@ base_config.sa_auth.form_plugin = None
 
 # You may optionally define a page where you want users to be redirected to
 # on login:
-base_config.sa_auth.post_login_url = '/post_login'
+base_config.sa_auth.post_login_url = '/authentication/post_login'
 
 # You may optionally define a page where you want users to be redirected to
 # on logout:
-base_config.sa_auth.post_logout_url = '/post_logout'
+base_config.sa_auth.post_logout_url = '/authentication/post_logout'
 try:
     # Enable DebugBar if available, install tgext.debugbar to turn it on
     from tgext.debugbar import enable_debugbar

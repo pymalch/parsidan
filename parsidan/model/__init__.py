@@ -59,5 +59,5 @@ def init_model(engine):
     #mapper(Reflected, t_reflected)
 
 # Import your model modules here.
-from parsidan.model.auth import User, Group, Permission
+from parsidan.model.authentication import User, Group, Permission
 from parsidan.model.dictionary import Dictionary, PersianWord, ForeignWord

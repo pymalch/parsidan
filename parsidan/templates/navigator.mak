@@ -34,8 +34,8 @@
                         <a href="/setlang/${('fa', 'en')[lang == 'fa']}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
                     </li>
                     % if not request.identity:
-                        <li><a href="/login">${_('Login')}</a></li>
-                        <li><a href="/signup_form">${_('SignUp')}</a></li>
+                        <li><a href="/authentication/login">${_('Login')}</a></li>
+                        <li><a href="/authentication/signup_form">${_('SignUp')}</a></li>
                     % else:
                         <li><a href="/logout_handler">${_('Logout')}</a></li>
                         <li><a href="/admin">${_('Admin')}</a></li>

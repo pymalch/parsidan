@@ -11,7 +11,8 @@ though.
 import os
 from datetime import datetime
 from hashlib import sha256
-__all__ = ['User', 'Group', 'Permission']
+from parsidan.exceptions.authentication import VerificationError
+from tg.i18n import ugettext as _
 
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
@@ -19,6 +20,10 @@ from sqlalchemy.orm import relation, synonym
 
 from parsidan.model import DeclarativeBase, metadata, DBSession
 from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
+from parsidan.mailing import Mailer
+import tg
+
+__all__ = ['User', 'Group', 'Permission']
 
 # This is the association table for the many-to-many relationship between
 # groups and permissions.
@@ -142,11 +147,52 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         hash.update((password + self.password[:64]).encode('utf-8'))
         return self.password[64:] == hash.hexdigest()
 
-    def request_activation(self, method='email'):
-        pass
+    @property
+    def activation_code(self):
+        if not self.activation_request_time:
+            raise VerificationError(_("user already activated"))
+        hash = sha256()
+        hash.update(self.entry_time.strftime('%Y%m%d%h%M%s%f'))
+        hash.update(self.activation_request_time.strftime('%Y%m%d%h%M%s%f'))
+        hash.update(str(self.id))
+        return hash.hexdigest()
+
+    def request_activation(self, method='console'):
+        self.activation_request_time = datetime.now()
+        if method=='email':
+            mailer = Mailer()
+            mailer.send_template(self.email,
+                                 _('Parsidan -- verify your email address'),
+                                 template="parsidan.mailing.templates.activation_request",
+                                 user=self,
+                                 activation_code=self.activation_code,
+                                 action="verify",
+                                 domain=tg.config.get("domain.name"))
+        elif method=='sms':
+            # TODO: sms verification
+            pass
+        elif method=='console':
+            print "#" * 30
+            print self.activation_code
+            print "#" * 30
+        else:
+            raise ValueError(_("Invalid method value: %s") % method)
 
     def complete_activation(self, code):
-        pass
+
+        if not self.activation_request_time:
+            raise VerificationError(_("user already activated"))
+
+        timeout = int(tg.config.get("activation.timeout", 20)) # minutes
+
+        if (datetime.now() - self.activation_request_time).total_seconds() / 60 >= timeout :
+            raise VerificationError(_("Activation session expired, Resend activation code"))
+
+        if code == self.activation_code:
+            self.activation_request_time = None
+            DBSession.flush()
+        else:
+            raise VerificationError(_("invalid activation code"))
 
 class Permission(DeclarativeBase):
     """

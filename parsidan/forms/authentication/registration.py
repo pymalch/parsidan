@@ -4,7 +4,7 @@ __author__ = 'vahid'
 import tw2.bootstrap.forms as twf
 import tw2.core as twc
 import tg
-from tg.i18n import lazy_ugettext as l_, ugettext as _
+from tg.i18n import lazy_ugettext as l_
 from parsidan.widgets import BaseForm, ReCaptchaValidator, FixedReCaptcha
 from formencode.validators import FieldsMatch, String as StringValidator
 
@@ -19,6 +19,6 @@ class RegistrationForm(BaseForm):
                                                   validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
                                                                                tg.config.get('domain.ip_address')))
 
-    action = '/signup'
+    action = '/authentication/signup'
     submit = twf.SubmitButton(id='submit', value=l_('Sign Up'))
-    #validator = FieldsMatch('password', 'password_confirm')
+    validator = FieldsMatch('password', 'password_confirm')

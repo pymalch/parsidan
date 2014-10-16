@@ -22,7 +22,5 @@ def setup_schema(command, conf, vars):
     transaction.commit()
     print('Initializing Migrations')
     import alembic.config, alembic.command
-    alembic_cfg = alembic.config.Config()
-    alembic_cfg.set_main_option("script_location", "migration")
-    alembic_cfg.set_main_option("sqlalchemy.url", config['sqlalchemy.url'])
+    alembic_cfg = alembic.config.Config(file_="alembic.ini")
     alembic.command.stamp(alembic_cfg, "head")
