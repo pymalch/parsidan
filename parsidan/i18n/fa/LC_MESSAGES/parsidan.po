@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-13 17:27+0330\n"
+"POT-Creation-Date: 2014-10-16 11:08+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -17,23 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: parsidan/controllers/root.py:36
+#: parsidan/controllers/root.py:37
 #, fuzzy
 msgid "parsidan"
 msgstr "پارسیدان"
 
-#: parsidan/controllers/root.py:56
+#: parsidan/controllers/root.py:57
 msgid "Wrong credentials"
 msgstr ""
 
-#: parsidan/controllers/root.py:75
+#: parsidan/controllers/root.py:76
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: parsidan/controllers/root.py:88
+#: parsidan/controllers/root.py:89
 msgid "We hope to see you soon!"
 msgstr "به امید دیدار دوباره شما."
+
+#: parsidan/controllers/root.py:123
+msgid "The submitted email address is already present in our database."
+msgstr "رایانامه ای که شما وارد نموده اید پیش از این در پایگاه داده وارد گشته است."
 
 #: parsidan/controllers/secure.py:16
 msgid "Only for people with the \"manage\" permission"
@@ -43,32 +47,33 @@ msgstr ""
 msgid "Secure Controller here"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:14
-msgid "Username"
-msgstr "نام کاربری"
-
-#: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:13
-msgid "Password"
-msgstr "گذر واژه"
-
-#: parsidan/forms/auth/login.py:22 parsidan/forms/auth/registration.py:21
-#: parsidan/templates/navigator.mak:37
-msgid "Login"
-msgstr "ورود"
-
-#: parsidan/forms/auth/registration.py:12
+#: parsidan/forms/auth/login.py:14 parsidan/forms/auth/registration.py:12
 msgid "Email"
 msgstr "رایانامه"
 
-#: parsidan/forms/auth/registration.py:14
+#: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:14
+msgid "Password"
+msgstr "گذر واژه"
+
+#: parsidan/forms/auth/login.py:22 parsidan/templates/navigator.mak:37
+msgid "Login"
+msgstr "ورود"
+
+#: parsidan/forms/auth/registration.py:13
+msgid "Nickname"
+msgstr "نام پارسیدانی"
+
+#: parsidan/forms/auth/registration.py:15
 msgid "Password Confirm"
 msgstr "تکرار گذر واژه"
 
-#: parsidan/forms/auth/registration.py:15
-#, fuzzy
-#| msgid "Please enter non persian word"
-msgid "Please Enter these words"
-msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+#: parsidan/forms/auth/registration.py:17
+msgid "Please Enter whatever you see in the below"
+msgstr "هر آنچه در عکس می‌بینید را وارد نمایید."
+
+#: parsidan/forms/auth/registration.py:23 parsidan/templates/auth/signup.mak:4
+msgid "Sign Up"
+msgstr "پیوستن به پارسیدان"
 
 #: parsidan/templates/client_messages.mak:4
 #, python-format
@@ -140,19 +145,24 @@ msgstr "بخش مدیریتی"
 #: parsidan/templates/query_result.mak:3
 #, python-format
 msgid "Showing persian equivalent of the word: %s"
-msgstr ""
+msgstr "در حال درخواست هم ترجمان واژه %s"
 
 #: parsidan/templates/auth/login.mak:2
 msgid "Login Form"
 msgstr ""
 
-#: parsidan/templates/auth/signup.mak:4
-msgid "Sign Up"
-msgstr ""
-
 #: parsidan/templates/auth/signup_success.mak:2
 msgid "Sign Up Success"
 msgstr "پیوستن به درستی انجام شد."
+
+#: parsidan/templates/auth/signup_success.mak:6
+msgid "Registration success!"
+msgstr "شما هم اکنون به پارسیدان پیوسته اید. با سپاس فراوان!"
+
+#: parsidan/templates/auth/signup_success.mak:8
+#, python-format
+msgid "Please check your mailbox: %s"
+msgstr "از شما خواهش می‌شود تا رایانامه خود را بررسی نمایید. با سپاس!"
 
 #: parsidan/templates/dictionary/myWords.mak:26
 #: parsidan/templates/dictionary/myWords.mak:41
@@ -196,5 +206,15 @@ msgstr "واژه پارسی را وارد نمایید"
 #~ msgstr "واژه وارد شده یک وازه پارس میباشد."
 
 #~ msgid "You can %(join)s and help us to improve this dictionary."
+#~ msgstr ""
+
+#~ msgid "Username"
+#~ msgstr "نام کاربری"
+
+# | msgid "Please enter non persian word"
+#~ msgid "Please Enter these words"
+#~ msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+
+#~ msgid "The submitted email address, is alreday precent in our database."
 #~ msgstr ""
 
