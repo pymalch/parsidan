@@ -39,7 +39,7 @@ class AuthenticationController(BaseController):
         """
         if not request.identity:
             #login_counter = request.environ.get('repoze.who.logins', 0) + 1
-            flash(_('Invalid username or password'))
+            flash(_('Invalid username or password'), 'error')
             redirect('login',
                      params=dict(came_from=came_from))
         userid = request.identity['repoze.who.userid']
@@ -135,7 +135,7 @@ class AuthenticationController(BaseController):
             user.password = new_password
             transaction.commit()
         else:
-            flash(_('Invalid current password'))
+            flash(_('Invalid current password'), 'error')
             redirect('change_password_form')
         return dict(user=user)
 
@@ -152,6 +152,6 @@ class AuthenticationController(BaseController):
             user.reset_password()
             transaction.commit()
         else:
-            flash(_('Invalid email address'))
+            flash(_('Invalid email address'), 'error')
             redirect('recover_password_form')
         return dict(user=user)
