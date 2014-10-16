@@ -8,7 +8,7 @@ from parsidan.forms.authentication import LoginForm, RegistrationForm
 from tg.decorators import validate
 from parsidan.lib.base import BaseController
 from parsidan.exceptions.authentication import VerificationError
-
+import transaction
 __author__ = 'vahid'
 
 __all__ = ['AuthenticationController']
@@ -80,22 +80,22 @@ class AuthenticationController(BaseController):
             new_user.password = password;
             DBSession.add(new_user)
             DBSession.flush()
-            # transaction.commit()
-
             new_user.request_activation()
-
+            transaction.commit()
             return dict(user=new_user)
 
     @expose("parsidan.templates.authentication.verification_success")
     def verify(self, user=None, activation_code=None):
         # TODO: exception handling
-        user = User.by_email(user)
+        email = user
+        user = User.by_email(email)
         if not user:
             flash(_('Invalid username/email address.'), 'error')
-            return HTTPFound(location=url('verification_error', params=dict(user=user.email)))
+            return HTTPFound(location=url('verification_error', params=dict(user=email)))
         else:
             try:
                 user.complete_activation(activation_code)
+                transaction.commit()
                 return dict(user=user)
             except VerificationError as ex:
                 flash(ex.message, 'error')
@@ -114,4 +114,5 @@ class AuthenticationController(BaseController):
             return HTTPFound(location=url('verification_error', params=dict(user=user.email)))
 
         user.request_activation()
-        return dict(user=None)
+        transaction.commit()
+        return dict(user=user)

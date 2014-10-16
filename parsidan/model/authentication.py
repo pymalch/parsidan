@@ -157,7 +157,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         hash.update(str(self.id))
         return hash.hexdigest()
 
-    def request_activation(self, method='console'):
+    def request_activation(self, method='email'):
         self.activation_request_time = datetime.now()
         if method=='email':
             mailer = Mailer()
@@ -166,7 +166,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
                                  template="parsidan.mailing.templates.activation_request",
                                  user=self,
                                  activation_code=self.activation_code,
-                                 action="verify",
+                                 action="/authentication/verify",
                                  domain=tg.config.get("domain.name"))
         elif method=='sms':
             # TODO: sms verification

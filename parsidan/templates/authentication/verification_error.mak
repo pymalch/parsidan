@@ -8,7 +8,9 @@
         <p>
             you can now:
             <ul>
-                <li><a href="/authentication/resend_verification_request">${_('Resend verification code')}</a></li>
+                %if user:
+                <li><a href="${tg.url('/authentication/resend_verification_request', params=dict(user=user.email))}">${_('Resend verification code')}</a></li>
+                %endif
             </ul>
 
 
