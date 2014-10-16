@@ -6,6 +6,7 @@
 from markupsafe import Markup
 from datetime import datetime
 import tg
+import urllib
 
 debug = lambda: tg.config.get('debug')
 
@@ -23,3 +24,7 @@ def lang():
     else:
         return None    
 
+def url_quote(url):
+    if isinstance(url, unicode):
+        url = url.encode('utf8')
+    return urllib.quote(url)

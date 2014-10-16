@@ -39,10 +39,10 @@ class RootController(BaseController):
                     result=None)
 
     @expose()
-    def setlang(self, lang, camefrom=lurl('/')):
+    def setlang(self, lang, came_from=lurl('/')):
         if lang:
             set_lang(lang)
-        redirect(camefrom)
+        redirect(came_from)
 
     @expose()
     def login(self, came_from=lurl('/')):

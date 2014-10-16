@@ -31,7 +31,7 @@
             % if tg.auth_stack_enabled:
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/setlang/${('fa', 'en')[lang == 'fa']}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
+                        <a href="/setlang/${('fa', 'en')[lang == 'fa']}?came_from=${h.url_quote(request.path)}">${(_('Persian'), _('English'))[lang == 'fa']}</a>
                     </li>
                     % if not request.identity:
                         <li><a href="/authentication/login">${_('Login')}</a></li>
