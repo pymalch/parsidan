@@ -6,7 +6,8 @@
             noResult: "${_('There are no result for %s!')}",
             fatal: "${_('Unexpected situation while querying for: %s')}",
             persianWord: "${_('The requested word is already a persian expression %s:')}",
-            offerContribution: "${_('Do you want to submit the translation of word: %s ?')}"
+            offerContribution: "${_('Do you want to submit the translation of word: %s ?')}",
+            yes: "${_('Yes')}"
         }
 
 

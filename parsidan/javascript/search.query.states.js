@@ -66,7 +66,7 @@ Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
     ).append(
       $('<a />').attr({
           href:"#"
-        }).text("Yes")//.addClass('pull-right')
+        }).text(parsidan.messages.query.yes)//.addClass('pull-right')
 //      $('<p />').append(
 //
 //      )
