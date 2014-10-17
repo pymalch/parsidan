@@ -5,4 +5,5 @@ import tw2.bootstrap.forms as twf
 
 
 class BaseForm(twf.BootstrapForm):
-    child = twc.Variable(default=twf.FormGroupLayout)
+    child = twc.Variable(default=twf.HorizontalLayout)
+
