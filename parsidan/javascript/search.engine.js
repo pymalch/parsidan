@@ -47,13 +47,13 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
       }
     });
   },
-
   keyPressed: function (e) {
-    var newExpression = this.$().val();
+    var newExpression = this.$().val().sanitize();
     if (newExpression != this.expression) {
       this.expression = newExpression;
       if (e.charCode == 13){
         this.query();
+        this.$().select();
       }
     }
   }

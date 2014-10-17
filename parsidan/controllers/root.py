@@ -12,7 +12,7 @@ import transaction
 from parsidan.controllers.authentication import AuthenticationController
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
-
+from parsidan.lib.sanitizer import sanitize
 
 __all__ = ['RootController']
 
@@ -52,6 +52,7 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
+        word = sanitize(word)
         result = list(Dictionary.query(word))
         if not len(result):
             if PersianWord.find(word):

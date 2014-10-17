@@ -28,3 +28,5 @@ def url_quote(url):
     if isinstance(url, unicode):
         url = url.encode('utf8')
     return urllib.quote(url)
+
+

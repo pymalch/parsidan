@@ -24,9 +24,18 @@ Class('parsidan.search.Query', parsidan.ElementController, {
   bindEvents: function(){
     var self = this;
     this.$().find('button.close').click(function(){
-      self.callbacks.complete.call(this);
-      self.$().remove();
+      self.remove();
     });
+  },
+  remove: function(){
+    var self = this,
+      $queryInput = parsidan.searchEngine.$();
+    self.callbacks.complete.call(this);
+    self.$().remove();
+
+    if ($queryInput.val().sanitize().hashCode() == self.word.hashCode()){
+      $queryInput.val('');
+    }
   },
   request: function () {
     var self = this;
