@@ -59,12 +59,23 @@ Class('parsidan.search.NoResultState', parsidan.search.QueryState, {
   setUp: function(){
     this.query.$().addClass('panel-warning');
     this.query.$title().text(parsidan.messages.query.noResult.format(this.query.word));
-    this.query.$content().addClass('no-padding');
+    this.query.$content().append(
+      $('<span />').text(parsidan.messages.query.offerContribution.format(this.query.word))
+    ).append(
+      $('<span />').text(' ')
+    ).append(
+      $('<a />').attr({
+          href:"#"
+        }).text(parsidan.messages.query.yes)//.addClass('pull-right')
+//      $('<p />').append(
+//
+//      )
+    );
   },
   dispose: function(){
     this.query.$title().empty();
     this.query.$().removeClass('panel-warning');
-    this.query.$content().removeClass('no-padding');
+    this.query.$content().empty();
   }
 });
 
@@ -90,7 +101,7 @@ Class('parsidan.search.PersianWordState', parsidan.search.QueryState, {
     this.query.$().addClass('panel-info');
     this.query.$title().text(this.query.word);
     $('<p />')
-      .html(parsidan.messages.query.persian_word.format(this.query.word))
+      .html(parsidan.messages.query.persianWord.format(this.query.word))
       .appendTo(this.query.$content());
   },
   dispose: function(){
