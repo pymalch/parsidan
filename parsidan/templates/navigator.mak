@@ -19,11 +19,11 @@
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="nav navbar-nav">
                 <li class="${('', 'active')[page=='about']}">
-                    <a href="/dictionary/alienList">${_('Make persian')}</a>
+                    <a href="/contribution/submit_word_form">${_('Submit a translation')}</a>
                 </li>
-                <li class="${('', 'active')[page=='about']}">
-                    <a href="/dictionary/myWords">${_('My words')}</a>
-                </li>
+##                <li class="${('', 'active')[page=='about']}">
+##                    <a href="/contribution">${_('My words')}</a>
+##                </li>
 
 
             </ul>

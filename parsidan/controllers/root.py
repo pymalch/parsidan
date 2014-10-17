@@ -13,7 +13,7 @@ from parsidan.controllers.authentication import AuthenticationController
 from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
 from parsidan.lib.sanitizer import sanitize
-
+from parsidan.controllers.contribution import ContributionController
 __all__ = ['RootController']
 
 class QueryStatus:
@@ -28,6 +28,7 @@ class RootController(BaseController):
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
     error = ErrorController()
     authentication = AuthenticationController()
+    contribution = ContributionController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = _("parsidan")
