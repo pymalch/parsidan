@@ -17,16 +17,16 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-content">
-            <ul class="nav navbar-nav">
-                <li class="${('', 'active')[page=='about']}">
-                    <a href="/contribution/submit_word_form">${_('Submit a translation')}</a>
-                </li>
-##                <li class="${('', 'active')[page=='about']}">
-##                    <a href="/contribution">${_('My words')}</a>
-##                </li>
-
-
-            </ul>
+            % if request.identity:
+                <ul class="nav navbar-nav">
+                    <li class="${('', 'active')[page=='about']}">
+                        <a href="/contribution">${_('Add persian words')}</a>
+                    </li>
+                   <li class="${('', 'active')[page=='about']}">
+                       <a href="/contribution/my_words">${_('My words')}</a>
+                   </li>
+                 </ul>
+            % endif
 
             % if tg.auth_stack_enabled:
                 <ul class="nav navbar-nav navbar-right">

@@ -119,6 +119,9 @@ public_js: !watch
     - !template ${javascript}/search.engine.js
     - !template ${javascript}/search.query.states.js
     - !template ${javascript}/search.query.js
+    - !template ${javascript}/contribution/contribution.engine.js
+    - !template ${javascript}/contribution/contribution.query.states.js
+    - !template ${javascript}/contribution/contribution.query.js
     - !template ${javascript}/tail.js
 
 

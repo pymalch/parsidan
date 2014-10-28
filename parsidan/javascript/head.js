@@ -4,3 +4,4 @@
 
 Namespace('parsidan');
 Namespace('parsidan.search');
+Namespace('parsidan.contribution');

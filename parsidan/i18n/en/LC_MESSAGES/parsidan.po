@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-13 17:27+0330\n"
+"POT-Creation-Date: 2014-10-28 22:12+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -17,54 +17,146 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: parsidan/controllers/root.py:36
-msgid "parsidan"
-msgstr ""
-
-#: parsidan/controllers/root.py:56
+#: parsidan/controllers/authentication.py:26
 msgid "Wrong credentials"
 msgstr ""
 
-#: parsidan/controllers/root.py:75
+#: parsidan/controllers/authentication.py:42
+msgid "Invalid username or password"
+msgstr ""
+
+#: parsidan/controllers/authentication.py:46
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: parsidan/controllers/root.py:88
+#: parsidan/controllers/authentication.py:59
 msgid "We hope to see you soon!"
 msgstr ""
 
-#: parsidan/controllers/secure.py:16
-msgid "Only for people with the \"manage\" permission"
+#: parsidan/controllers/authentication.py:75
+msgid "The submitted email address, is alreday precent in our database."
 msgstr ""
 
-#: parsidan/controllers/secure.py:21
-msgid "Secure Controller here"
+#: parsidan/controllers/authentication.py:95
+#: parsidan/controllers/authentication.py:115
+msgid "Invalid username/email address."
 msgstr ""
 
-#: parsidan/forms/auth/login.py:14
-msgid "Username"
+#: parsidan/controllers/authentication.py:123
+#: parsidan/controllers/authentication.py:129
+msgid "Only logged in users can change their password"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:15 parsidan/forms/auth/registration.py:13
-msgid "Password"
+#: parsidan/controllers/authentication.py:138
+msgid "Invalid current password"
 msgstr ""
 
-#: parsidan/forms/auth/login.py:22 parsidan/forms/auth/registration.py:21
-#: parsidan/templates/navigator.mak:37
-msgid "Login"
+#: parsidan/controllers/authentication.py:155
+msgid "Invalid email address"
 msgstr ""
 
-#: parsidan/forms/auth/registration.py:12
+#: parsidan/controllers/contribution.py:22
+msgid "Please login to view this page."
+msgstr ""
+
+#: parsidan/controllers/root.py:34
+msgid "parsidan"
+msgstr ""
+
+#: parsidan/exceptions/authentication.py:7
+msgid "Security Error"
+msgstr ""
+
+#: parsidan/exceptions/authentication.py:12
+msgid "Authentication Error"
+msgstr ""
+
+#: parsidan/exceptions/authentication.py:17
+#: parsidan/templates/authentication/verification_error.mak:2
+msgid "Verification Error"
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:10
+msgid "Current Password"
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:11
+#: parsidan/forms/authentication/change_password.py:12
+msgid "New Password"
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:17
+msgid "Change"
+msgstr ""
+
+#: parsidan/forms/authentication/login.py:12
+#: parsidan/forms/authentication/recover_password.py:11
+#: parsidan/forms/authentication/registration.py:11
 msgid "Email"
 msgstr ""
 
-#: parsidan/forms/auth/registration.py:14
+#: parsidan/forms/authentication/login.py:13
+#: parsidan/forms/authentication/registration.py:15
+msgid "Password"
+msgstr ""
+
+#: parsidan/forms/authentication/login.py:20
+#: parsidan/templates/navigator.mak:37
+#: parsidan/templates/authentication/verification_success.mak:11
+msgid "Login"
+msgstr ""
+
+#: parsidan/forms/authentication/recover_password.py:13
+#: parsidan/forms/authentication/registration.py:13
+msgid "Must be a valid email address"
+msgstr ""
+
+#: parsidan/forms/authentication/recover_password.py:15
+#: parsidan/forms/authentication/registration.py:18
+msgid "Please Enter whatever you see in the below"
+msgstr ""
+
+#: parsidan/forms/authentication/recover_password.py:23
+msgid "Send"
+msgstr ""
+
+#: parsidan/forms/authentication/registration.py:14
+msgid "Nickname"
+msgstr ""
+
+#: parsidan/forms/authentication/registration.py:16
 msgid "Password Confirm"
 msgstr ""
 
-#: parsidan/forms/auth/registration.py:15
-msgid "Please Enter these words"
+#: parsidan/forms/authentication/registration.py:24
+#: parsidan/templates/authentication/signup.mak:4
+msgid "Sign Up"
+msgstr ""
+
+#: parsidan/model/authentication.py:153 parsidan/model/authentication.py:184
+msgid "user already activated"
+msgstr ""
+
+#: parsidan/model/authentication.py:165
+msgid "Parsidan -- verify your email address"
+msgstr ""
+
+#: parsidan/model/authentication.py:179 parsidan/model/authentication.py:220
+#, python-format
+msgid "Invalid method value: %s"
+msgstr ""
+
+#: parsidan/model/authentication.py:189
+msgid "Activation session expired, Resend activation code"
+msgstr ""
+
+#: parsidan/model/authentication.py:195
+msgid "invalid activation code"
+msgstr ""
+
+#: parsidan/model/authentication.py:206
+msgid "Parsidan -- your password has been reset."
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:4
@@ -92,7 +184,31 @@ msgstr ""
 msgid "The requested word is already a persian expression %s:"
 msgstr ""
 
-#: parsidan/templates/index.mak:18
+#: parsidan/templates/client_messages.mak:9
+#, python-format
+msgid "Do you want to submit the translation of word: %s ?"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:10
+msgid "Yes"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:13
+#, python-format
+msgid "The persian word \"%s\" added successfully."
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:14
+#, python-format
+msgid "The word \"%s\" is a foreign word!"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:15
+#, python-format
+msgid "The word \"%s\" has been added before!"
+msgstr ""
+
+#: parsidan/templates/defenitions.mak:21 parsidan/templates/index.mak:18
 msgid "Please enter non persian word"
 msgstr ""
 
@@ -105,11 +221,11 @@ msgstr ""
 msgid "Parsidan"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:22
-msgid "Make persian"
+#: parsidan/templates/navigator.mak:23
+msgid "Add persian words"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:25
+#: parsidan/templates/navigator.mak:26
 msgid "My words"
 msgstr ""
 
@@ -122,14 +238,21 @@ msgid "English"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:38
+#: parsidan/templates/authentication/login.mak:14
 msgid "SignUp"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:40
+#: parsidan/templates/authentication/change_password_success.mak:10
 msgid "Logout"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:41
+#: parsidan/templates/authentication/change_password.mak:2
+msgid "Change Password"
+msgstr ""
+
+#: parsidan/templates/navigator.mak:42
 msgid "Admin"
 msgstr ""
 
@@ -138,16 +261,67 @@ msgstr ""
 msgid "Showing persian equivalent of the word: %s"
 msgstr ""
 
-#: parsidan/templates/auth/login.mak:2
+#: parsidan/templates/authentication/change_password_success.mak:2
+#: parsidan/templates/authentication/change_password_success.mak:6
+msgid "Password change success"
+msgstr ""
+
+#: parsidan/templates/authentication/login.mak:2
 msgid "Login Form"
 msgstr ""
 
-#: parsidan/templates/auth/signup.mak:4
-msgid "Sign Up"
+#: parsidan/templates/authentication/login.mak:12
+msgid "Forget password ?"
 msgstr ""
 
-#: parsidan/templates/auth/signup_success.mak:2
+#: parsidan/templates/authentication/password_recovery.mak:2
+msgid "Recover your password"
+msgstr ""
+
+#: parsidan/templates/authentication/password_recovery_success.mak:2
+#: parsidan/templates/authentication/password_recovery_success.mak:6
+msgid "Password recovery success"
+msgstr ""
+
+#: parsidan/templates/authentication/password_recovery_success.mak:8
+#: parsidan/templates/authentication/signup_success.mak:8
+#: parsidan/templates/authentication/verification_request.mak:8
+#, python-format
+msgid "Please check your mailbox: %s"
+msgstr ""
+
+#: parsidan/templates/authentication/signup_success.mak:2
+#: parsidan/templates/authentication/verification_request.mak:2
 msgid "Sign Up Success"
+msgstr ""
+
+#: parsidan/templates/authentication/signup_success.mak:6
+#: parsidan/templates/authentication/verification_request.mak:6
+msgid "Registration success!"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_error.mak:6
+msgid "Verification error!"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_error.mak:12
+msgid "Resend verification code"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_success.mak:2
+msgid "Verification Success"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_success.mak:6
+msgid "Verification success!"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_success.mak:12
+msgid "Homepage"
+msgstr ""
+
+#: parsidan/templates/contribution/index.mak:19
+msgid "Please enter persian word"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
@@ -183,5 +357,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "You can %(join)s and help us to improve this dictionary."
+#~ msgstr ""
+
+#~ msgid "Username"
+#~ msgstr ""
+
+#~ msgid "Please Enter these words"
+#~ msgstr ""
+
+#~ msgid "The submitted email address, is alreday precent in our database."
+#~ msgstr ""
+
+#~ msgid "The submitted email address is already present in our database."
+#~ msgstr ""
+
+#~ msgid "Only for people with the \"manage\" permission"
+#~ msgstr ""
+
+#~ msgid "Secure Controller here"
+#~ msgstr ""
+
+#~ msgid "Make persian"
 #~ msgstr ""
 

@@ -55,10 +55,10 @@ def bootstrap(command, conf, vars):
         dorood = model.PersianWord(title=u'درود')
         dorood_bar_shoma = model.PersianWord(title=u'درود بر شما')
 
-        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood, likes=10, dislikes=3, status='confirmed'))
-        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood_bar_shoma, likes=5, dislikes=3, status='confirmed'))
-        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood, likes=12, dislikes=4, status='confirmed'))
-        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood_bar_shoma, likes=5, dislikes=3, status='confirmed'))
+        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood, likes=10, dislikes=3, status='confirmed', user=1))
+        model.DBSession.add(model.Dictionary(foreign_word=salam, persian_word=dorood_bar_shoma, likes=5, dislikes=3, status='confirmed', user=1))
+        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood, likes=12, dislikes=4, status='confirmed', user=1))
+        model.DBSession.add(model.Dictionary(foreign_word=hi, persian_word=dorood_bar_shoma, likes=5, dislikes=3, status='confirmed', user=1))
 
 
         model.DBSession.flush()

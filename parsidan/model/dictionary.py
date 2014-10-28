@@ -15,9 +15,22 @@ class PersianWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     id = Column(Integer,  primary_key=True)
     title = Column(Unicode(60), nullable=False, unique=True, index=True)
 
+
     @classmethod
     def find(cls, title):
         return DBSession.query(cls).filter(cls.title==title).first()
+
+    @classmethod
+    def add(cls, title):
+        if cls.find(title):
+            return
+        return DBSession.add(cls(title=title))
+
+    @classmethod
+    def list(cls, user):
+        return DBSession.query(cls)\
+            .join(Dictionary)\
+            .filter(Dictionary.user==user).all()
 
 
 class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
@@ -60,8 +73,11 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     persian_word_id = Column(Integer, ForeignKey('persian_word.id'), nullable=False, primary_key=True)
     persian_word = relationship("PersianWord")
 
+    user =  Column(Integer, ForeignKey('user.id'), nullable=False, index=True)
+
     likes = Column(Integer, nullable=False, default=0)
     dislikes = Column(Integer, nullable=False, default=0)
+
 
     @classmethod
     def query(cls, expression):
@@ -74,6 +90,22 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
             .order_by(rate.desc()):
 
             yield r._asdict()
+
+
+    @classmethod
+    def user_persian_words(cls,user):
+        rate = cls.likes - cls.dislikes
+        hasan=DBSession.query(cls)\
+            .join(ForeignWord)\
+            .join(PersianWord)\
+            .filter(Dictionary.user == user)\
+            .group_by(Dictionary.persian_word_id).all()\
+
+
+        return hasan
+
+
+
 
 
 # class ActivityLog(DeclarativeBase):

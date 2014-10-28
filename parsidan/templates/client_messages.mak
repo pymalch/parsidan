@@ -8,6 +8,11 @@
             persianWord: "${_('The requested word is already a persian expression %s:')}",
             offerContribution: "${_('Do you want to submit the translation of word: %s ?')}",
             yes: "${_('Yes')}"
+        },
+        contribution:{
+            success: "${_('The persian word "%s" added successfully.')}",
+            foreignWord:"${_('The word "%s" is a foreign word!' )}",
+            addedBefore:"${_('The word "%s" has been added before!' )}"
         }
 
 
