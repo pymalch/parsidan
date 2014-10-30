@@ -7,7 +7,7 @@
 
 
 
-<div class="container contribution-area">
+<div class="container contribution-words-area">
     <div class="contribution-notify-area alert"></div>
     <div class="row">
         <div class="${col_classes} words-area">

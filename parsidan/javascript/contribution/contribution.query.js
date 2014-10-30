@@ -16,6 +16,7 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
     this.error = null;
     this.callbacks = callbacks;
     this.request();
+    this.result=null;
   },
 
   request: function () {
@@ -30,12 +31,13 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
         var contributionStatus = parsidan.search.ContributionStatus;
         if (status == 'success' && resp.hasOwnProperty('status')){
           self.contributionStatus = resp.status;
+
           switch(resp.status){
             case contributionStatus.success:
-              self.result = resp.result;
               self.transition(parsidan.contribution.SuccessState);
               break;
             case contributionStatus.added_before:
+              self.result =  resp.result
               self.transition(parsidan.contribution.AddedBeforeState);
               break;
             case contributionStatus.foreign_word:
@@ -53,7 +55,7 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
         self.transition(parsidan.contribution.FatalState);
       },
       complete: function (xhr, textStatus) {
-        self.callbacks.complete.call(this);
+        self.callbacks.complete.call(this, parsidan.contributionEngine.state);
       }
     });
   },
@@ -73,14 +75,25 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
 
   $templateTitle:null,
   createTemplate: function () {
-      this.wordTemplate =  parsidan.contributionEngine.$wordTemplate()
+      var self = this;
+
+      self.wordTemplate =  parsidan.contributionEngine.$wordTemplate()
         .clone()
         .attr({
           id: this.__class__.generateTemplateId(this.word)})
         .prependTo(parsidan.contributionEngine.$wordsArea());
-      this.wordTemplate.find('.panel-title').text(this.word);
+      self.wordTemplate.find('.panel-title').text(this.word);
 
+      if(self.result){
 
+        var $ul = $('<ul />').appendTo(self.wordTemplate.find('.panel-body'));
+        for(var i in self.result){
+          var item = self.result[i];
+          $('<li />')
+            .html(item.title)
+            .appendTo($ul);
+        }
+      }
     }
 
 

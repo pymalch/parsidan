@@ -16,6 +16,7 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
 
     this.selector = selector;
     this.currentQuery = null;
+    this.exState = null;
     this.expression = '';
     this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
     this.setUp();
@@ -48,13 +49,17 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
     }
     var element = parsidan.contribution.Query.findLocal(this.expression);
     if (element){
-
       parsidan.contribution.Query.moveUp(element);
+
+      if(self.exState)
+        self.exState.dispose();
       return;
     }
 
     this.currentQuery = new parsidan.contribution.Query(this.expression, {
-      complete: function() {
+      complete: function(state) {
+
+        self.exState = state;
         self.currentQuery = null;
       }
     });

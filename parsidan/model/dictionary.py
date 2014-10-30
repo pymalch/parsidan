@@ -93,16 +93,16 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
 
 
     @classmethod
-    def user_persian_words(cls,user):
+    def find_persian_equivalents(cls, expression):
         rate = cls.likes - cls.dislikes
-        hasan=DBSession.query(cls)\
+        for r in DBSession.query(rate.label('rate'), ForeignWord.title.label('title'))\
             .join(ForeignWord)\
             .join(PersianWord)\
-            .filter(Dictionary.user == user)\
-            .group_by(Dictionary.persian_word_id).all()\
+            .filter(PersianWord.title == expression)\
+            .order_by(rate.desc()):
 
+            yield r._asdict()
 
-        return hasan
 
 
 

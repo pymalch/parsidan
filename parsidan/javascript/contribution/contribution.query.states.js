@@ -68,9 +68,11 @@ Class('parsidan.contribution.AddedBeforeState', parsidan.contribution.QueryState
         this.area
           .html(parsidan.messages.contribution.addedBefore.format(this.query.word))
           .addClass('alert-info');
+         this.query.createTemplate();
   },
   dispose: function(){
         this.area.removeClass('alert-info').html('');
+      this.query.result=null;
   }
 });
 

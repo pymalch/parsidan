@@ -35,8 +35,12 @@ class ContributionController(BaseController):
     def submit_persian_word(self, word):
         import time
         time.sleep(1)
+
+
         if PersianWord.find(word):
-            return dict(word=word , status=QueryStatus.added_before)
+            result = list(Dictionary.find_persian_equivalents(word))
+            return dict(word=word , status=QueryStatus.added_before, result=result)
+
         if ForeignWord.find(word):
             return dict(word=word , status=QueryStatus.foreign_word)
 
