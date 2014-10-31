@@ -49,7 +49,7 @@ install_requires=[
 
 setup(
     name='parsidan',
-    version='0.5',
+    version='0.6',
     description='',
     author='',
     author_email='',
@@ -65,6 +65,7 @@ setup(
     message_extractors={'parsidan': [
             ('**.py', 'python', None),
             ('templates/**.mak', 'mako', None),
+            ('mailing/templates/**.mak', 'mako', None),
             ('public/**', 'ignore', None)]},
 
     entry_points={
