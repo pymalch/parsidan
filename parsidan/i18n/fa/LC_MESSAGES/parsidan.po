@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-28 22:12+0330\n"
+"POT-Creation-Date: 2014-10-31 14:50+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -35,13 +35,11 @@ msgid "We hope to see you soon!"
 msgstr "به امید دیدار دوباره شما."
 
 #: parsidan/controllers/authentication.py:75
-#, fuzzy
 msgid "The submitted email address, is alreday precent in our database."
 msgstr "رایانامه ای که شما وارد نموده اید پیش از این در پایگاه داده وارد گشته است."
 
 #: parsidan/controllers/authentication.py:95
 #: parsidan/controllers/authentication.py:115
-#, fuzzy
 msgid "Invalid username/email address."
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
@@ -55,7 +53,6 @@ msgid "Invalid current password"
 msgstr ""
 
 #: parsidan/controllers/authentication.py:155
-#, fuzzy
 msgid "Invalid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
@@ -64,12 +61,10 @@ msgid "Please login to view this page."
 msgstr "برای دیدن این بخش بایستی وارد"
 
 #: parsidan/controllers/root.py:34
-#, fuzzy
 msgid "parsidan"
 msgstr "پارسیدان"
 
 #: parsidan/exceptions/authentication.py:7
-#, fuzzy
 msgid "Security Error"
 msgstr "یک خطای پیش بینی نشده رخ داده است."
 
@@ -88,7 +83,6 @@ msgstr ""
 
 #: parsidan/forms/authentication/change_password.py:11
 #: parsidan/forms/authentication/change_password.py:12
-#, fuzzy
 msgid "New Password"
 msgstr "گذر واژه"
 
@@ -103,7 +97,7 @@ msgid "Email"
 msgstr "رایانامه"
 
 #: parsidan/forms/authentication/login.py:13
-#: parsidan/forms/authentication/registration.py:15
+#: parsidan/forms/authentication/registration.py:16
 msgid "Password"
 msgstr "گذر واژه"
 
@@ -113,29 +107,29 @@ msgstr "گذر واژه"
 msgid "Login"
 msgstr "ورود"
 
-#: parsidan/forms/authentication/recover_password.py:13
-#: parsidan/forms/authentication/registration.py:13
+#: parsidan/forms/authentication/recover_password.py:14
+#: parsidan/forms/authentication/registration.py:14
 msgid "Must be a valid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
-#: parsidan/forms/authentication/recover_password.py:15
-#: parsidan/forms/authentication/registration.py:18
+#: parsidan/forms/authentication/recover_password.py:16
+#: parsidan/forms/authentication/registration.py:19
 msgid "Please Enter whatever you see in the below"
 msgstr "هر آنچه در عکس می‌بینید را وارد نمایید."
 
-#: parsidan/forms/authentication/recover_password.py:23
+#: parsidan/forms/authentication/recover_password.py:24
 msgid "Send"
 msgstr ""
 
-#: parsidan/forms/authentication/registration.py:14
+#: parsidan/forms/authentication/registration.py:15
 msgid "Nickname"
 msgstr "نام پارسیدانی"
 
-#: parsidan/forms/authentication/registration.py:16
+#: parsidan/forms/authentication/registration.py:17
 msgid "Password Confirm"
 msgstr "تکرار گذر واژه"
 
-#: parsidan/forms/authentication/registration.py:24
+#: parsidan/forms/authentication/registration.py:25
 #: parsidan/templates/authentication/signup.mak:4
 msgid "Sign Up"
 msgstr "پیوستن به پارسیدان"
@@ -200,7 +194,7 @@ msgid "Yes"
 msgstr "آری"
 
 #: parsidan/templates/client_messages.mak:13
-#, fuzzy, python-format
+#, python-format
 msgid "The persian word \"%s\" added successfully."
 msgstr "واژه وارد شده (%s) به درستی در بستر وارد گردید."
 
@@ -210,16 +204,16 @@ msgid "The word \"%s\" is a foreign word!"
 msgstr "واژه (%s) بیگانه و نا پارسی میباشد."
 
 #: parsidan/templates/client_messages.mak:15
-#, fuzzy, python-format
+#, python-format
 msgid "The word \"%s\" has been added before!"
 msgstr "واژه وارد شده (%s) پیش از این در بستر نوشته شده است."
 
-#: parsidan/templates/defenitions.mak:21 parsidan/templates/index.mak:18
+#: parsidan/templates/defenitions.mak:20 parsidan/templates/index.mak:18
 msgid "Please enter non persian word"
 msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 
 #: parsidan/templates/master.mak:28
-#, fuzzy, python-format
+#, python-format
 msgid "&copy; %s Parsidan"
 msgstr "پارسیدان %s"
 
@@ -228,8 +222,7 @@ msgid "Parsidan"
 msgstr "پارسیدان"
 
 #: parsidan/templates/navigator.mak:23
-#, fuzzy
-msgid "Add persian words"
+msgid "Add persian word"
 msgstr "افزودن واژه پارسی"
 
 #: parsidan/templates/navigator.mak:26
@@ -237,7 +230,6 @@ msgid "My words"
 msgstr "واژکان من"
 
 #: parsidan/templates/navigator.mak:34
-#, fuzzy
 msgid "Persian"
 msgstr "پارسیدان"
 
@@ -257,7 +249,6 @@ msgstr "برون رفت"
 
 #: parsidan/templates/navigator.mak:41
 #: parsidan/templates/authentication/change_password.mak:2
-#, fuzzy
 msgid "Change Password"
 msgstr "تغییر گذر واژه"
 
@@ -318,12 +309,10 @@ msgid "Resend verification code"
 msgstr "فرستادن دوباره رمز"
 
 #: parsidan/templates/authentication/verification_success.mak:2
-#, fuzzy
 msgid "Verification Success"
 msgstr "شما هم اکنون به پارسیدان پیوسته اید. با سپاس فراوان!"
 
 #: parsidan/templates/authentication/verification_success.mak:6
-#, fuzzy
 msgid "Verification success!"
 msgstr "شما هم اکنون به پارسیدان پیوسته اید. با سپاس فراوان!"
 
@@ -332,7 +321,6 @@ msgid "Homepage"
 msgstr "خانه"
 
 #: parsidan/templates/contribution/index.mak:19
-#, fuzzy
 msgid "Please enter persian word"
 msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 
