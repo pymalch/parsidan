@@ -1,4 +1,3 @@
-
 Class('parsidan.contribution.Engine', parsidan.ElementController, {
 
   defaultOptions: {
@@ -9,7 +8,6 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
     queryButtonSelector: '#btnQuery',
     notifyAreaSelector: '.contribution-notify-area',
     templateSelector: '#contribution_word_template .contribution-word-template'
-
 
   },
 
@@ -33,7 +31,6 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       e.preventDefault();
       return false;
     });
-
   },
   $notifyArea: function () {
     return $(this.options.notifyAreaSelector);
@@ -66,7 +63,6 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       }
     });
   },
-
   keyPressed: function (e) {
     var newExpression = this.$().val().sanitize();
     if (newExpression != this.expression) {
