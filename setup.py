@@ -70,7 +70,7 @@ setup(
             ('public/**', 'ignore', None)],
             sys.modules['tw2'].__path__[0]:[
                 ('**.py','python',None)
-            ]
+            ],
                         },
 
     entry_points={
