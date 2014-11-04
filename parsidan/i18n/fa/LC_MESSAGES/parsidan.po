@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-31 14:50+0330\n"
+"POT-Creation-Date: 2014-11-01 01:10+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -19,16 +19,16 @@ msgstr ""
 
 #: parsidan/controllers/authentication.py:26
 msgid "Wrong credentials"
-msgstr ""
+msgstr "گزینه های شناسایی فاقد اعتبار است."
 
 #: parsidan/controllers/authentication.py:42
 msgid "Invalid username or password"
-msgstr ""
+msgstr "گدر واژه یا نام کاربری نادرست است."
 
 #: parsidan/controllers/authentication.py:46
 #, python-format
 msgid "Welcome back, %s!"
-msgstr ""
+msgstr "%s , خوش آمدید"
 
 #: parsidan/controllers/authentication.py:59
 msgid "We hope to see you soon!"
@@ -46,11 +46,11 @@ msgstr "رایانامه وارد گشته معتبر نیست!"
 #: parsidan/controllers/authentication.py:123
 #: parsidan/controllers/authentication.py:129
 msgid "Only logged in users can change their password"
-msgstr ""
+msgstr "فقط کاربران وارد گشته میتوانند گدر واژه خود را تغییر دهند."
 
 #: parsidan/controllers/authentication.py:138
 msgid "Invalid current password"
-msgstr ""
+msgstr "گذر واژه کنونی شما نادرست است."
 
 #: parsidan/controllers/authentication.py:155
 msgid "Invalid email address"
@@ -70,16 +70,16 @@ msgstr "یک خطای پیش بینی نشده رخ داده است."
 
 #: parsidan/exceptions/authentication.py:12
 msgid "Authentication Error"
-msgstr ""
+msgstr "احراز هویت انجام نشد."
 
 #: parsidan/exceptions/authentication.py:17
 #: parsidan/templates/authentication/verification_error.mak:2
 msgid "Verification Error"
-msgstr ""
+msgstr "تایید اعتبار با خطا مواجه گشت."
 
 #: parsidan/forms/authentication/change_password.py:10
 msgid "Current Password"
-msgstr ""
+msgstr "گذر واژه کنونی شما"
 
 #: parsidan/forms/authentication/change_password.py:11
 #: parsidan/forms/authentication/change_password.py:12
@@ -88,7 +88,7 @@ msgstr "گذر واژه"
 
 #: parsidan/forms/authentication/change_password.py:17
 msgid "Change"
-msgstr ""
+msgstr "تغییر"
 
 #: parsidan/forms/authentication/login.py:12
 #: parsidan/forms/authentication/recover_password.py:11
@@ -112,6 +112,10 @@ msgstr "ورود"
 msgid "Must be a valid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
+#: parsidan/forms/authentication/recover_password.py:14
+msgid "Enter a value"
+msgstr "این قسمت بایستی پر گردد"
+
 #: parsidan/forms/authentication/recover_password.py:16
 #: parsidan/forms/authentication/registration.py:19
 msgid "Please Enter whatever you see in the below"
@@ -119,7 +123,7 @@ msgstr "هر آنچه در عکس می‌بینید را وارد نمایید."
 
 #: parsidan/forms/authentication/recover_password.py:24
 msgid "Send"
-msgstr ""
+msgstr "ارسال"
 
 #: parsidan/forms/authentication/registration.py:15
 msgid "Nickname"
@@ -134,13 +138,39 @@ msgstr "تکرار گذر واژه"
 msgid "Sign Up"
 msgstr "پیوستن به پارسیدان"
 
+#: parsidan/mailing/templates/activation_request.mak:2
+msgid "Parsidan Email verification"
+msgstr ""
+
+#: parsidan/mailing/templates/activation_request.mak:5
+msgid "Please click this url to activate your account"
+msgstr ""
+
+#: parsidan/mailing/templates/password_reset.mak:1
+msgid "css-direction"
+msgstr ""
+
+#: parsidan/mailing/templates/password_reset.mak:2
+msgid "Your password was changed"
+msgstr ""
+
+#: parsidan/mailing/templates/password_reset.mak:5
+#, fuzzy
+msgid "Your new password is:"
+msgstr "گذر واژه را فراموش کرده اید؟"
+
+#: parsidan/mailing/templates/password_reset.mak:11
+#, fuzzy
+msgid "Please change your password ASAP"
+msgstr "خواهشا گذر واژه خود را هرچه زودتر تغییر دهید. با سپاس."
+
 #: parsidan/model/authentication.py:153 parsidan/model/authentication.py:184
 msgid "user already activated"
-msgstr ""
+msgstr "کاربر جاری قبلا دایر گردیده است."
 
 #: parsidan/model/authentication.py:165
 msgid "Parsidan -- verify your email address"
-msgstr ""
+msgstr "پارسیدان :: صحه گذاری   رایانامه شما"
 
 #: parsidan/model/authentication.py:179 parsidan/model/authentication.py:220
 #, python-format
@@ -150,14 +180,16 @@ msgstr ""
 #: parsidan/model/authentication.py:189
 msgid "Activation session expired, Resend activation code"
 msgstr ""
+"مهلت دایر سازی کاربری به پایان رسیده و فاقد اعتبار می‌باشد. کد دایر سازی "
+"را دوباره دریافت نمایید."
 
 #: parsidan/model/authentication.py:195
 msgid "invalid activation code"
-msgstr "رمز فعالسازی نادرست است!"
+msgstr "رمز دایرسازی نادرست است!"
 
 #: parsidan/model/authentication.py:206
 msgid "Parsidan -- your password has been reset."
-msgstr ""
+msgstr "پارسیدان :: گذر واژه شما دوباره تنظیم گردید."
 
 #: parsidan/templates/client_messages.mak:4
 #, python-format
@@ -268,7 +300,7 @@ msgstr "گذر واژه به درستی جایگزین گردید."
 
 #: parsidan/templates/authentication/login.mak:2
 msgid "Login Form"
-msgstr ""
+msgstr "ورود به پارسیدان"
 
 #: parsidan/templates/authentication/login.mak:12
 msgid "Forget password ?"

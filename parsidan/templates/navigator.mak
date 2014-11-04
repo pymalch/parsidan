@@ -20,7 +20,7 @@
             % if request.identity:
                 <ul class="nav navbar-nav">
                     <li class="${('', 'active')[page=='about']}">
-                        <a href="/contribution">${_('Add persian words')}</a>
+                        <a href="/contribution">${_('Add persian word')}</a>
                     </li>
                    <li class="${('', 'active')[page=='about']}">
                        <a href="/contribution/my_words">${_('My words')}</a>

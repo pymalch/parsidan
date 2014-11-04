@@ -18,7 +18,7 @@
 
 <%include file="local:templates.navigator" />
 
-<div class="container-fluid">
+<div class="container-fluid container-main">
     ${self.content_wrapper()}
 </div>
 
@@ -38,7 +38,7 @@ ${self.scripts()}
 
 <%def name="content_wrapper()">
     <%
-        flash=tg.flash_obj.render('flash', use_js=False)
+        flash=tg.flash_obj.render('alert', use_js=False)
     %>
     % if flash:
         <div class="row">

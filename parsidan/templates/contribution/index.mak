@@ -16,7 +16,7 @@
                     <input id="persianInput"
                            type="text"
                            class="form-control"
-                           placeholder="${ _('Please enter persian word') }"
+                           placeholder="${ _('Insert persian word') }"
                            value="">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" id="btnQuery">

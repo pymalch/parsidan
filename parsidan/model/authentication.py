@@ -162,7 +162,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         if method=='email':
             mailer = Mailer()
             mailer.send_template(self.email,
-                                 _('Parsidan -- verify your email address'),
+                                 _(u'Parsidan -- verify your email address').encode('utf-8'),
                                  template="parsidan.mailing.templates.activation_request",
                                  user=self,
                                  activation_code=self.activation_code,
@@ -203,7 +203,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         if inform_method=='email':
             mailer = Mailer()
             mailer.send_template(self.email,
-                                 _('Parsidan -- your password has been reset.'),
+                                 _(u'Parsidan -- your password has been reset.').encode('utf8'),
                                  template="parsidan.mailing.templates.password_reset",
                                  user=self,
                                  new_password=new_password,

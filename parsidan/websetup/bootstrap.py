@@ -14,9 +14,9 @@ def bootstrap(command, conf, vars):
     from sqlalchemy.exc import IntegrityError
     try:
         u = model.User()
-        u.nickname = u'Web Master'
-        u.email = u'webmaster@parsidan.com'
-        u.password = u'webmaster'
+        u.nickname = u'Malach'
+        u.email = u'malekiciw@gmail.com'
+        u.password = u'22222222'
         u.status = 'confirmed'
     
         model.DBSession.add(u)

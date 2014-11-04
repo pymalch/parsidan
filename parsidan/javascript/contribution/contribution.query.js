@@ -73,7 +73,26 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
     this.transition(null);
   },
 
-  $templateTitle:null,
+  foreignBindEvents: function(){
+    var self = this;
+    self.wordTemplate.find('input').keypress(function(e){
+      self.foreignKeyPressed(e);
+    });
+    self.wordTemplate.find('button').click(function(e){
+      e.charCode = 13;
+      self.foreignKeyPressed(e);
+      e.preventDefault();
+      return false;
+    });
+  },
+  foreignKeyPressed:function(e){
+      if (e.charCode == 13){
+
+        this.query();
+        this.$().select();
+      }
+  },
+
   createTemplate: function () {
       var self = this;
 
@@ -94,6 +113,7 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
             .appendTo($ul);
         }
       }
+      self.foreignBindEvents();
     }
 
 
