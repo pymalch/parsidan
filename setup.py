@@ -66,7 +66,12 @@ setup(
             ('**.py', 'python', None),
             ('templates/**.mak', 'mako', None),
             ('mailing/templates/**.mak', 'mako', None),
-            ('public/**', 'ignore', None)]},
+
+            ('public/**', 'ignore', None)],
+            sys.modules['tw2'].__path__[0]:[
+                ('**.py','python',None)
+            ]
+                        },
 
     entry_points={
         'paste.app_factory': [
