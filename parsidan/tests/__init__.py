@@ -14,7 +14,7 @@ from parsidan import model
 
 __all__ = ['setup_app', 'setup_db', 'teardown_db', 'TestController']
 
-application_name = 'main_without_authn'
+application_name = 'main'
 
 
 def load_app(name=application_name):

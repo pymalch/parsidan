@@ -28,7 +28,7 @@ class ContributionController(BaseController):
 
     @expose("parsidan.templates.contribution.my_words")
     def my_words(self):
-        words= PersianWord.list(request.identity['user'].id)
+        words = PersianWord.list(request.identity['user'].id)
         return dict(words=words)
 
     @expose("json")

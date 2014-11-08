@@ -1,0 +1,16 @@
+#! /bin/bash
+
+WAIT=2
+cp -r . $1;
+find $1 -name ".*" -exec rm -rf {} \;
+rm -rf $1/data/*;
+rm -rf $1/$2/i18n/*;
+find $1 -ignore_readdir_race -readable -type f -exec sed -i "s/$2/$3/g" {} \;
+sleep $WAIT
+find $1 -ignore_readdir_race -readable -type f -exec sed -i "s/$2/$3/g" {} \;
+
+sleep $WAIT
+
+find $1 -ignore_readdir_race -readable -iname "*$2*" -exec rename "s/$2/$3/g" {} \;
+
+echo 'done'
