@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-11-01 01:10+0330\n"
+"POT-Creation-Date: 2014-11-08 20:51+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -77,16 +77,26 @@ msgstr "احراز هویت انجام نشد."
 msgid "Verification Error"
 msgstr "تایید اعتبار با خطا مواجه گشت."
 
-#: parsidan/forms/authentication/change_password.py:10
+#: parsidan/forms/authentication/change_password.py:12
 msgid "Current Password"
 msgstr "گذر واژه کنونی شما"
 
-#: parsidan/forms/authentication/change_password.py:11
-#: parsidan/forms/authentication/change_password.py:12
+#: parsidan/forms/authentication/change_password.py:13
+#, python-format
+msgid "Please enter at lease %s characters."
+msgstr "حد اقل کاراکتر مجاز %s میباشد"
+
+#: parsidan/forms/authentication/change_password.py:14
+#, python-format
+msgid "The maximum characters allowed are %s."
+msgstr "حداکثر کاراکتر مجاز %s میباشذ"
+
+#: parsidan/forms/authentication/change_password.py:16
+#: parsidan/forms/authentication/change_password.py:17
 msgid "New Password"
 msgstr "گذر واژه"
 
-#: parsidan/forms/authentication/change_password.py:17
+#: parsidan/forms/authentication/change_password.py:22
 msgid "Change"
 msgstr "تغییر"
 
@@ -107,21 +117,21 @@ msgstr "گذر واژه"
 msgid "Login"
 msgstr "ورود"
 
-#: parsidan/forms/authentication/recover_password.py:14
+#: parsidan/forms/authentication/recover_password.py:15
 #: parsidan/forms/authentication/registration.py:14
 msgid "Must be a valid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
-#: parsidan/forms/authentication/recover_password.py:14
+#: parsidan/forms/authentication/recover_password.py:16
 msgid "Enter a value"
 msgstr "این قسمت بایستی پر گردد"
 
-#: parsidan/forms/authentication/recover_password.py:16
+#: parsidan/forms/authentication/recover_password.py:18
 #: parsidan/forms/authentication/registration.py:19
 msgid "Please Enter whatever you see in the below"
 msgstr "هر آنچه در عکس می‌بینید را وارد نمایید."
 
-#: parsidan/forms/authentication/recover_password.py:24
+#: parsidan/forms/authentication/recover_password.py:26
 msgid "Send"
 msgstr "ارسال"
 
@@ -138,11 +148,11 @@ msgstr "تکرار گذر واژه"
 msgid "Sign Up"
 msgstr "پیوستن به پارسیدان"
 
-#: parsidan/mailing/templates/activation_request.mak:2
+#: parsidan/mailing/templates/activation_request.mak:1
 msgid "Parsidan Email verification"
 msgstr ""
 
-#: parsidan/mailing/templates/activation_request.mak:5
+#: parsidan/mailing/templates/activation_request.mak:4
 msgid "Please click this url to activate your account"
 msgstr ""
 
@@ -275,7 +285,6 @@ msgid "SignUp"
 msgstr "بپیوندید"
 
 #: parsidan/templates/navigator.mak:40
-#: parsidan/templates/authentication/change_password_success.mak:10
 msgid "Logout"
 msgstr "برون رفت"
 
@@ -353,8 +362,9 @@ msgid "Homepage"
 msgstr "خانه"
 
 #: parsidan/templates/contribution/index.mak:19
-msgid "Please enter persian word"
-msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+#: parsidan/templates/dictionary/myWords.mak:171
+msgid "Insert persian word"
+msgstr "واژه پارسی را وارد نمایید"
 
 #: parsidan/templates/dictionary/myWords.mak:26
 #: parsidan/templates/dictionary/myWords.mak:41
@@ -368,10 +378,6 @@ msgstr "واژه وارد شده پیش از این در بستر نوشته ش�
 #: parsidan/templates/dictionary/myWords.mak:54
 msgid "Insert alien equivalent"
 msgstr "واژه همگون نا پارسی را وارد نمایید"
-
-#: parsidan/templates/dictionary/myWords.mak:171
-msgid "Insert persian word"
-msgstr "واژه پارسی را وارد نمایید"
 
 #~ msgid "home"
 #~ msgstr ""
@@ -418,4 +424,13 @@ msgstr "واژه پارسی را وارد نمایید"
 
 #~ msgid "Make persian"
 #~ msgstr "پارسی سازی"
+
+#~ msgid "Please enter persian word"
+#~ msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+
+#~ msgid "Please enter at lease 8 characters."
+#~ msgstr ""
+
+#~ msgid "The maximum characters allowed are 20."
+#~ msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-11-01 01:10+0330\n"
+"POT-Creation-Date: 2014-11-08 20:51+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -77,16 +77,26 @@ msgstr ""
 msgid "Verification Error"
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:10
+#: parsidan/forms/authentication/change_password.py:12
 msgid "Current Password"
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:11
-#: parsidan/forms/authentication/change_password.py:12
+#: parsidan/forms/authentication/change_password.py:13
+#, python-format
+msgid "Please enter at lease %s characters."
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:14
+#, python-format
+msgid "The maximum characters allowed are %s."
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:16
+#: parsidan/forms/authentication/change_password.py:17
 msgid "New Password"
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:17
+#: parsidan/forms/authentication/change_password.py:22
 msgid "Change"
 msgstr ""
 
@@ -107,21 +117,21 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:14
+#: parsidan/forms/authentication/recover_password.py:15
 #: parsidan/forms/authentication/registration.py:14
 msgid "Must be a valid email address"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:14
+#: parsidan/forms/authentication/recover_password.py:16
 msgid "Enter a value"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:16
+#: parsidan/forms/authentication/recover_password.py:18
 #: parsidan/forms/authentication/registration.py:19
 msgid "Please Enter whatever you see in the below"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:24
+#: parsidan/forms/authentication/recover_password.py:26
 msgid "Send"
 msgstr ""
 
@@ -138,11 +148,11 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: parsidan/mailing/templates/activation_request.mak:2
+#: parsidan/mailing/templates/activation_request.mak:1
 msgid "Parsidan Email verification"
 msgstr ""
 
-#: parsidan/mailing/templates/activation_request.mak:5
+#: parsidan/mailing/templates/activation_request.mak:4
 msgid "Please click this url to activate your account"
 msgstr ""
 
@@ -271,7 +281,6 @@ msgid "SignUp"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:40
-#: parsidan/templates/authentication/change_password_success.mak:10
 msgid "Logout"
 msgstr ""
 
@@ -349,7 +358,8 @@ msgid "Homepage"
 msgstr ""
 
 #: parsidan/templates/contribution/index.mak:19
-msgid "Please enter persian word"
+#: parsidan/templates/dictionary/myWords.mak:171
+msgid "Insert persian word"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
@@ -363,10 +373,6 @@ msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:54
 msgid "Insert alien equivalent"
-msgstr ""
-
-#: parsidan/templates/dictionary/myWords.mak:171
-msgid "Insert persian word"
 msgstr ""
 
 #~ msgid "Internal server error!"
@@ -409,5 +415,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Add persian words"
+#~ msgstr ""
+
+#~ msgid "Please enter persian word"
+#~ msgstr ""
+
+#~ msgid "Please enter at lease 8 characters."
+#~ msgstr ""
+
+#~ msgid "The maximum characters allowed are 20."
 #~ msgstr ""
 

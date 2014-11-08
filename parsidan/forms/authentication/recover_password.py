@@ -11,7 +11,9 @@ class RecoverPasswordForm(BaseForm):
     email = twf.TextField(label=l_('Email'),
                           input_group={'right':'glyphicon glyphicon-envelope'},
                           validator=twc.EmailValidator(required=True,
-                                                    msgs={'bademail':l_('Must be a valid email address'),'required':l_('Enter a value')}))
+                                                       msgs={
+                                                           'bademail':l_('Must be a valid email address'),
+                                                           'required':l_('Enter a value')}))
 
     recaptcha_response_field = FixedReCaptcha(label=l_('Please Enter whatever you see in the below'),
                                                   public_key=tg.config.get('recaptcha.public_key'),

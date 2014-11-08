@@ -10,9 +10,13 @@ from tg.configuration import AppConfig
 
 import parsidan
 from parsidan import model
-from parsidan.lib import app_globals, helpers 
+from parsidan.lib import app_globals, helpers
 
-base_config = AppConfig()
+
+class ParsidanAppConfig(AppConfig):
+    pass
+
+base_config = ParsidanAppConfig()
 base_config.renderers = []
 
 # True to prevent dispatcher from striping extensions
@@ -21,7 +25,7 @@ base_config.disable_request_extensions = False
 
 # Set None to disable escaping punctuation characters to "_" when dispatching methods.
 # Set to a function to provide custom escaping.
-base_config.dispatch_path_translator = True 
+base_config.dispatch_path_translator = True
 base_config.prefer_toscawidgets2 = True
 
 base_config.package = parsidan
@@ -49,26 +53,30 @@ base_config.auth_backend = 'sqlalchemy'
 # what is the class you want to use to search for users in the database
 base_config.sa_auth.user_class = model.User
 
-
 from tg.configuration.auth import TGAuthMetadata
 
 #This tells to TurboGears how to retrieve the data for your user
 class ApplicationAuthMetadata(TGAuthMetadata):
     def __init__(self, sa_auth):
         self.sa_auth = sa_auth
+
     def authenticate(self, environ, identity):
         user = self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=identity['login']).first()
         if user \
-            and user.status == 'confirmed' \
-            and user.activation_request_time is None \
-            and user.validate_password(identity['password']):
+                and user.status == 'confirmed' \
+                and user.activation_request_time is None \
+                and user.validate_password(identity['password']):
             return identity['login']
+
     def get_user(self, identity, userid):
         return self.sa_auth.dbsession.query(self.sa_auth.user_class).filter_by(email=userid).first()
+
     def get_groups(self, identity, userid):
         return [g.title for g in identity['user'].groups]
+
     def get_permissions(self, identity, userid):
         return [p.title for p in identity['user'].permissions]
+
 
 base_config.sa_auth.dbsession = model.DBSession
 
@@ -98,6 +106,8 @@ base_config.sa_auth.post_logout_url = '/authentication/post_logout'
 try:
     # Enable DebugBar if available, install tgext.debugbar to turn it on
     from tgext.debugbar import enable_debugbar
+
     enable_debugbar(base_config)
 except ImportError:
     pass
+
