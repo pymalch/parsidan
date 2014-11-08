@@ -2,6 +2,9 @@
 __author__ = 'vahid'
 
 import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.header import Header
 from tg.render import render
 import tg
 
@@ -22,13 +25,39 @@ class Mailer(object):
                             "Content-Type: text/html"])
 
 
-    def send_template(self, to=None, subject=None, template=None, **kwargs):
-        body = render(kwargs, template_name=template)
+    def send(self, to=None, subject=None, body=None):
+        message = MIMEMultipart('alternative')
+        message.set_charset('utf8')
+        message['FROM'] = self.sender
 
-        headers = self._get_headers(subject, to)
+
+        # This solved the problem with the encode on the subject. #100
+        message['Subject'] = Header(
+            subject.encode('utf-8'),
+            'UTF-8'
+        ).encode()
+
+        message['To'] = to
+
+        # And this on the body
+        _attach = MIMEText(body, 'html', 'UTF-8')
+        message.attach(_attach)
+
         session = smtplib.SMTP_SSL(self.host, port=self.port)
         session.login(self.username, self.password)
         try:
-            session.sendmail(self.sender, to, headers + "\r\n\r\n" + body)
+            session.sendmail(self.sender, to, message.as_string())
         finally:
             session.close()
+
+
+    def send_template(self, to=None, subject=None, template=None, **kwargs):
+        self.send(to=to, subject=subject, body=render(kwargs, template_name=template))
+
+        # headers = self._get_headers(subject, to)
+        # session = smtplib.SMTP_SSL(self.host, port=self.port)
+        # session.login(self.username, self.password)
+        # try:
+        #     session.sendmail(self.sender, to, headers + "\r\n\r\n" + body)
+        # finally:
+        #     session.close()
