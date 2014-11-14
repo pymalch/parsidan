@@ -113,7 +113,7 @@ Class('parsidan.search.Query', parsidan.ElementController, {
         .clone()
         .attr({
           id: this.getElementId(word)})
-        .prependTo(parsidan.searchEngine.$resultArea())
+        .prependTo(parsidan.searchEngine.$resultArea());
       return new this(word, callbacks);
     },
     findLocal: function(word){

@@ -42,13 +42,11 @@
                     }
                 });
             }
-            return;
-
     });
 
 
    $('#words .item .word').live('click',function(){
-       var item =$(this).parent()
+       var item =$(this).parent();
        if(!item.find('input').length){
 
             $('<span class="input"><input type="text" placeholder="${_('Insert alien equivalent')}"><span class="fa fa-plus"></span><span>').appendTo(item);
@@ -113,7 +111,7 @@
 
                         if(data.success){
                             alert('success');
-                            $('<span class="subitem" data-rel="' + data.success + '"><i class="fa fa-times"></i>'+ title + '</span>').appendTo(div.find('.section'))
+                            $('<span class="subitem" data-rel="' + data.success + '"><i class="fa fa-times"></i>'+ title + '</span>').appendTo(div.find('.section'));
                             div.find('input').val('');
                         }else{
                              alert('error adding');
@@ -136,7 +134,7 @@
 
 
   $('.subitem .fa-times').live('click',function(){
-       var item =$(this).parent()
+       var item =$(this).parent();
             var id=item.attr('data-rel');
             var parentId=item.parent().parent().attr('data-rel');
 

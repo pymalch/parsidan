@@ -28,7 +28,7 @@
 
                                 if(data.success){
                                     alert('success');
-                                    $('<span class="pendingWord">'+ title + '</span>').appendTo(div)
+                                    $('<span class="pendingWord">'+ title + '</span>').appendTo(div);
                                     div.find('input').val('');
                                 }else{
                                      alert('error adding');
