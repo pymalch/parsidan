@@ -9,7 +9,7 @@ import tg
 
 class RecoverPasswordForm(BaseForm):
     email = twf.TextField(label=l_('Email'),
-                          input_group={'right':'glyphicon glyphicon-envelope'},
+                          addon_icon={'right':'glyphicon glyphicon-envelope'},
                           validator=twc.EmailValidator(required=True,
                                                        msgs={
                                                            'bademail':l_('Must be a valid email address'),

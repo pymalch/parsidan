@@ -37,7 +37,7 @@ Class('parsidan.contribution.Query', parsidan.ElementController, {
               self.transition(parsidan.contribution.SuccessState);
               break;
             case contributionStatus.added_before:
-              self.result =  resp.result
+              self.result =  resp.result;
               self.transition(parsidan.contribution.AddedBeforeState);
               break;
             case contributionStatus.foreign_word:
