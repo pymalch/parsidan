@@ -23,7 +23,7 @@ Class('parsidan.contribution.SubmittedWord', parsidan.ElementController, {
     var self = this;
     this.transition(parsidan.contribution.LoadingState);
     this.xhr = $.ajax({
-      url: parsidan.contributionEngine.options.query.action,
+      url: parsidan.contributionEngine.options.submit.action,
       data: {
         word: this.word
       },
@@ -46,7 +46,7 @@ Class('parsidan.contribution.SubmittedWord', parsidan.ElementController, {
           }
         }
         else{
-          self.error = parsidan.messages.query.fatal.format(self.word);
+          self.error = parsidan.messages.submit.fatal.format(self.word);
           self.transition(parsidan.contribution.FatalState);
         }
       },

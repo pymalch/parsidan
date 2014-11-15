@@ -1,11 +1,11 @@
 Class('parsidan.contribution.Engine', parsidan.ElementController, {
 
   defaultOptions: {
-    query:{
+    submit:{
       action: '/contribution/submit_persian_word'
     },
     wordsAreaSelector: '.words-area',
-    queryButtonSelector: '#btnQuery',
+    addButtonSelector: '#btnQuery',
     notifyAreaSelector: '.contribution-notify-area',
     templateSelector: '#contribution_word_template .contribution-word-template'
 
@@ -14,9 +14,9 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
   __init__: function (selector, options) {
 
     this.selector = selector;
-    this.currentQuery = null;
-    this.exState = null;
-    this.expression = '';
+    this.currentWord = null;
+    this.state = null;
+    this.word = '';
     this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
     this.setUp();
   },
@@ -25,7 +25,7 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
     this.$().keypress(function(e){
       self.keyPressed(e);
     });
-    $(this.options.queryButtonSelector).click(function(e){
+    $(this.options.addButtonSelector).click(function(e){
       e.charCode = 13;
       self.keyPressed(e);
       e.preventDefault();
@@ -41,35 +41,34 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
   $wordTemplate: function () {
     return $(this.options.templateSelector);
   },
-  query: function () {
+  submitWord: function () {
     var self = this;
-    if (this.expression.length < 2) {
+    if (this.word.length < 2) {
       return;
     }
-    var element = parsidan.contribution.SubmittedWord.findLocal(this.expression);
+    var element = parsidan.contribution.SubmittedWord.findLocal(this.word);
     if (element){
       parsidan.contribution.SubmittedWord.moveUp(element);
 
-      if(self.exState)
-        self.exState.dispose();
+      if(self.state)
+        self.state.dispose();
       return;
     }
 
-    this.currentQuery = new parsidan.contribution.SubmittedWord(this.expression, {
+    this.currentWord = new parsidan.contribution.SubmittedWord(this.word, {
       complete: function(state) {
 
-        self.exState = state;
-        self.currentQuery = null;
+        self.state = state;
+        self.currentWord = null;
       }
     });
   },
   keyPressed: function (e) {
     var newExpression = this.$().val().sanitize();
-    if (newExpression != this.expression) {
-      this.expression = newExpression;
+    if (newExpression != this.word) {
+      this.word = newExpression;
       if (e.charCode == 13){
-
-        this.query();
+        this.submitWord();
         this.$().select();
       }
     }
