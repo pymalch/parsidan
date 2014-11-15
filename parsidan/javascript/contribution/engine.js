@@ -46,16 +46,16 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
     if (this.expression.length < 2) {
       return;
     }
-    var element = parsidan.contribution.Query.findLocal(this.expression);
+    var element = parsidan.contribution.SubmittedWord.findLocal(this.expression);
     if (element){
-      parsidan.contribution.Query.moveUp(element);
+      parsidan.contribution.SubmittedWord.moveUp(element);
 
       if(self.exState)
         self.exState.dispose();
       return;
     }
 
-    this.currentQuery = new parsidan.contribution.Query(this.expression, {
+    this.currentQuery = new parsidan.contribution.SubmittedWord(this.expression, {
       complete: function(state) {
 
         self.exState = state;

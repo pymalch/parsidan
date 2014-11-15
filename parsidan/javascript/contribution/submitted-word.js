@@ -8,7 +8,7 @@ parsidan.search.ContributionStatus={
   foreign_word: 2
 };
 
-Class('parsidan.contribution.Query', parsidan.ElementController, {
+Class('parsidan.contribution.SubmittedWord', parsidan.ElementController, {
   __init__: function (word, callbacks) {
     this.word = word;
     this.wordTemplate=null;
