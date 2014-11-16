@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-11-08 20:51+0330\n"
+"POT-Creation-Date: 2014-11-16 11:21+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -77,37 +77,64 @@ msgstr ""
 msgid "Verification Error"
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:12
-msgid "Current Password"
-msgstr ""
-
-#: parsidan/forms/authentication/change_password.py:13
+#: parsidan/forms/validation.py:7
 #, python-format
 msgid "Please enter at lease %s characters."
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:14
+#: parsidan/forms/validation.py:8
 #, python-format
 msgid "The maximum characters allowed are %s."
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:16
-#: parsidan/forms/authentication/change_password.py:17
+#: parsidan/forms/validation.py:9
+#: parsidan/forms/authentication/recover_password.py:18
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:209
+msgid "Enter a value"
+msgstr ""
+
+#: parsidan/forms/validation.py:10
+#: parsidan/forms/authentication/recover_password.py:17
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:527
+msgid "Must be a valid email address"
+msgstr ""
+
+#: parsidan/forms/validation.py:11
+msgid "Must match password"
+msgstr ""
+
+#: parsidan/forms/validation.py:12
+msgid "Incorrect captcha value."
+msgstr ""
+
+#: parsidan/forms/validation.py:13
+msgid "Missing captcha value."
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:13
+msgid "Current Password"
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:14
 msgid "New Password"
 msgstr ""
 
-#: parsidan/forms/authentication/change_password.py:22
+#: parsidan/forms/authentication/change_password.py:15
+msgid "Confirm New Password"
+msgstr ""
+
+#: parsidan/forms/authentication/change_password.py:20
 msgid "Change"
 msgstr ""
 
-#: parsidan/forms/authentication/login.py:12
-#: parsidan/forms/authentication/recover_password.py:11
-#: parsidan/forms/authentication/registration.py:11
+#: parsidan/forms/authentication/login.py:10
+#: parsidan/forms/authentication/recover_password.py:13
+#: parsidan/forms/authentication/registration.py:13
 msgid "Email"
 msgstr ""
 
-#: parsidan/forms/authentication/login.py:13
-#: parsidan/forms/authentication/registration.py:16
+#: parsidan/forms/authentication/login.py:12
+#: parsidan/forms/authentication/registration.py:18
 msgid "Password"
 msgstr ""
 
@@ -117,47 +144,39 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:15
-#: parsidan/forms/authentication/registration.py:14
-msgid "Must be a valid email address"
-msgstr ""
-
-#: parsidan/forms/authentication/recover_password.py:16
-msgid "Enter a value"
-msgstr ""
-
-#: parsidan/forms/authentication/recover_password.py:18
-#: parsidan/forms/authentication/registration.py:19
+#: parsidan/forms/authentication/recover_password.py:20
+#: parsidan/forms/authentication/registration.py:27
 msgid "Please Enter whatever you see in the below"
 msgstr ""
 
-#: parsidan/forms/authentication/recover_password.py:26
+#: parsidan/forms/authentication/recover_password.py:28
 msgid "Send"
 msgstr ""
 
-#: parsidan/forms/authentication/registration.py:15
+#: parsidan/forms/authentication/registration.py:16
 msgid "Nickname"
 msgstr ""
 
-#: parsidan/forms/authentication/registration.py:17
+#: parsidan/forms/authentication/registration.py:22
 msgid "Password Confirm"
 msgstr ""
 
-#: parsidan/forms/authentication/registration.py:25
+#: parsidan/forms/authentication/registration.py:36
 #: parsidan/templates/authentication/signup.mak:4
 msgid "Sign Up"
 msgstr ""
 
 #: parsidan/mailing/templates/activation_request.mak:1
+#: parsidan/mailing/templates/password_reset.mak:1
+msgid "css-direction"
+msgstr ""
+
+#: parsidan/mailing/templates/activation_request.mak:2
 msgid "Parsidan Email verification"
 msgstr ""
 
-#: parsidan/mailing/templates/activation_request.mak:4
+#: parsidan/mailing/templates/activation_request.mak:5
 msgid "Please click this url to activate your account"
-msgstr ""
-
-#: parsidan/mailing/templates/password_reset.mak:1
-msgid "css-direction"
 msgstr ""
 
 #: parsidan/mailing/templates/password_reset.mak:2
@@ -322,18 +341,15 @@ msgstr ""
 
 #: parsidan/templates/authentication/password_recovery_success.mak:8
 #: parsidan/templates/authentication/signup_success.mak:8
-#: parsidan/templates/authentication/verification_request.mak:8
 #, python-format
 msgid "Please check your mailbox: %s"
 msgstr ""
 
 #: parsidan/templates/authentication/signup_success.mak:2
-#: parsidan/templates/authentication/verification_request.mak:2
 msgid "Sign Up Success"
 msgstr ""
 
 #: parsidan/templates/authentication/signup_success.mak:6
-#: parsidan/templates/authentication/verification_request.mak:6
 msgid "Registration success!"
 msgstr ""
 
@@ -343,6 +359,19 @@ msgstr ""
 
 #: parsidan/templates/authentication/verification_error.mak:12
 msgid "Resend verification code"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_request.mak:2
+msgid "Signup pending"
+msgstr ""
+
+#: parsidan/templates/authentication/verification_request.mak:6
+msgid "Signup process started successfully."
+msgstr ""
+
+#: parsidan/templates/authentication/verification_request.mak:8
+#, python-format
+msgid "For finalize registration please check your mailbox: %s"
 msgstr ""
 
 #: parsidan/templates/authentication/verification_success.mak:2
@@ -358,7 +387,7 @@ msgid "Homepage"
 msgstr ""
 
 #: parsidan/templates/contribution/index.mak:19
-#: parsidan/templates/dictionary/myWords.mak:171
+#: parsidan/templates/dictionary/myWords.mak:169
 msgid "Insert persian word"
 msgstr ""
 
@@ -371,8 +400,113 @@ msgstr ""
 msgid "Persian word added before"
 msgstr ""
 
-#: parsidan/templates/dictionary/myWords.mak:54
+#: parsidan/templates/dictionary/myWords.mak:52
 msgid "Insert alien equivalent"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:210
+msgid "Received in wrong character set; should be $encoding"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:211
+msgid "Form submission received corrupted; please try again"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:307
+msgid "Value is too short"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:308
+msgid "Value is too long"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:333
+msgid "Must be at least $min characters"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:335
+msgid "Cannot be longer than $max characters"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:346
+msgid "Select at least $min"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:347
+msgid "Select no more than $max"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:363
+msgid "Must be at least $min"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:364
+msgid "Cannot be more than $max"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:382
+msgid "Must be an integer"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:401
+msgid "You must select this"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:421
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:513
+msgid "Invalid value"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:440
+msgid "Must follow date/time format $format_str"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:441
+msgid "Cannot be earlier than $min_str"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:442
+msgid "Cannot be later than $max_str"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:495
+msgid "Must follow date format $format_str"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:537
+msgid "Must be a valid URL"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:556
+msgid "Must be a valid IP address"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:557
+msgid "Must be a valid IP network block"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:579
+msgid "Value not recognised as a UUID"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:609
+msgid "Must match $other_field_str"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:610
+msgid "$other_field_str field is not found"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:611
+msgid "$other_field_str field is invalid"
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/recaptcha/validator.py:14
+msgid "Incorrect value."
+msgstr ""
+
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/recaptcha/validator.py:15
+msgid "Missing value."
 msgstr ""
 
 #~ msgid "Internal server error!"
@@ -424,5 +558,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "The maximum characters allowed are 20."
+#~ msgstr ""
+
+#~ msgid "Must match %s"
+#~ msgstr ""
+
+#~ msgid "Sign Up Pending"
+#~ msgstr ""
+
+#~ msgid "Registration Pending!"
 #~ msgstr ""
 

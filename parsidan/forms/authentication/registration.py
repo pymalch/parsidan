@@ -14,8 +14,7 @@ class RegistrationForm(BaseForm):
                           addon_icon={'right': 'glyphicon glyphicon-envelope'},
                           validator=twc.EmailValidator(required=True, msgs=validation_message))
     nickname = twf.TextField(label=l_('Nickname'),
-                             addon_icon={'right': 'glyphicon glyphicon-flag'},
-                             validator=twc.EmailValidator(msgs=validation_message))
+                             addon_icon={'right': 'glyphicon glyphicon-flag'})
     password = twf.PasswordField(label=l_('Password'),
                                  addon_icon={'right': 'glyphicon glyphicon-lock'},
                                  validator=twc.LengthValidator(min=8, max=20, msgs=validation_message),
@@ -29,7 +28,8 @@ class RegistrationForm(BaseForm):
                                               public_key=tg.config.get('recaptcha.public_key'),
                                               validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
                                                                            tg.config.get('domain.ip_address'),
-                                                                           msgs=validation_message),
+                                                                           messages=validation_message
+                                                                         ),
     )
 
     action = '/authentication/signup'

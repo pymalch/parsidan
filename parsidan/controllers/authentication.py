@@ -66,7 +66,7 @@ class AuthenticationController(BaseController):
         signup_form = RegistrationForm.req()
         return dict(form=signup_form)
 
-    @expose("parsidan.templates.authentication.signup_success")
+    @expose("parsidan.templates.authentication.verification_request")
     @validate(RegistrationForm, error_handler=signup_form)
     def signup(self, email=None, nickname=None, password=None, password_confirm=None, *args, **kw):
         # TODO: exception handling
@@ -79,7 +79,7 @@ class AuthenticationController(BaseController):
                             nickname=nickname,
                             status='confirmed')
 
-            new_user.password = password;
+            new_user.password = password
             DBSession.add(new_user)
             DBSession.flush()
             new_user.request_activation()

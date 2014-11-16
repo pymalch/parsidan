@@ -20,8 +20,9 @@ class RecoverPasswordForm(BaseForm):
     recaptcha_response_field = FixedReCaptcha(label=l_('Please Enter whatever you see in the below'),
                                               public_key=tg.config.get('recaptcha.public_key'),
                                               validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
-                                                                           tg.config.get('domain.ip_address')),
-                                              msgs=validation_message)
+                                                                           tg.config.get('domain.ip_address'),
+                                                                           messages=validation_message),
+                                             )
 
     action = '/authentication/recover_password'
     submit = twf.SubmitButton(id='submit', value=l_('Send'))

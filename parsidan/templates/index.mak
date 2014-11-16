@@ -3,10 +3,8 @@
 <%
     col_classes = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3"
 %>
-
 <div class="container query-area">
     <img src="/img/parsidan.jpg" class="center-block"/>
-
     <div class="row">
         <div class="${col_classes}">
             <div class="form-group">
