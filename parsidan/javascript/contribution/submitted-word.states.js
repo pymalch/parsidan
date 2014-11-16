@@ -2,7 +2,7 @@
  * Created by vahid on 10/9/14.
  */
 
-Class('parsidan.contribution.QueryState', {
+Class('parsidan.contribution.SubmittedWordState', {
   __init__: function(query){
     this.query = query;
     this.area= parsidan.contributionEngine.$notifyArea();
@@ -18,7 +18,7 @@ Class('parsidan.contribution.QueryState', {
 
 });
 
-Class('parsidan.contribution.LoadingState', parsidan.contribution.QueryState, {
+Class('parsidan.contribution.LoadingState', parsidan.contribution.SubmittedWordState, {
   setUp: function(){
     this.area
         .append(
@@ -33,7 +33,7 @@ Class('parsidan.contribution.LoadingState', parsidan.contribution.QueryState, {
 });
 
 
-Class('parsidan.contribution.SuccessState', parsidan.contribution.QueryState, {
+Class('parsidan.contribution.SuccessState', parsidan.contribution.SubmittedWordState, {
 
   setUp: function(){
       this.area
@@ -50,7 +50,7 @@ Class('parsidan.contribution.SuccessState', parsidan.contribution.QueryState, {
 
 
 
-Class('parsidan.contribution.FatalState', parsidan.contribution.QueryState, {
+Class('parsidan.contribution.FatalState', parsidan.contribution.SubmittedWordState, {
   setUp: function(){
     this.area
           .html(this.query.error)
@@ -63,7 +63,7 @@ Class('parsidan.contribution.FatalState', parsidan.contribution.QueryState, {
 });
 
 
-Class('parsidan.contribution.AddedBeforeState', parsidan.contribution.QueryState, {
+Class('parsidan.contribution.AddedBeforeState', parsidan.contribution.SubmittedWordState, {
   setUp: function(){
         this.area
           .html(parsidan.messages.contribution.addedBefore.format(this.query.word))
@@ -76,7 +76,7 @@ Class('parsidan.contribution.AddedBeforeState', parsidan.contribution.QueryState
   }
 });
 
-Class('parsidan.contribution.ForeignWordState', parsidan.contribution.QueryState, {
+Class('parsidan.contribution.ForeignWordState', parsidan.contribution.SubmittedWordState, {
   setUp: function(){
    this.area
           .html(parsidan.messages.contribution.foreignWord.format(this.query.word))
