@@ -31,9 +31,6 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       return false;
     });
   },
-  $notifyArea: function () {
-    return $(this.options.notifyAreaSelector);
-  },
   $wordsArea: function () {
     return $(this.options.wordsAreaSelector);
   },
