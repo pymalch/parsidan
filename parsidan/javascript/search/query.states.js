@@ -5,7 +5,6 @@
 Class('parsidan.search.QueryState', {
   __init__: function(query){
     this.query = query;
-
     this.setUp();
   },
   setUp: function(){
@@ -14,8 +13,8 @@ Class('parsidan.search.QueryState', {
   dispose: function(){
     throw "Not Implemented";
   }
-
 });
+
 
 Class('parsidan.search.LoadingState', parsidan.search.QueryState, {
   setUp: function(){
