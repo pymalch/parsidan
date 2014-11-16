@@ -81,29 +81,6 @@ Class('parsidan.contribution.SubmittedWord', parsidan.ParentalElement, {
   $title: function () {
     return this.$().find('.panel-title');
   },
-
-//  $templateTitle: null,
-//  createTemplate: function () {
-//    var self = this;
-//
-//    self.wordTemplate = parsidan.contributionEngine.$wordTemplate()
-//      .clone()
-//      .attr({
-//        id: this.__class__.getElementId(this.word)})
-//      .prependTo(parsidan.contributionEngine.$wordsArea());
-//    self.wordTemplate.find('.panel-title').text(this.word);
-//
-//    if (self.result) {
-//
-//      var $ul = $('<ul />').appendTo(self.wordTemplate.find('.panel-body'));
-//      for (var i in self.result) {
-//        var item = self.result[i];
-//        $('<li />')
-//          .html(item.title)
-//          .appendTo($ul);
-//      }
-//    }
-//  },
   addForeignWord: function (translation) {
 
   }
