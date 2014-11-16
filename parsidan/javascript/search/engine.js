@@ -3,7 +3,7 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
 
   defaultOptions: {
     query:{
-      action: '/query.json',
+      action: '/query.json'
     },
     resultAreaSelector: '.result-area',
     queryButtonSelector: '#btnQuery'
@@ -41,7 +41,9 @@ Class('parsidan.search.Engine', parsidan.ElementController, {
       localQuery.moveUp();
       return;
     }
-    this.currentQuery = parsidan.search.Query.create(this.expression, {
+    this.currentQuery = parsidan.search.Query.create(
+      this.$resultArea(),
+      this.expression, {
       complete: function(){
         self.currentQuery = null;
       }

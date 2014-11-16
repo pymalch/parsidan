@@ -5,9 +5,8 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       action: '/contribution/submit_persian_word'
     },
     wordsAreaSelector: '.words-area',
-    addButtonSelector: '#btnQuery',
-    notifyAreaSelector: '.contribution-notify-area',
-    templateSelector: '#contribution_word_template .contribution-word-template'
+    addButtonSelector: '#btnQuery'
+
 
   },
 
@@ -32,14 +31,8 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       return false;
     });
   },
-  $notifyArea: function () {
-    return $(this.options.notifyAreaSelector);
-  },
   $wordsArea: function () {
     return $(this.options.wordsAreaSelector);
-  },
-  $wordTemplate: function () {
-    return $(this.options.templateSelector);
   },
   submitWord: function () {
     var self = this;
@@ -55,12 +48,14 @@ Class('parsidan.contribution.Engine', parsidan.ElementController, {
       return;
     }
 
-    this.currentWord = new parsidan.contribution.SubmittedWord(this.word, {
-      complete: function(state) {
-
-        self.state = state;
-        self.currentWord = null;
-      }
+    this.currentWord = parsidan.contribution.SubmittedWord.create(
+      parsidan.contributionEngine.$wordsArea(),
+      this.word,
+      {
+        complete: function(state) {
+          self.state = state;
+          self.currentWord = null;
+        }
     });
   },
   keyPressed: function (e) {
