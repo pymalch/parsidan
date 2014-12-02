@@ -1,17 +1,13 @@
 Class('parsidan.contribution.Engine', parsidan.ElementController, {
-
   defaultOptions: {
     submit:{
       action: '/contribution/submit_persian_word'
     },
     wordsAreaSelector: '.words-area',
     addButtonSelector: '#btnQuery'
-
-
   },
 
   __init__: function (selector, options) {
-
     this.selector = selector;
     this.currentWord = null;
     this.state = null;

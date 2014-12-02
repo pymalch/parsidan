@@ -33,7 +33,7 @@ class Mailer(object):
 
         # This solved the problem with the encode on the subject. #100
         message['Subject'] = Header(
-            subject.encode('utf-8'),
+            subject,
             'UTF-8'
         ).encode()
 
