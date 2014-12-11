@@ -10,7 +10,7 @@
     <div class="row">
         <div class="${col_classes}">
             <div class="form-group">
-                <div class="input-group">
+                <div class="input-group input-group-lg">
 
                     <input id="persianInput"
                            type="text"
@@ -40,10 +40,13 @@
             </h3>
         </div>
         <div class="panel-body equivalent-content">
-            <div class="form-group">
+            <p class="message"></p>
+            <div class="loading hidden"></div>
+             <div class="form-group hidden" >
                 <div class="input-group">
                     <input type="text"
-                            class="form-control"
+
+                            class="input-foreign form-control"
                             placeholder="${ _('Please enter non persian word') }"
                             value="">
                     <span class="input-group-btn">
@@ -61,7 +64,12 @@
 <%def name="scripts()">
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#persianInput').contributionEngine();
+            $('#persianInput').contributionEngine({
+                onComplete:function(object){
+                    this.state.word.$foreignInput().contributionEngine();
+                }
+            });
+
         });
     </script>
 </%def>

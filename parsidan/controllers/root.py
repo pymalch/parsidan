@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, lurl, redirect, tmpl_context
+from tg import expose, lurl, redirect, tmpl_context, request
 from tg.i18n import ugettext as _, set_lang
+from tg.decorators import paginate as paginatedeco
 from parsidan import model
 from parsidan.controllers.dictionary import DictionaryController
 from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
@@ -14,7 +15,9 @@ from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
 from parsidan.lib.sanitizer import sanitize
 from parsidan.controllers.contribution import ContributionController
+
 __all__ = ['RootController']
+
 
 class QueryStatus:
     success = 0
@@ -23,7 +26,6 @@ class QueryStatus:
 
 
 class RootController(BaseController):
-
     dictionary = DictionaryController()
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
     error = ErrorController()
@@ -68,3 +70,16 @@ class RootController(BaseController):
             #DBSession.commit()
             transaction.commit()
             return dict(word=word, status=QueryStatus.success, result=result)
+
+    @expose("parsidan.templates.contribution.words")
+    @paginatedeco("words", items_per_page=1)
+    def words(self, character=None, page=1, self_words=None):
+        if character:
+            character = sanitize(character)
+
+        if request.identity and self_words:
+            self_words = request.identity['user'].id
+
+        words = PersianWord.list(character, self_words)
+
+        return dict(words=words, alphabets=PersianWord.alphabets, character=character, self_words=self_words)

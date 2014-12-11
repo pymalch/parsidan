@@ -8,7 +8,7 @@
     <div class="row">
         <div class="${col_classes}">
             <div class="form-group">
-                <div class="input-group">
+                <div class="input-group input-group-lg">
 
                     <input id="queryInput"
                            type="text"

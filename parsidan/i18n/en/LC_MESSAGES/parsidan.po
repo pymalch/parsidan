@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-11-16 11:21+0330\n"
+"POT-Creation-Date: 2014-12-11 21:28+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Please login to view this page."
 msgstr ""
 
-#: parsidan/controllers/root.py:34
+#: parsidan/controllers/root.py:35
 msgid "parsidan"
 msgstr ""
 
@@ -111,6 +111,11 @@ msgstr ""
 msgid "Missing captcha value."
 msgstr ""
 
+#: parsidan/forms/validation.py:14
+#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:307
+msgid "Value is too short"
+msgstr ""
+
 #: parsidan/forms/authentication/change_password.py:13
 msgid "Current Password"
 msgstr ""
@@ -139,7 +144,7 @@ msgid "Password"
 msgstr ""
 
 #: parsidan/forms/authentication/login.py:20
-#: parsidan/templates/navigator.mak:37
+#: parsidan/templates/navigator.mak:35
 #: parsidan/templates/authentication/verification_success.mak:11
 msgid "Login"
 msgstr ""
@@ -172,22 +177,28 @@ msgid "css-direction"
 msgstr ""
 
 #: parsidan/mailing/templates/activation_request.mak:2
+#: parsidan/mailing/templates/password_reset.mak:2
+#: parsidan/templates/master.mak:55 parsidan/templates/navigator.mak:15
+msgid "Parsidan"
+msgstr ""
+
+#: parsidan/mailing/templates/activation_request.mak:3
 msgid "Parsidan Email verification"
 msgstr ""
 
-#: parsidan/mailing/templates/activation_request.mak:5
+#: parsidan/mailing/templates/activation_request.mak:6
 msgid "Please click this url to activate your account"
 msgstr ""
 
-#: parsidan/mailing/templates/password_reset.mak:2
+#: parsidan/mailing/templates/password_reset.mak:4
 msgid "Your password was changed"
 msgstr ""
 
-#: parsidan/mailing/templates/password_reset.mak:5
+#: parsidan/mailing/templates/password_reset.mak:7
 msgid "Your new password is:"
 msgstr ""
 
-#: parsidan/mailing/templates/password_reset.mak:11
+#: parsidan/mailing/templates/password_reset.mak:13
 msgid "Please change your password ASAP"
 msgstr ""
 
@@ -252,20 +263,25 @@ msgstr ""
 
 #: parsidan/templates/client_messages.mak:13
 #, python-format
-msgid "The persian word \"%s\" added successfully."
+msgid "Submitting Persian word \"%s\""
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:14
 #, python-format
-msgid "The word \"%s\" is a foreign word!"
+msgid "The persian word \"%s\" added successfully."
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:15
 #, python-format
+msgid "The word \"%s\" is a foreign word!"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:16
+#, python-format
 msgid "The word \"%s\" has been added before!"
 msgstr ""
 
-#: parsidan/templates/defenitions.mak:20 parsidan/templates/index.mak:18
+#: parsidan/templates/index.mak:16 parsidan/templates/contribution/index.mak:50
 msgid "Please enter non persian word"
 msgstr ""
 
@@ -274,41 +290,35 @@ msgstr ""
 msgid "&copy; %s Parsidan"
 msgstr ""
 
-#: parsidan/templates/master.mak:55 parsidan/templates/navigator.mak:15
-msgid "Parsidan"
-msgstr ""
-
 #: parsidan/templates/navigator.mak:23
-msgid "Add persian word"
-msgstr ""
+#, fuzzy
+#| msgid "Persian"
+msgid "Persian words"
+msgstr "پارسی"
 
-#: parsidan/templates/navigator.mak:26
-msgid "My words"
-msgstr ""
-
-#: parsidan/templates/navigator.mak:34
+#: parsidan/templates/navigator.mak:32
 msgid "Persian"
 msgstr "پارسی"
 
-#: parsidan/templates/navigator.mak:34
+#: parsidan/templates/navigator.mak:32
 msgid "English"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:38
+#: parsidan/templates/navigator.mak:36
 #: parsidan/templates/authentication/login.mak:14
 msgid "SignUp"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:40
+#: parsidan/templates/navigator.mak:38
 msgid "Logout"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:41
+#: parsidan/templates/navigator.mak:39
 #: parsidan/templates/authentication/change_password.mak:2
 msgid "Change Password"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:42
+#: parsidan/templates/navigator.mak:40
 msgid "Admin"
 msgstr ""
 
@@ -386,9 +396,13 @@ msgstr ""
 msgid "Homepage"
 msgstr ""
 
-#: parsidan/templates/contribution/index.mak:19
+#: parsidan/templates/contribution/index.mak:18
 #: parsidan/templates/dictionary/myWords.mak:169
 msgid "Insert persian word"
+msgstr ""
+
+#: parsidan/templates/contribution/words.mak:15
+msgid "Show my words"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
@@ -410,10 +424,6 @@ msgstr ""
 
 #: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:211
 msgid "Form submission received corrupted; please try again"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:307
-msgid "Value is too short"
 msgstr ""
 
 #: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:308
@@ -567,5 +577,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Registration Pending!"
+#~ msgstr ""
+
+#~ msgid "Add persian word"
+#~ msgstr ""
+
+#~ msgid "My words"
 #~ msgstr ""
 

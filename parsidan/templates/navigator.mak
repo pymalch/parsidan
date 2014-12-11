@@ -17,16 +17,14 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-content">
-            % if request.identity:
+
                 <ul class="nav navbar-nav">
                     <li class="${('', 'active')[page=='about']}">
-                        <a href="/contribution">${_('Add persian word')}</a>
+                            <a href="${tg.url('/words')}">${_('Persian words')}</a>
                     </li>
-                   <li class="${('', 'active')[page=='about']}">
-                       <a href="/contribution/my_words">${_('My words')}</a>
-                   </li>
+
                  </ul>
-            % endif
+
 
             % if tg.auth_stack_enabled:
                 <ul class="nav navbar-nav navbar-right">

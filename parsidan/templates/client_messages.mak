@@ -10,6 +10,7 @@
             yes: "${_('Yes')}"
         },
         contribution:{
+            loading: "${_('Submitting Persian word "%s"')}",
             success: "${_('The persian word "%s" added successfully.')}",
             foreignWord:"${_('The word "%s" is a foreign word!' )}",
             addedBefore:"${_('The word "%s" has been added before!' )}"
