@@ -1,79 +1,57 @@
-Class('parsidan.contribution.Engine', parsidan.ElementController, {
 
-  defaultOptions: {
-    submit:{
-      action: '/contribution/submit_persian_word'
-    },
-    wordsAreaSelector: '.words-area',
-    addButtonSelector: '#btnQuery'
+Class('parsidan.search.Engine', parsidan.dictionary.Engine, {
 
-
+   __init__: function(inputObject , options){
+    this.callSuper(parsidan.dictionary.Engine, '__init__', [inputObject, options]);
   },
-
-  __init__: function (selector, options) {
-
-    this.selector = selector;
-    this.currentWord = null;
-    this.state = null;
-    this.word = '';
-    this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
-    this.setUp();
-  },
-  setUp: function () {
-    var self = this;
-    this.$().keypress(function(e){
-      self.keyPressed(e);
-    });
-    $(this.options.addButtonSelector).click(function(e){
-      e.charCode = 13;
-      self.keyPressed(e);
-      e.preventDefault();
+  preProccess:function(){
+      var self = this;
+    if (this.expression.length < 2) {
       return false;
-    });
+    }
+    var localItem = parsidan.search.Query.findLocal(this.expression);
+    if (localItem){
+      localItem.moveUp();
+      return false;
+    }
+    return true;
   },
-  $wordsArea: function () {
-    return $(this.options.wordsAreaSelector);
-  },
-  submitWord: function () {
+  proccess: function () {
     var self = this;
-    if (this.word.length < 2) {
-      return;
-    }
-    var element = parsidan.contribution.SubmittedWord.findLocal(this.word);
-    if (element){
-      parsidan.contribution.SubmittedWord.moveUp(element);
-
-      if(self.state)
-        self.state.dispose();
-      return;
-    }
-
-    this.currentWord = parsidan.contribution.SubmittedWord.create(
-      parsidan.contributionEngine.$wordsArea(),
-      this.word,
-      {
-        complete: function(state) {
-          self.state = state;
-          self.currentWord = null;
-        }
-    });
-  },
-  keyPressed: function (e) {
-    var newExpression = this.$().val().sanitize();
-    if (newExpression != this.word) {
-      this.word = newExpression;
-      if (e.charCode == 13){
-        this.submitWord();
-        this.$().select();
-      }
-    }
+    if(!self.preProccess())
+        return;
+    this.currentProcedure = parsidan.search.Query.create(
+      this.$resultArea(),
+      this.expression, self.options);
   }
 });
 
-jQuery.fn.contributionEngine = function (options) {
-  if (this.length >= 1 && !parsidan.hasOwnProperty('contributionEngine')) {
-    parsidan.contributionEngine = new parsidan.contribution.Engine(this.selector, options);
+jQuery.fn.searchEngine = function (options) {
+  if (this.length >= 1 && !parsidan.hasOwnProperty('searchEngine')) {
+    parsidan.searchEngine = new parsidan.search.Engine(this, options);
   }
+  return this;
+};
+
+
+
+
+
+Class('parsidan.contribution.Engine', parsidan.dictionary.Engine, {
+
+   __init__: function(inputObject, options){
+    this.callSuper(parsidan.dictionary.Engine, '__init__', [inputObject, options]);
+  },
+  proccess: function () {
+    var self = this;
+    this.currentProcedure = new parsidan.contribution.Query(this.expression, self.options);
+  }
+});
+
+
+jQuery.fn.contributionEngine = function (options) {
+    parsidan.contributionEngine = new parsidan.contribution.Engine(this, options);
+
   return this;
 };
 

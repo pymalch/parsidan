@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-12-11 21:28+0330\n"
+"POT-Creation-Date: 2015-01-08 01:36+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -56,11 +56,11 @@ msgstr ""
 msgid "Invalid email address"
 msgstr ""
 
-#: parsidan/controllers/contribution.py:22
+#: parsidan/controllers/contribution.py:20
 msgid "Please login to view this page."
 msgstr ""
 
-#: parsidan/controllers/root.py:35
+#: parsidan/controllers/root.py:31
 msgid "parsidan"
 msgstr ""
 
@@ -234,55 +234,89 @@ msgstr ""
 
 #: parsidan/templates/client_messages.mak:5
 #, python-format
-msgid "The Persian equivalent of the word %s is:"
+msgid "The equivalent of the persian word %s is:"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:6
 #, python-format
-msgid "There are no result for %s!"
+msgid "The equivalent of the foreign word %s is:"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:7
 #, python-format
-msgid "Unexpected situation while querying for: %s"
+msgid "There are no result for %s!"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:8
 #, python-format
-msgid "The requested word is already a persian expression %s:"
+msgid "Unexpected situation while querying for: %s"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:9
 #, python-format
-msgid "Do you want to submit the translation of word: %s ?"
+msgid "The requested word is already a persian expression %s:"
 msgstr ""
 
 #: parsidan/templates/client_messages.mak:10
-msgid "Yes"
+#, python-format
+msgid "Do you want to submit the translation of word: %s ?"
 msgstr ""
 
-#: parsidan/templates/client_messages.mak:13
+#: parsidan/templates/client_messages.mak:11
 #, python-format
 msgid "Submitting Persian word \"%s\""
 msgstr ""
 
-#: parsidan/templates/client_messages.mak:14
+#: parsidan/templates/client_messages.mak:12
 #, python-format
 msgid "The persian word \"%s\" added successfully."
 msgstr ""
 
-#: parsidan/templates/client_messages.mak:15
+#: parsidan/templates/client_messages.mak:13
 #, python-format
 msgid "The word \"%s\" is a foreign word!"
 msgstr ""
 
-#: parsidan/templates/client_messages.mak:16
+#: parsidan/templates/client_messages.mak:14
 #, python-format
 msgid "The word \"%s\" has been added before!"
 msgstr ""
 
-#: parsidan/templates/index.mak:16 parsidan/templates/contribution/index.mak:50
-msgid "Please enter non persian word"
+#: parsidan/templates/client_messages.mak:15
+#, fuzzy, python-format
+msgid "Is \"%s\" a persian word?"
+msgstr "پارسی"
+
+#: parsidan/templates/client_messages.mak:16
+msgid "Please insert persian equivalent"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:17
+msgid "Please insert foreign equivalent"
+msgstr ""
+
+#: parsidan/templates/client_messages.mak:18
+#, fuzzy
+#| msgid "Persian words"
+msgid "Persian word"
+msgstr "پارسی"
+
+#: parsidan/templates/client_messages.mak:19
+#, fuzzy
+#| msgid "Persian words"
+msgid "Foreign word"
+msgstr "پارسی"
+
+#: parsidan/templates/index.mak:17
+msgid "Please enter the word"
+msgstr ""
+
+#: parsidan/templates/index.mak:74
+msgid "Yes"
+msgstr ""
+
+#: parsidan/templates/index.mak:75
+msgid "No"
 msgstr ""
 
 #: parsidan/templates/master.mak:28
@@ -291,8 +325,8 @@ msgid "&copy; %s Parsidan"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:23
+#: parsidan/templates/contribution/words.mak:9
 #, fuzzy
-#| msgid "Persian"
 msgid "Persian words"
 msgstr "پارسی"
 
@@ -401,8 +435,17 @@ msgstr ""
 msgid "Insert persian word"
 msgstr ""
 
-#: parsidan/templates/contribution/words.mak:15
+#: parsidan/templates/contribution/index.mak:50
+msgid "Please enter non persian word"
+msgstr ""
+
+#: parsidan/templates/contribution/words.mak:12
+#: parsidan/templates/contribution/words.mak:29
 msgid "Show my words"
+msgstr ""
+
+#: parsidan/templates/contribution/words.mak:23
+msgid "Show all words"
 msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:26
@@ -583,5 +626,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "My words"
+#~ msgstr ""
+
+#~ msgid "The Persian equivalent of the word %s is:"
 #~ msgstr ""
 

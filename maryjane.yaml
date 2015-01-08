@@ -116,12 +116,10 @@ public_js: !watch
     - !template ${javascript}/helpers.js
     - !template ${javascript}/messages.js
     - !template ${javascript}/common.js
-    - !template ${javascript}/search/engine.js
-    - !template ${javascript}/search/query.states.js
-    - !template ${javascript}/search/query.js
     - !template ${javascript}/contribution/engine.js
-    - !template ${javascript}/contribution/submitted-word.states.js
-    - !template ${javascript}/contribution/submitted-word.js
+    - !template ${javascript}/contribution/query.js
+    - !template ${javascript}/contribution/states.js
+
     - !template ${javascript}/tail.js
 
 

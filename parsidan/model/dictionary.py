@@ -9,6 +9,15 @@ from datetime import datetime
 from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
 
 
+class QueryStatus:
+    dictionary_not_found = 0
+    dictionary_foreign_word = 1
+    dictionary_persian_word = 2
+    contribution_success_add = 3
+    contribution_added_before = 4
+    contribution_not_foreign_word = 5
+    contribution_not_persian_word = 6
+
 class PersianWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     #TODO: Remove unnecessary spaces before inserting
     __tablename__ = "persian_word"
@@ -69,10 +78,15 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         return word
 
 class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
+
+
+
+
     __tablename__ = "dictionary"
     __table_args__ = (
         PrimaryKeyConstraint("foreign_word_id", "persian_word_id", name="dictionary_pk"),
     )
+
 
     foreign_word_id = Column(Integer, ForeignKey('foreign_word.id'), nullable=False, primary_key=True)
     foreign_word = relationship("ForeignWord")
@@ -85,11 +99,21 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     likes = Column(Integer, nullable=False, default=0)
     dislikes = Column(Integer, nullable=False, default=0)
 
+    @classmethod
+    def add(cls, persianWord, foreignWord, user):
+        return DBSession.add(Dictionary(foreign_word=foreignWord, persian_word=persianWord, status='confirmed', user=user))
 
     @classmethod
-    def query(cls, expression):
+    def find(cls, persianWord, foreignWord):
+        return DBSession.query(cls)\
+            .filter(cls.persian_word_id== persianWord )\
+            .filter(cls.foreign_word_id== foreignWord )\
+            .first()
+
+    @classmethod
+    def query_persian(cls, expression):
         rate = cls.likes - cls.dislikes
-        for r in DBSession.query(rate.label('rate'), PersianWord.title.label('offer'))\
+        for r in DBSession.query(rate.label('rate'), PersianWord.title.label('title'))\
             .join(ForeignWord)\
             .join(PersianWord)\
             .filter(Dictionary.status == 'confirmed')\
@@ -100,7 +124,7 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
 
 
     @classmethod
-    def find_persian_equivalents(cls, expression):
+    def query_foreign(cls, expression):
         rate = cls.likes - cls.dislikes
         for r in DBSession.query(rate.label('rate'), ForeignWord.title.label('title'))\
             .join(ForeignWord)\

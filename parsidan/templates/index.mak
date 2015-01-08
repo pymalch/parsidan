@@ -5,6 +5,7 @@
 %>
 <div class="container query-area">
     <img src="/img/parsidan.jpg" class="center-block"/>
+
     <div class="row">
         <div class="${col_classes}">
             <div class="form-group">
@@ -13,10 +14,10 @@
                     <input id="queryInput"
                            type="text"
                            class="form-control"
-                           placeholder="${ _('Please enter non persian word') }"
+                           placeholder="${ _('Please enter the word') }"
                            value="${word}">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="btnQuery">
+                        <button class="btn btn-default btn-send" type="button" id="btnQuery">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -26,25 +27,16 @@
     </div>
 
 </div>
+
 <div class="container">
     <div class="row">
         <div class="${col_classes} result-area">
 
         </div>
     </div>
-    ##    <div class="row messages">
-    ##        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 text-align-auto">
-    ##            <img class="center-block" src="img/preloader.gif" />
-    ##            <div class="no-result">${ _('Persian translate for this word did not find!') }</div>
-    ##            <div class="word-just-added"> ${ _('Word stores is database to translate later.') }</div>
-    ##            <div class="word-already-added">${ _('Word is already added and is waiting for translation.') }</div>
-    ##            <div class="word-is-persian">${ _('The word you entered is already a persian word!') }</div>
-    ##            <div class="join-us">${ _("You can %(join)s and help us to improve this dictionary.") % {'join': "JOIN US" } } </div>
-    ##        </div>
-    ##    </div>
 </div>
-<div id="searchEngineTemplates" class="hidden">
 
+<div id="searchEngineTemplates" class="hidden">
     <div id="queryTemplate" class="panel panel-default">
         <div class="panel-heading">
             <button type="button" class="close"><span aria-hidden="true">&times;</span><span
@@ -53,17 +45,46 @@
         </div>
         <div class="panel-body query-content">
 
+            <div class="equivalents-area">
+                <div class="form-group equivalents-form hidden">
+                    <div class="input-group">
+                        <input type="text"
+                               class="input-equivalent form-control"
+                               placeholder=""
+                               value="">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-send" type="button" id="btnQuery">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="words">
+
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
+
+<div class="question hidden" id="questionTemplate">
+                <span> </span>
+                <a href="javascript:;" class="yes" data-source="persian" data-equivalent="foreign" >${_('Yes')}</a>
+                <a href="javascript:;" class="no"  data-source="foreign"  data-equivalent="persian" >${_('No')}</a>
+            </div>
+
 
 <%def name="scripts()">
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('#queryInput').searchEngine({
-                scheduleTimeout: 1000
-            });
+                % if request.identity:
+                    guest: false ,
+                % endif
+            }).select();
         });
     </script>
 </%def>
