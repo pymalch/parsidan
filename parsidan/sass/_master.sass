@@ -71,6 +71,39 @@ label
   .panel-heading
     h3
       margin: 0
-
+.manage-words
+  margin-top: $padding-large-vertical
+  .words
+    +transition(.5s all)
+    margin: $padding-large-vertical 0
+    border-radius: $border-radius-base
+    &:hover
+      background: $gray-lighter
+      i.remove
+        opacity: 1
+    .foreign
+      margin-right: $padding-large-horizontal
+    .word
+      background: #fff
+      position: relative
+      i.link
+        left: -20px
+        font-size: $font-size-h4
+        color: $gray-light
+        z-index: 1
+        position: absolute
+        +rotate(45deg)
+        cursor: pointer
+        opacity: .7
+        &:hover
+          color: $brand-success
+    i.remove
+      opacity: 0
+      cursor: pointer
+      float: $float-inverse
+      color: $brand-danger
+      margin-top: $padding-large-vertical
 .filter
   margin-bottom: $padding-large-vertical*2
+
+

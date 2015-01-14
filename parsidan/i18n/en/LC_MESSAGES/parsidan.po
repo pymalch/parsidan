@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-01-08 01:36+0330\n"
+"POT-Creation-Date: 2015-01-15 02:20+0330\n"
 "PO-Revision-Date: 2014-10-07 22:23+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Invalid email address"
 msgstr ""
 
-#: parsidan/controllers/contribution.py:20
+#: parsidan/controllers/contribution.py:21
 msgid "Please login to view this page."
 msgstr ""
 
@@ -144,7 +144,7 @@ msgid "Password"
 msgstr ""
 
 #: parsidan/forms/authentication/login.py:20
-#: parsidan/templates/navigator.mak:35
+#: parsidan/templates/navigator.mak:40
 #: parsidan/templates/authentication/verification_success.mak:11
 msgid "Login"
 msgstr ""
@@ -297,13 +297,11 @@ msgstr ""
 
 #: parsidan/templates/client_messages.mak:18
 #, fuzzy
-#| msgid "Persian words"
 msgid "Persian word"
 msgstr "پارسی"
 
 #: parsidan/templates/client_messages.mak:19
 #, fuzzy
-#| msgid "Persian words"
 msgid "Foreign word"
 msgstr "پارسی"
 
@@ -325,34 +323,40 @@ msgid "&copy; %s Parsidan"
 msgstr ""
 
 #: parsidan/templates/navigator.mak:23
+#: parsidan/templates/contribution/manage.mak:9
 #: parsidan/templates/contribution/words.mak:9
 #, fuzzy
 msgid "Persian words"
 msgstr "پارسی"
 
-#: parsidan/templates/navigator.mak:32
+#: parsidan/templates/navigator.mak:27
+#, fuzzy
+msgid "Manage words"
+msgstr "پارسی"
+
+#: parsidan/templates/navigator.mak:37
 msgid "Persian"
 msgstr "پارسی"
 
-#: parsidan/templates/navigator.mak:32
+#: parsidan/templates/navigator.mak:37
 msgid "English"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:36
+#: parsidan/templates/navigator.mak:41
 #: parsidan/templates/authentication/login.mak:14
 msgid "SignUp"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:38
+#: parsidan/templates/navigator.mak:43
 msgid "Logout"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:39
+#: parsidan/templates/navigator.mak:44
 #: parsidan/templates/authentication/change_password.mak:2
 msgid "Change Password"
 msgstr ""
 
-#: parsidan/templates/navigator.mak:40
+#: parsidan/templates/navigator.mak:45
 msgid "Admin"
 msgstr ""
 
@@ -430,14 +434,15 @@ msgstr ""
 msgid "Homepage"
 msgstr ""
 
-#: parsidan/templates/contribution/index.mak:18
-#: parsidan/templates/dictionary/myWords.mak:169
-msgid "Insert persian word"
+#: parsidan/templates/contribution/manage.mak:8
+msgid "Equivalents"
 msgstr ""
 
-#: parsidan/templates/contribution/index.mak:50
-msgid "Please enter non persian word"
-msgstr ""
+#: parsidan/templates/contribution/manage.mak:10
+#, fuzzy
+#| msgid "Foreign word"
+msgid "Foreign words"
+msgstr "پارسی"
 
 #: parsidan/templates/contribution/words.mak:12
 #: parsidan/templates/contribution/words.mak:29
@@ -459,6 +464,10 @@ msgstr ""
 
 #: parsidan/templates/dictionary/myWords.mak:52
 msgid "Insert alien equivalent"
+msgstr ""
+
+#: parsidan/templates/dictionary/myWords.mak:169
+msgid "Insert persian word"
 msgstr ""
 
 #: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:210
@@ -629,5 +638,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "The Persian equivalent of the word %s is:"
+#~ msgstr ""
+
+#~ msgid "Please enter non persian word"
 #~ msgstr ""
 

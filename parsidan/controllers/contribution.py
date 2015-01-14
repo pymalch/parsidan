@@ -9,10 +9,11 @@ from parsidan.lib.base import BaseController
 import transaction
 from tg.predicates import not_anonymous
 from parsidan.lib.sanitizer import sanitize
-
+from tgext.crud import EasyCrudRestController
 __author__ = 'vahid'
 
 __all__ = ['ContributionController']
+
 
 
 class ContributionController(BaseController):
@@ -23,6 +24,11 @@ class ContributionController(BaseController):
     def index(self):
         return dict()
 
+    @expose("parsidan.templates.contribution.manage")
+    def manage(self, type= None):
+        words= Dictionary.get_pending()
+
+        return dict(words= words)
 
     @expose("json")
     def submit_persian_word(self, word, sourceWord):
@@ -79,8 +85,4 @@ class ContributionController(BaseController):
         result = transaction.commit()
         return dict(word=word , status=QueryStatus.contribution_success_add,result=result)
 
-    #@expose("parsidan.templates.contribution.submit_word_success")
-    #@validate(SubmitWordForm, error_handler=submit_word_form)
-    #def submit_word(self, word=None, translation=None, *args, **kwargs):
-    #    return dict()
 

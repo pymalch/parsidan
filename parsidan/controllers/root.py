@@ -5,7 +5,6 @@ from tg import expose, lurl, redirect, tmpl_context, request
 from tg.i18n import ugettext as _, set_lang
 from tg.decorators import paginate as paginatedeco
 from parsidan import model
-from parsidan.controllers.dictionary import DictionaryController
 from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord, QueryStatus
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
@@ -20,12 +19,13 @@ __all__ = ['RootController']
 
 
 
+
 class RootController(BaseController):
-    dictionary = DictionaryController()
-    admin = AdminController(model, DBSession, config_type=TGAdminConfig)
+
     error = ErrorController()
     authentication = AuthenticationController()
     contribution = ContributionController()
+    admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = _("parsidan")

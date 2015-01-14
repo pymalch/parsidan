@@ -87,7 +87,6 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         PrimaryKeyConstraint("foreign_word_id", "persian_word_id", name="dictionary_pk"),
     )
 
-
     foreign_word_id = Column(Integer, ForeignKey('foreign_word.id'), nullable=False, primary_key=True)
     foreign_word = relationship("ForeignWord")
 
@@ -133,6 +132,15 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
             .order_by(rate.desc()):
 
             yield r._asdict()
+
+    @classmethod
+    def get_pending(cls):
+        for r in DBSession.query(cls)\
+            .join(ForeignWord)\
+            .join(PersianWord)\
+            .filter(cls.status == 'confirmed'):
+
+            yield r
 
 
 

@@ -55,5 +55,3 @@ jQuery.fn.contributionEngine = function (options) {
   return this;
 };
 
-
-

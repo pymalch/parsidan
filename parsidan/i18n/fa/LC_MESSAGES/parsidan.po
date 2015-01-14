@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-01-08 01:36+0330\n"
+"POT-Creation-Date: 2015-01-15 02:20+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "گذر واژه کنونی شما نادرست است."
 msgid "Invalid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
-#: parsidan/controllers/contribution.py:20
+#: parsidan/controllers/contribution.py:21
 msgid "Please login to view this page."
 msgstr "برای دیدن این بخش بایستی وارد"
 
@@ -144,7 +144,7 @@ msgid "Password"
 msgstr "گذر واژه"
 
 #: parsidan/forms/authentication/login.py:20
-#: parsidan/templates/navigator.mak:35
+#: parsidan/templates/navigator.mak:40
 #: parsidan/templates/authentication/verification_success.mak:11
 msgid "Login"
 msgstr "ورود"
@@ -299,12 +299,10 @@ msgid "Please insert foreign equivalent"
 msgstr "هم ترجمان بیگانه واژه را وارد نمایید"
 
 #: parsidan/templates/client_messages.mak:18
-#| msgid "Persian words"
 msgid "Persian word"
 msgstr "واژه پارسی"
 
 #: parsidan/templates/client_messages.mak:19
-#| msgid "Persian words"
 msgid "Foreign word"
 msgstr "واژه بیگانه"
 
@@ -326,33 +324,38 @@ msgid "&copy; %s Parsidan"
 msgstr "پارسیدان %s"
 
 #: parsidan/templates/navigator.mak:23
+#: parsidan/templates/contribution/manage.mak:9
 #: parsidan/templates/contribution/words.mak:9
 msgid "Persian words"
 msgstr "واژگان پارسی"
 
-#: parsidan/templates/navigator.mak:32
+#: parsidan/templates/navigator.mak:27
+msgid "Manage words"
+msgstr "مدیریت واژگان"
+
+#: parsidan/templates/navigator.mak:37
 msgid "Persian"
 msgstr "پارسیدان"
 
-#: parsidan/templates/navigator.mak:32
+#: parsidan/templates/navigator.mak:37
 msgid "English"
 msgstr "English"
 
-#: parsidan/templates/navigator.mak:36
+#: parsidan/templates/navigator.mak:41
 #: parsidan/templates/authentication/login.mak:14
 msgid "SignUp"
 msgstr "بپیوندید"
 
-#: parsidan/templates/navigator.mak:38
+#: parsidan/templates/navigator.mak:43
 msgid "Logout"
 msgstr "برون رفت"
 
-#: parsidan/templates/navigator.mak:39
+#: parsidan/templates/navigator.mak:44
 #: parsidan/templates/authentication/change_password.mak:2
 msgid "Change Password"
 msgstr "تغییر گذر واژه"
 
-#: parsidan/templates/navigator.mak:40
+#: parsidan/templates/navigator.mak:45
 msgid "Admin"
 msgstr "بخش مدیریتی"
 
@@ -430,14 +433,14 @@ msgstr "شما هم اکنون به پارسیدان پیوسته اید. با �
 msgid "Homepage"
 msgstr "خانه"
 
-#: parsidan/templates/contribution/index.mak:18
-#: parsidan/templates/dictionary/myWords.mak:169
-msgid "Insert persian word"
-msgstr "واژه پارسی را وارد نمایید"
+#: parsidan/templates/contribution/manage.mak:8
+msgid "Equivalents"
+msgstr "هم ترجمان ها"
 
-#: parsidan/templates/contribution/index.mak:50
-msgid "Please enter non persian word"
-msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+#: parsidan/templates/contribution/manage.mak:10
+#| msgid "Foreign word"
+msgid "Foreign words"
+msgstr "واژگان بیگانه"
 
 #: parsidan/templates/contribution/words.mak:12
 #: parsidan/templates/contribution/words.mak:29
@@ -460,6 +463,10 @@ msgstr "واژه وارد شده پیش از این در بستر نوشته ش�
 #: parsidan/templates/dictionary/myWords.mak:52
 msgid "Insert alien equivalent"
 msgstr "واژه همگون نا پارسی را وارد نمایید"
+
+#: parsidan/templates/dictionary/myWords.mak:169
+msgid "Insert persian word"
+msgstr "واژه پارسی را وارد نمایید"
 
 #: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:210
 msgid "Received in wrong character set; should be $encoding"
@@ -623,4 +630,7 @@ msgstr "واژه امنیتی بایستی وارد گردد."
 # | msgid "Registration success!"
 #~ msgid "Registration Pending!"
 #~ msgstr "شما هم اکنون به پارسیدان پیوسته اید. با سپاس فراوان!"
+
+#~ msgid "Please enter non persian word"
+#~ msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
 

@@ -23,6 +23,11 @@
                             <a href="${tg.url('/words')}">${_('Persian words')}</a>
                     </li>
 
+                    <li class="${('', 'active')[page=='about']}">
+                            <a href="${tg.url('/contribution/manage')}">${_('Manage words')}</a>
+                    </li>
+
+
                  </ul>
 
 
