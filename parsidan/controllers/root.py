@@ -59,14 +59,9 @@ class RootController(BaseController):
                 result = list(Dictionary.query_foreign(word))
                 return dict(word=word, status=QueryStatus.dictionary_persian_word, result=result)
             else:
-                ForeignWord.check_and_hit(word)
-                #DBSession.commit()
-                transaction.commit()
                 return dict(word=word, status=QueryStatus.dictionary_not_found)
         else:
-            ForeignWord.hit(word)
-            #DBSession.commit()
-            transaction.commit()
+            #todo
             return dict(word=word, status=QueryStatus.dictionary_foreign_word, result=result)
 
     @expose("parsidan.templates.contribution.words")

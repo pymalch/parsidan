@@ -9,6 +9,7 @@ Class('parsidan.manageWords.Engine', parsidan.CallbackCaller, {
         self.currentProcedure = null;
      } ,
     linkSelector: '.make-link',
+    removeButton: '.remove',
     notificationArea: '.notification-area'
   },
   __init__: function (linkObject , options) {
@@ -26,6 +27,7 @@ Class('parsidan.manageWords.Engine', parsidan.CallbackCaller, {
     });
   },
   proccess: function () {
+      alert('asdf');
 
   }
 });

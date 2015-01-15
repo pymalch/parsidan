@@ -80,7 +80,7 @@ label
     &:hover
       background: $gray-lighter
       i.remove
-        opacity: 1
+        opacity: .2
     .foreign
       margin-right: $padding-large-horizontal
     .word
@@ -97,12 +97,19 @@ label
         opacity: .7
         &:hover
           color: $brand-success
+    .author
+      font-size: $font-size-small
+      color: $gray-light
+      margin: $padding-large-vertical 0
     i.remove
       opacity: 0
       cursor: pointer
-      float: $float-inverse
-      color: $brand-danger
-      margin-top: $padding-large-vertical
+      #{$float-inverse} : $padding-base-horizontal
+      top: $padding-small-vertical
+      position: absolute
+      &:hover
+        opacity: 1
+        color: $brand-danger
 .filter
   margin-bottom: $padding-large-vertical*2
 

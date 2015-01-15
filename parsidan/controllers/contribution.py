@@ -26,13 +26,24 @@ class ContributionController(BaseController):
 
     @expose("parsidan.templates.contribution.manage")
     def manage(self, type= None):
-        words= Dictionary.get_pending()
 
-        return dict(words= words)
+        if type == 'persian':
+            words = PersianWord.get_pending()
+
+        elif type == 'foreign':
+            words = ForeignWord.get_pending()
+
+        else:
+            words = Dictionary.get_pending()
+
+        return dict(words=words, type=type)
 
     @expose("json")
     def submit_persian_word(self, word, sourceWord):
+
+        #word is a persian one
         word = sanitize(word)
+        #sourceord is the foreign one
         sourceWord = sanitize(sourceWord)
 
         import time
@@ -45,10 +56,10 @@ class ContributionController(BaseController):
         if persianWord and foreignWord:
             if Dictionary.find(persianWord.id, foreignWord.id):
                 return dict(word=word , status=QueryStatus.contribution_added_before)
-        elif not persianWord:
-            persianWord= PersianWord(title=word, status='confirmed')
-        elif not foreignWord:
-            foreignWord = ForeignWord(title=sourceWord, status='confirmed')
+        if not persianWord:
+            persianWord= PersianWord(title=word)
+        if not foreignWord:
+            foreignWord = ForeignWord(title=sourceWord)
 
         Dictionary.add(persianWord, foreignWord,  request.identity['user'].id)
 
@@ -76,9 +87,9 @@ class ContributionController(BaseController):
             if Dictionary.find(persianWord.id, foreignWord.id):
                 return dict(word=word , status=QueryStatus.contribution_added_before)
         if not persianWord:
-            persianWord= PersianWord(title=sourceWord, status='confirmed')
+            persianWord= PersianWord(title=sourceWord)
         if not foreignWord:
-            foreignWord = ForeignWord(title=word, status='confirmed')
+            foreignWord = ForeignWord(title=word)
 
         Dictionary.add(persianWord, foreignWord,  request.identity['user'].id)
 

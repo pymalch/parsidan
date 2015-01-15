@@ -3,7 +3,7 @@ __author__ = 'masoud'
 from parsidan.model import DeclarativeBase, DBSession
 from sqlalchemy import ForeignKey, Column, PrimaryKeyConstraint
 from sqlalchemy.types import Unicode, Integer, Enum, DateTime, BigInteger
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, subqueryload, lazyload
 from sqlalchemy.sql.expression import bindparam
 from datetime import datetime
 from parsidan.model.mixins import ConfirmableMixin, TimestampMixin
@@ -67,15 +67,6 @@ class ForeignWord(TimestampMixin, ConfirmableMixin, DeclarativeBase):
         word.hits += 1
         return word
 
-    @classmethod
-    def check_and_hit(cls, title):
-        word = cls.find(title)
-        if word:
-            word.hits += 1
-        else:
-            word = cls(title=title)
-            DBSession.add(word)
-        return word
 
 class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
 
@@ -94,13 +85,14 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     persian_word = relationship("PersianWord")
 
     user =  Column(Integer, ForeignKey('user.id'), nullable=False, index=True)
+    user_detail = relationship("User", lazy='joined')
 
     likes = Column(Integer, nullable=False, default=0)
     dislikes = Column(Integer, nullable=False, default=0)
 
     @classmethod
     def add(cls, persianWord, foreignWord, user):
-        return DBSession.add(Dictionary(foreign_word=foreignWord, persian_word=persianWord, status='confirmed', user=user))
+        return DBSession.add(Dictionary(foreign_word=foreignWord, persian_word=persianWord, status='pending', user=user))
 
     @classmethod
     def find(cls, persianWord, foreignWord):
@@ -135,12 +127,10 @@ class Dictionary(TimestampMixin, ConfirmableMixin, DeclarativeBase):
 
     @classmethod
     def get_pending(cls):
-        for r in DBSession.query(cls)\
-            .join(ForeignWord)\
-            .join(PersianWord)\
-            .filter(cls.status == 'confirmed'):
+        for word in DBSession.query(cls)\
+            .filter(cls.status == 'pending'):
 
-            yield r
+            yield word
 
 
 
