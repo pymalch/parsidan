@@ -6,21 +6,23 @@ import tw2.bootstrap.forms as twf
 from tg.i18n import lazy_ugettext as l_
 from parsidan.widgets import BaseForm, ReCaptchaValidator, FixedReCaptcha
 import tg
+from parsidan.forms import validation_message
+
 
 class RecoverPasswordForm(BaseForm):
     email = twf.TextField(label=l_('Email'),
-                          addon_icon={'right':'glyphicon glyphicon-envelope'},
+                          addon_icon={'right': 'glyphicon glyphicon-envelope'},
                           validator=twc.EmailValidator(required=True,
                                                        msgs={
-                                                           'bademail':l_('Must be a valid email address'),
-                                                           'required':l_('Enter a value')}))
+                                                           'bademail': l_('Must be a valid email address'),
+                                                           'required': l_('Enter a value')}))
 
     recaptcha_response_field = FixedReCaptcha(label=l_('Please Enter whatever you see in the below'),
-                                                  public_key=tg.config.get('recaptcha.public_key'),
-                                                  validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
-                                                                               tg.config.get('domain.ip_address')))
-
-
+                                              public_key=tg.config.get('recaptcha.public_key'),
+                                              validator=ReCaptchaValidator(tg.config.get('recaptcha.private_key'),
+                                                                           tg.config.get('domain.ip_address'),
+                                                                           messages=validation_message),
+                                             )
 
     action = '/authentication/recover_password'
     submit = twf.SubmitButton(id='submit', value=l_('Send'))

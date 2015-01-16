@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, lurl, redirect, tmpl_context
+from tg import expose, lurl, redirect, tmpl_context, request
 from tg.i18n import ugettext as _, set_lang
+from tg.decorators import paginate as paginatedeco
 from parsidan import model
-from parsidan.controllers.dictionary import DictionaryController
-from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord
+from parsidan.model import Dictionary, DBSession, PersianWord, ForeignWord, QueryStatus
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 import transaction
@@ -14,21 +14,18 @@ from parsidan.lib.base import BaseController
 from parsidan.controllers.error import ErrorController
 from parsidan.lib.sanitizer import sanitize
 from parsidan.controllers.contribution import ContributionController
+
 __all__ = ['RootController']
 
-class QueryStatus:
-    success = 0
-    not_found = 1
-    persian_word = 2
+
 
 
 class RootController(BaseController):
 
-    dictionary = DictionaryController()
-    admin = AdminController(model, DBSession, config_type=TGAdminConfig)
     error = ErrorController()
     authentication = AuthenticationController()
     contribution = ContributionController()
+    admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = _("parsidan")
@@ -53,18 +50,29 @@ class RootController(BaseController):
     @expose('parsidan.templates.index')
     @expose('json')
     def query(self, word=None):
+        import time
+        time.sleep(2)
         word = sanitize(word)
-        result = list(Dictionary.query(word))
+        result = list(Dictionary.query_persian(word))
         if not len(result):
             if PersianWord.find(word):
-                return dict(word=word, status=QueryStatus.persian_word)
+                result = list(Dictionary.query_foreign(word))
+                return dict(word=word, status=QueryStatus.dictionary_persian_word, result=result)
             else:
-                ForeignWord.check_and_hit(word)
-                #DBSession.commit()
-                transaction.commit()
-                return dict(word=word, status=QueryStatus.not_found)
+                return dict(word=word, status=QueryStatus.dictionary_not_found)
         else:
-            ForeignWord.hit(word)
-            #DBSession.commit()
-            transaction.commit()
-            return dict(word=word, status=QueryStatus.success, result=result)
+            #todo
+            return dict(word=word, status=QueryStatus.dictionary_foreign_word, result=result)
+
+    @expose("parsidan.templates.contribution.words")
+    @paginatedeco("words", items_per_page=10)
+    def words(self, character=None, page=1, self_words=None):
+        if character:
+            character = sanitize(character)
+
+        if request.identity and self_words:
+            self_words = request.identity['user'].id
+
+        words = PersianWord.list(character, self_words)
+
+        return dict(words=words, alphabets=PersianWord.alphabets, character=character, self_words=self_words)

@@ -9,6 +9,41 @@
     //font-size: larger($font-size-base, 20%)
     text-align: center
 
+.equivalents-items
+  margin: 0
+  padding: 0
+  li
+    +transition(.2s background-color)
+    border-radius: $border-radius-base
+    list-style: none
+    padding: $padding-base-vertical $padding-base-horizontal
+    &:hover
+      background-color: $gray-lighter
+      .glyphicon
+        +opacity(.6)
+    .glyphicon
+      margin-#{$float}: $padding-small-horizontal
+      cursor: pointer
+      +opacity(.2)
+      float: $float-inverse
+      &:hover
+        +opacity(1)
+    .glyphicon-thumbs-up
+      color: $brand-success
+    .glyphicon-thumbs-down
+      color: $brand-danger
+.panel
+  position: relative
+
+.panel.persian
+  &:before
+    display: block
+    position: absolute
+    background: url('../img/panel-parsi.png') no-repeat
+    width: 285px
+    height: 34px
+    right: 0
+    top: 0
 
 
 .result-area
@@ -16,3 +51,9 @@
 
 
 
+.box-bordered
+  border-radius: $border-radius-base
+  border: 1px solid $gray-lighter
+  padding: $padding-base-vertical $padding-base-horizontal
+  margin: $padding-base-vertical 0
+  display: inline-block

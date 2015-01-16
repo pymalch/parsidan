@@ -43,3 +43,74 @@ label
 .contribution-notify-area
   margin: 10px 0
 
+//authentication
+.verification-request
+  .glyphicon-send
+    color: $brand-info
+.verification-success
+  .nav
+    .glyphicon
+      margin: 0 5px
+  .glyphicon-ok
+    color: $brand-success
+.recover-password-pending
+  .glyphicon
+    color: $brand-info
+
+.change-password-success
+  .glyphicon
+    color: $brand-success
+
+.alphabets
+  text-align: center
+  a.btn
+    margin-bottom: $padding-base-vertical
+
+.words-area
+  margin-top: $padding-large-vertical*3
+  .panel-heading
+    h3
+      margin: 0
+.manage-words
+  margin-top: $padding-large-vertical
+  .words
+    +transition(.5s all)
+    margin: $padding-large-vertical 0
+    border-radius: $border-radius-base
+    &:hover
+      background: $gray-lighter
+      i.remove
+        opacity: .2
+    .foreign
+      margin-right: $padding-large-horizontal
+    .word
+      background: #fff
+      position: relative
+      i.link
+        left: -20px
+        font-size: $font-size-h4
+        color: $gray-light
+        z-index: 1
+        position: absolute
+        +rotate(45deg)
+        cursor: pointer
+        opacity: .7
+        &:hover
+          color: $brand-success
+    .author
+      font-size: $font-size-small
+      color: $gray-light
+      margin: $padding-large-vertical 0
+    i.remove
+      opacity: 0
+      cursor: pointer
+      #{$float-inverse} : $padding-base-horizontal
+      top: $padding-small-vertical
+      position: absolute
+      &:hover
+        opacity: 1
+        color: $brand-danger
+.filter
+  margin-bottom: $padding-large-vertical*2
+
+

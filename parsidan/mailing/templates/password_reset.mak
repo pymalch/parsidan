@@ -1,4 +1,6 @@
 <div style="direction: ${_("css-direction")}; font: 13px Tahoma;">
+   <img src="http://${domain}/img/parsidan.jpg" class="center-block" alt="${_('Parsidan')}"/>
+
     <h2>${_('Your password was changed')}</h2>
 
     <p>
@@ -6,7 +8,7 @@
         <br/>
         ${new_password}
     </p>
-
+<br/><br/>
     <p>
         ${_('Please change your password ASAP')}
         <br/>

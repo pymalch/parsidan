@@ -3,6 +3,7 @@ __author__ = 'vahid'
 from sqlalchemy import Column
 from sqlalchemy.types import Enum, DateTime
 from datetime import datetime
+from parsidan.model import DeclarativeBase, DBSession
 
 
 class TimestampMixin(object):
@@ -13,4 +14,12 @@ class ConfirmableMixin(object):
     status = Column(Enum('pending', 'confirmed', name="foreign_word_status"), default='pending', nullable=True)
 
     def confirm(self):
-        self.status = 'confirmed'
+        object.status = 'confirmed'
+
+    @classmethod
+    def get_pending(self):
+        for word in DBSession.query(self)\
+            .filter(self.status == 'pending'):
+
+            yield word
+
