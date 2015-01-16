@@ -19,6 +19,20 @@ P::::::::P         a::::::::::aa:::ar:::::r             s:::::::::::ss  i::::::i
 PPPPPPPPPP          aaaaaaaaaa  aaaarrrrrrr              sssssssssss    iiiiiiii   ddddddddd   ddddd  aaaaaaaaaa  aaaa nnnnnn    nnnnnn
 
 
+
+
+
+  ___   _   _                            _       _
+ / _ \ / | / |      _ __  _ __ ___  __ _| |_ __ | |__   __ _
+| | | || | | |_____| '_ \| '__/ _ \/ _` | | '_ \| '_ \ / _` |
+| |_| || |_| |_____| |_) | | |  __/ (_| | | |_) | | | | (_| |
+ \___(_)_(_)_|     | .__/|_|  \___|\__,_|_| .__/|_| |_|\__,_|
+                   |_|                    |_|
+
+
+
+
+
 --><head>
     <%
         lang = h.lang()
