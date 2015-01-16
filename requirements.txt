@@ -1,0 +1,12 @@
+TurboGears2 >= 2.3.3
+Babel
+Genshi
+Mako
+zope.sqlalchemy >= 0.4
+sqlalchemy
+alembic
+repoze.who
+MaryJane>=2.18
+git+git://github.com/pylover/tw2.bootstrap.git@master#egg=tw2.bootstrap.forms-2.2.4
+tgext.admin >= 0.6.1
+tw2.recaptcha

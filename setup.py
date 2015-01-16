@@ -31,22 +31,6 @@ testpkgs=['WebTest >= 1.2.3',
                'gearbox'
                ]
 
-install_requires=[
-    "TurboGears2 >= 2.3.3",
-    "Babel",
-    "Genshi",
-    "Mako",
-    "zope.sqlalchemy >= 0.4",
-    "sqlalchemy",
-    "alembic",
-    "repoze.who",
-#    "repoze.what",
-    "MaryJane>=2.18",
-    "tw2.bootstrap.forms",
-    "tgext.admin >= 0.6.1",
-    "tw2.recaptcha"
-    ]
-
 setup(
     name='parsidan',
     version='0.1.0-prealpha',
@@ -55,7 +39,6 @@ setup(
     author_email='',
     #url='',
     packages=find_packages(exclude=['ez_setup']),
-    install_requires=install_requires,
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
