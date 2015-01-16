@@ -13,7 +13,7 @@ from datetime import datetime
 from hashlib import sha256, sha1
 from parsidan.exceptions.authentication import VerificationError
 from tg.i18n import ugettext as _
-from sqlalchemy import Table, ForeignKey, Column
+from sqlalchemy import Table, ForeignKey, Column, Sequence
 from sqlalchemy.types import Unicode, Integer, DateTime
 from sqlalchemy.orm import relation, synonym
 from parsidan.model import DeclarativeBase, metadata, DBSession

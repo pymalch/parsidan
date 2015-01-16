@@ -49,7 +49,7 @@ install_requires=[
 
 setup(
     name='parsidan',
-    version='0.6',
+    version='0.1.0-prealpha',
     description='',
     author='',
     author_email='',
