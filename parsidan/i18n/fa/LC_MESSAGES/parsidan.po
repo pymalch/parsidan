@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parsidan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-01-15 02:20+0330\n"
+"POT-Creation-Date: 2015-01-16 15:56+0330\n"
 "PO-Revision-Date: 2014-09-23 10:07+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fa <LL@li.org>\n"
@@ -89,13 +89,11 @@ msgstr "حداکثر کاراکتر مجاز %s میباشذ"
 
 #: parsidan/forms/validation.py:9
 #: parsidan/forms/authentication/recover_password.py:18
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:209
 msgid "Enter a value"
 msgstr "این قسمت بایستی پر گردد"
 
 #: parsidan/forms/validation.py:10
 #: parsidan/forms/authentication/recover_password.py:17
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:527
 msgid "Must be a valid email address"
 msgstr "رایانامه وارد گشته معتبر نیست!"
 
@@ -112,7 +110,6 @@ msgid "Missing captcha value."
 msgstr "واژه امنیتی وارد نشده است."
 
 #: parsidan/forms/validation.py:14
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:307
 msgid "Value is too short"
 msgstr "کمیت  وارد گشته بسیار کوتاه می‌باشد."
 
@@ -438,7 +435,6 @@ msgid "Equivalents"
 msgstr "هم ترجمان ها"
 
 #: parsidan/templates/contribution/manage.mak:10
-#| msgid "Foreign word"
 msgid "Foreign words"
 msgstr "واژگان بیگانه"
 
@@ -467,107 +463,6 @@ msgstr "واژه همگون نا پارسی را وارد نمایید"
 #: parsidan/templates/dictionary/myWords.mak:169
 msgid "Insert persian word"
 msgstr "واژه پارسی را وارد نمایید"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:210
-msgid "Received in wrong character set; should be $encoding"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:211
-msgid "Form submission received corrupted; please try again"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:308
-msgid "Value is too long"
-msgstr "کمیت وارد گشته بسیار بلند می‌باشد."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:333
-msgid "Must be at least $min characters"
-msgstr "حد اقل کاراکتر مجاز %s میباشد"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:335
-msgid "Cannot be longer than $max characters"
-msgstr "کمیت وارد گشته نمی‌تواند بلند تر از %s حرف باشد."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:346
-msgid "Select at least $min"
-msgstr "خواهشا در کمترین حالت %s  حرف را وارد نمایید."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:347
-msgid "Select no more than $max"
-msgstr "خواهشا بیشتر از %s مورد انتخاب نفرمایید."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:363
-msgid "Must be at least $min"
-msgstr "بایستی در کترین حالت %s حرف باشد."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:364
-msgid "Cannot be more than $max"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:382
-msgid "Must be an integer"
-msgstr "خواهش میشود کمیت عددی وارد نمایید"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:401
-msgid "You must select this"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:421
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:513
-msgid "Invalid value"
-msgstr "این بخش بایستی پر گردد"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:440
-msgid "Must follow date/time format $format_str"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:441
-msgid "Cannot be earlier than $min_str"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:442
-msgid "Cannot be later than $max_str"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:495
-msgid "Must follow date format $format_str"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:537
-msgid "Must be a valid URL"
-msgstr "رایانامه وارد گشته معتبر نیست!"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:556
-msgid "Must be a valid IP address"
-msgstr "رایانامه وارد گشته معتبر نیست!"
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:557
-msgid "Must be a valid IP network block"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:579
-msgid "Value not recognised as a UUID"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:609
-msgid "Must match $other_field_str"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:610
-msgid "$other_field_str field is not found"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/core/validation.py:611
-msgid "$other_field_str field is invalid"
-msgstr ""
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/recaptcha/validator.py:14
-msgid "Incorrect value."
-msgstr "واژه امنیتی وارد گشته نادرست است."
-
-#: /home/masoud/pythonenv/tg23/local/lib/python2.7/site-packages/tw2/recaptcha/validator.py:15
-msgid "Missing value."
-msgstr "واژه امنیتی بایستی وارد گردد."
 
 #~ msgid "home"
 #~ msgstr ""
@@ -633,4 +528,79 @@ msgstr "واژه امنیتی بایستی وارد گردد."
 
 #~ msgid "Please enter non persian word"
 #~ msgstr "واژه بیگانه یا نا پارسی را وارد نمایید"
+
+#~ msgid "Received in wrong character set; should be $encoding"
+#~ msgstr ""
+
+#~ msgid "Form submission received corrupted; please try again"
+#~ msgstr ""
+
+#~ msgid "Value is too long"
+#~ msgstr "کمیت وارد گشته بسیار بلند می‌باشد."
+
+#~ msgid "Must be at least $min characters"
+#~ msgstr "حد اقل کاراکتر مجاز %s میباشد"
+
+#~ msgid "Cannot be longer than $max characters"
+#~ msgstr "کمیت وارد گشته نمی‌تواند بلند تر از %s حرف باشد."
+
+#~ msgid "Select at least $min"
+#~ msgstr "خواهشا در کمترین حالت %s  حرف را وارد نمایید."
+
+#~ msgid "Select no more than $max"
+#~ msgstr "خواهشا بیشتر از %s مورد انتخاب نفرمایید."
+
+#~ msgid "Must be at least $min"
+#~ msgstr "بایستی در کترین حالت %s حرف باشد."
+
+#~ msgid "Cannot be more than $max"
+#~ msgstr ""
+
+#~ msgid "Must be an integer"
+#~ msgstr "خواهش میشود کمیت عددی وارد نمایید"
+
+#~ msgid "You must select this"
+#~ msgstr ""
+
+#~ msgid "Invalid value"
+#~ msgstr "این بخش بایستی پر گردد"
+
+#~ msgid "Must follow date/time format $format_str"
+#~ msgstr ""
+
+#~ msgid "Cannot be earlier than $min_str"
+#~ msgstr ""
+
+#~ msgid "Cannot be later than $max_str"
+#~ msgstr ""
+
+#~ msgid "Must follow date format $format_str"
+#~ msgstr ""
+
+#~ msgid "Must be a valid URL"
+#~ msgstr "رایانامه وارد گشته معتبر نیست!"
+
+#~ msgid "Must be a valid IP address"
+#~ msgstr "رایانامه وارد گشته معتبر نیست!"
+
+#~ msgid "Must be a valid IP network block"
+#~ msgstr ""
+
+#~ msgid "Value not recognised as a UUID"
+#~ msgstr ""
+
+#~ msgid "Must match $other_field_str"
+#~ msgstr ""
+
+#~ msgid "$other_field_str field is not found"
+#~ msgstr ""
+
+#~ msgid "$other_field_str field is invalid"
+#~ msgstr ""
+
+#~ msgid "Incorrect value."
+#~ msgstr "واژه امنیتی وارد گشته نادرست است."
+
+#~ msgid "Missing value."
+#~ msgstr "واژه امنیتی بایستی وارد گردد."
 
