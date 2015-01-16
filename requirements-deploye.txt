@@ -1,0 +1,2 @@
+# Required for postgres backend
+psycopg2
