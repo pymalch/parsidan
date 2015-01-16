@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-    <%
-        lang = h.lang()
-        min = '' if h.debug() else '.min'
-        direction = '.rtl' if lang == 'fa' else '.ltr'
-    %>
-<!--
+<!DOCTYPE html><html><!--
 
    ___                     _      __
   / _ \ ___ _  ____  ___  (_) ___/ / ___ _  ___
@@ -12,9 +6,12 @@
 /_/    \_,_/ /_/   /___//_/  \_,_/  \_,_/ /_//_/
 
 
--->
-<html>
-<head>
+--><head>
+    <%
+        lang = h.lang()
+        min = '' if h.debug() else '.min'
+        direction = '.rtl' if lang == 'fa' else '.ltr'
+    %>
     <meta charset="${response.charset}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
