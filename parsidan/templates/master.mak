@@ -4,6 +4,12 @@
         min = '' if h.debug() else '.min'
         direction = '.rtl' if lang == 'fa' else '.ltr'
     %>
+<!--
+   ___                     _      __
+  / _ \ ___ _  ____  ___  (_) ___/ / ___ _  ___
+ / ___// _ `/ / __/ (_-< / / / _  / / _ `/ / _ \
+/_/    \_,_/ /_/   /___//_/  \_,_/  \_,_/ /_//_/
+-->
 <html>
 <head>
     <meta charset="${response.charset}"/>
