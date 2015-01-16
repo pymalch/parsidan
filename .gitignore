@@ -69,3 +69,4 @@ alembic.ini
 
 stuff/practice_data.db*
 private.ini
+production.ini

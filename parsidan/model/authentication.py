@@ -75,7 +75,7 @@ class User(TimestampMixin, ConfirmableMixin, DeclarativeBase):
     """
     __tablename__ = 'user'
 
-    id = Column(Integer, autoincrement=True, primary_key=True)
+    id = Column(Integer, Sequence('user_id_seq', start=1001, increment=1) , primary_key=True)
     email = Column(Unicode(255), unique=True, nullable=False)
     nickname = Column(Unicode(255))
     activation_request_time = Column(DateTime, nullable=True)

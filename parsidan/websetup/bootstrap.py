@@ -14,6 +14,7 @@ def bootstrap(command, conf, vars):
     from sqlalchemy.exc import IntegrityError
     try:
         u = model.User()
+        u.id = 1
         u.nickname = u'Web Master'
         u.email = u'webmaster@parsidan.com'
         u.password = u'webmaster'
