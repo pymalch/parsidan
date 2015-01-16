@@ -33,7 +33,7 @@ testpkgs=['WebTest >= 1.2.3',
 
 setup(
     name='parsidan',
-    version='0.1.0-prealpha',
+    version='0.1.1-prealpha',
     description='',
     author='',
     author_email='',

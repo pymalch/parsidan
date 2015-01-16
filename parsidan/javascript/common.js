@@ -165,7 +165,7 @@ Class('parsidan.dictionary.Model', parsidan.CallbackCaller, {
       this.state.dispose();
     }
     if (stateClass) {
-      var fn = window.parsidan.dictionary.stateClass;
+      var fn = window.parsidan.dictionary[stateClass];
       this.state = new fn(this);
     }
   },
