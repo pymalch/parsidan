@@ -52,6 +52,7 @@ PPPPPPPPPP          aaaaaaaaaa  aaaarrrrrrr              sssssssssss    iiiiiiii
 <%include file="local:templates.navigator" />
 
 <div class="container-fluid container-main">
+    <div id="betaVersion" class=""><img src="/img/preAlphaVersion.jpg"></div>
     ${self.content_wrapper()}
 </div>
 

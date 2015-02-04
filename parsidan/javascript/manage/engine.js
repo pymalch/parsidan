@@ -2,38 +2,58 @@
 Class('parsidan.manageWords.Engine', parsidan.CallbackCaller, {
 
   defaultOptions: {
-    query:{
-      action: '/query.json'
-    },
     complete: function(){
         self.currentProcedure = null;
      } ,
-    linkSelector: '.make-link',
-    removeButton: '.remove',
-    notificationArea: '.notification-area'
+    notificationArea: '.notification-area',
+    defaultEvent: 'click'
   },
-  __init__: function (linkObject , options) {
+  controllers:{
+      'setEquivalent':{
+          action:'/manage/setEquivalents',
+          listenerSelector: '.link'
+      },
+      'removeWord':{
+          action:'/manage/removeWord',
+          listenerSelector: '.remove'
 
-    this.currentProcedure = null;
-    this.id = '';
+      },
+      rateEquivalents:{
+           action:'/manage/rateWord',
+          listenerSelector: '.rate'
+      }
+  },
+  __init__: function ( options) {
+
+    this.procedures = new Array();
     this.options = $.extend({}, this.__class__.prototype.defaultOptions, options);
+    this.controllers= this.__class__.prototype.controllers;
 
     this.setUp();
   },
-  setUp: function () {
+  setUp: function() {
     var self = this;
-    this.input.click(function(e){
-        this.proccess();
+
+    $.each(self.controllers,function(k,v){
+        var controller=this;
+        if(!this.event){
+            this.event= self.options.defaultEvent;
+        }
+
+        $(this.listenerSelector).bind(this.event, function(){
+           self.procedures[controller]=new parsidan.manageWords.manage(controller,this);
+        });
+
     });
-  },
-  proccess: function () {
-      alert('asdf');
 
   }
+
+}).StaticMembers({
+
 });
 
 jQuery.fn.manageWordsEngine = function (options) {
-    parsidan.manageWordsEngine = new parsidan.manageWords.Engine(this, options);
+    parsidan.manageWordsEngine = new parsidan.manageWords.Engine( options);
 
   return this;
 };

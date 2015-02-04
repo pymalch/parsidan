@@ -6,3 +6,4 @@ Namespace('parsidan');
 Namespace('parsidan.dictionary');
 Namespace('parsidan.search');
 Namespace('parsidan.contribution');
+Namespace('parsidan.manageWords');

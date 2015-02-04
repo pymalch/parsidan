@@ -50,11 +50,7 @@
 <%def name="scripts()">
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#persianInput').contributionEngine({
-                onComplete:function(object){
-                    this.state.word.$foreignInput().contributionEngine();
-                }
-            });
+            $(document).manageWordsEngine({});
 
         });
     </script>

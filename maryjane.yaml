@@ -119,7 +119,8 @@ public_js: !watch
     - !template ${javascript}/contribution/engine.js
     - !template ${javascript}/contribution/query.js
     - !template ${javascript}/contribution/states.js
-
+    - !template ${javascript}/manage/engine.js
+    - !template ${javascript}/manage/manage.js
     - !template ${javascript}/tail.js
 
 
