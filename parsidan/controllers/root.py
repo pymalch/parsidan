@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, lurl, redirect, tmpl_context, request
+from tg import expose, lurl, redirect, tmpl_context, request, request_local, i18n
 from tg.i18n import ugettext as _, set_lang
 from tg.decorators import paginate as paginatedeco
 from parsidan import model
@@ -28,7 +28,16 @@ class RootController(BaseController):
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     def _before(self, *args, **kw):
+        tgl = request_local.context._current_obj()
+        session_ = tgl.session
+        if session_:
+            current_lang = session_.get(tgl.config.get('lang_session_key', 'lang'))
+
+            if not current_lang and tgl.config.has_key('lang'):
+                i18n.set_lang(tgl.config.get('lang'))
+
         tmpl_context.project_name = _("parsidan")
+
 
     @expose('parsidan.templates.index')
     def index(self):
